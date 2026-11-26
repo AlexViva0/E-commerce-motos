@@ -1,124 +1,477 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" fill="none">
   <defs>
-    <linearGradient id="bgDiagonal" x1="0" y1="0" x2="300" y2="300" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#E63E1C" stop-opacity="0.12"/>
-      <stop offset="100%" stop-color="#FFB020" stop-opacity="0.06"/>
+    <!-- Backdrop & Editorial Accents (dual light/dark mode compatible) -->
+    <clipPath id="sportBgClip">
+      <circle cx="204" cy="198" r="142"/>
+    </clipPath>
+    <linearGradient id="sportBgCircle" x1="80" y1="68" x2="328" y2="332" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#8C919E" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#8C919E" stop-opacity="0.05"/>
     </linearGradient>
-    <linearGradient id="fairingRed" x1="95" y1="105" x2="235" y2="185" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#E63E1C"/>
-      <stop offset="65%" stop-color="#D43515"/>
-      <stop offset="100%" stop-color="#B82E12"/>
+    <linearGradient id="sportBgBand" x1="290" y1="60" x2="110" y2="340" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#E63E1C" stop-opacity="0.11"/>
+      <stop offset="55%" stop-color="#FFB020" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#E63E1C" stop-opacity="0.01"/>
     </linearGradient>
-    <linearGradient id="tankRed" x1="110" y1="102" x2="175" y2="140" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#FF5733"/>
-      <stop offset="40%" stop-color="#E63E1C"/>
-      <stop offset="100%" stop-color="#B82E12"/>
+    <linearGradient id="sportGroundLine" x1="36" y1="294" x2="368" y2="294" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#8C919E" stop-opacity="0"/>
+      <stop offset="22%" stop-color="#8C919E" stop-opacity="0.28"/>
+      <stop offset="78%" stop-color="#8C919E" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#8C919E" stop-opacity="0"/>
     </linearGradient>
-    <linearGradient id="visorDark" x1="175" y1="88" x2="215" y2="112" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#2B303C"/>
+    <linearGradient id="speedRed" x1="22" y1="150" x2="112" y2="150" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#E63E1C" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#E63E1C" stop-opacity="0.45"/>
+    </linearGradient>
+    <linearGradient id="speedAmber" x1="36" y1="168" x2="108" y2="168" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFB020" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#FFB020" stop-opacity="0.52"/>
+    </linearGradient>
+    <linearGradient id="speedGray" x1="18" y1="196" x2="96" y2="196" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#8C919E" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#8C919E" stop-opacity="0.34"/>
+    </linearGradient>
+
+    <!-- Soft Ground Contact Shadows (no filter; objectBoundingBox stretches smoothly to ellipse) -->
+    <radialGradient id="sportShadowWide" cx="0.5" cy="0.5" r="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#15171C" stop-opacity="0.30"/>
+      <stop offset="58%" stop-color="#15171C" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#15171C" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="sportShadowCore" cx="0.5" cy="0.5" r="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#15171C" stop-opacity="0.44"/>
+      <stop offset="65%" stop-color="#15171C" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#15171C" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Headlight Beam -->
+    <linearGradient id="sportHeadlight" x1="322" y1="170" x2="392" y2="188" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFB020" stop-opacity="0.34"/>
+      <stop offset="55%" stop-color="#FFB020" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#FFB020" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Tire & Metallic Wheel Gradients -->
+    <linearGradient id="rearTireGrad" x1="68" y1="208" x2="136" y2="290" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#2A2D35"/>
+      <stop offset="38%" stop-color="#15171C"/>
       <stop offset="100%" stop-color="#15171C"/>
     </linearGradient>
-    <linearGradient id="headlightGlow" x1="230" y1="126" x2="285" y2="145" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#FFB020" stop-opacity="0.55"/>
-      <stop offset="100%" stop-color="#FFB020" stop-opacity="0"/>
+    <linearGradient id="frontTireGrad" x1="272" y1="208" x2="340" y2="290" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#2A2D35"/>
+      <stop offset="38%" stop-color="#15171C"/>
+      <stop offset="100%" stop-color="#15171C"/>
+    </linearGradient>
+    <radialGradient id="rearBarrel" cx="102" cy="248" r="29" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#15171C"/>
+      <stop offset="68%" stop-color="#2A2D35"/>
+      <stop offset="100%" stop-color="#15171C"/>
+    </radialGradient>
+    <radialGradient id="frontBarrel" cx="306" cy="248" r="29" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#15171C"/>
+      <stop offset="68%" stop-color="#2A2D35"/>
+      <stop offset="100%" stop-color="#15171C"/>
+    </radialGradient>
+    <linearGradient id="rotorMetalRear" x1="84" y1="230" x2="120" y2="266" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="35%" stop-color="#D9DCE3"/>
+      <stop offset="72%" stop-color="#8C919E"/>
+      <stop offset="100%" stop-color="#D9DCE3"/>
+    </linearGradient>
+    <linearGradient id="rotorMetalFront" x1="283" y1="225" x2="329" y2="271" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="32%" stop-color="#D9DCE3"/>
+      <stop offset="68%" stop-color="#8C919E"/>
+      <stop offset="100%" stop-color="#D9DCE3"/>
+    </linearGradient>
+
+    <!-- Mechanical & Exhaust Gradients -->
+    <linearGradient id="swingarmGrad" x1="102" y1="226" x2="180" y2="254" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#8C919E"/>
+      <stop offset="45%" stop-color="#2A2D35"/>
+      <stop offset="100%" stop-color="#15171C"/>
+    </linearGradient>
+    <linearGradient id="frameAlloy" x1="184" y1="154" x2="246" y2="224" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#8C919E"/>
+      <stop offset="50%" stop-color="#2A2D35"/>
+      <stop offset="100%" stop-color="#15171C"/>
+    </linearGradient>
+    <linearGradient id="exhaustCan" x1="114" y1="208" x2="152" y2="246" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#D9DCE3"/>
+      <stop offset="28%" stop-color="#8C919E"/>
+      <stop offset="68%" stop-color="#2A2D35"/>
+      <stop offset="100%" stop-color="#15171C"/>
+    </linearGradient>
+    <linearGradient id="exhaustPipe" x1="150" y1="244" x2="206" y2="266" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#D9DCE3"/>
+      <stop offset="55%" stop-color="#8C919E"/>
+      <stop offset="100%" stop-color="#2A2D35"/>
+    </linearGradient>
+    <linearGradient id="forkGold" x1="256" y1="150" x2="292" y2="206" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFB020"/>
+      <stop offset="45%" stop-color="#FFB020"/>
+      <stop offset="100%" stop-color="#B82E12"/>
+    </linearGradient>
+    <linearGradient id="forkChrome" x1="286" y1="206" x2="306" y2="246" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="50%" stop-color="#D9DCE3"/>
+      <stop offset="100%" stop-color="#8C919E"/>
+    </linearGradient>
+
+    <!-- Sculpted Racing Red Bodywork Gradients -->
+    <linearGradient id="tailRed" x1="58" y1="144" x2="144" y2="188" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#E63E1C"/>
+      <stop offset="65%" stop-color="#E63E1C"/>
+      <stop offset="100%" stop-color="#B82E12"/>
+    </linearGradient>
+    <linearGradient id="tankRed" x1="176" y1="142" x2="246" y2="194" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#E63E1C"/>
+      <stop offset="58%" stop-color="#E63E1C"/>
+      <stop offset="100%" stop-color="#B82E12"/>
+    </linearGradient>
+    <linearGradient id="fairingMain" x1="226" y1="146" x2="296" y2="256" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#E63E1C"/>
+      <stop offset="58%" stop-color="#E63E1C"/>
+      <stop offset="100%" stop-color="#B82E12"/>
+    </linearGradient>
+    <linearGradient id="fairingLower" x1="184" y1="218" x2="282" y2="266" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#B82E12"/>
+      <stop offset="100%" stop-color="#15171C"/>
+    </linearGradient>
+    <linearGradient id="bellyPanGrad" x1="178" y1="248" x2="274" y2="276" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#2A2D35"/>
+      <stop offset="55%" stop-color="#15171C"/>
+      <stop offset="100%" stop-color="#15171C"/>
+    </linearGradient>
+    <linearGradient id="windscreenGrad" x1="252" y1="122" x2="292" y2="154" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#8C919E" stop-opacity="0.72"/>
+      <stop offset="45%" stop-color="#2A2D35" stop-opacity="0.92"/>
+      <stop offset="100%" stop-color="#15171C" stop-opacity="0.96"/>
+    </linearGradient>
+    <linearGradient id="redSpecular" x1="192" y1="146" x2="244" y2="178" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.38"/>
+      <stop offset="65%" stop-color="#FFFFFF" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="fairingSheen" x1="246" y1="152" x2="328" y2="196" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.34"/>
+      <stop offset="55%" stop-color="#FFFFFF" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
     </linearGradient>
   </defs>
 
-  <!-- Fondo deportivo con franjas diagonales -->
-  <circle cx="155" cy="150" r="118" fill="#F5F6F8"/>
-  <polygon points="75,55 245,55 205,235 35,235" fill="url(#bgDiagonal)"/>
-  <path d="M40 95 L98 95" stroke="#E63E1C" stroke-width="4" stroke-linecap="round" opacity="0.35"/>
-  <path d="M25 112 L76 112" stroke="#15171C" stroke-width="3" stroke-linecap="round" opacity="0.2"/>
-  <path d="M35 129 L68 129" stroke="#FFB020" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <!-- 1. Editorial Dual-Mode Backdrop -->
+  <circle cx="204" cy="198" r="142" fill="url(#sportBgCircle)"/>
+  <g clip-path="url(#sportBgClip)">
+    <polygon points="224,48 334,48 214,348 104,348" fill="url(#sportBgBand)"/>
+    <polygon points="204,48 218,48 98,348 84,348" fill="#E63E1C" opacity="0.09"/>
+    <line x1="238" y1="54" x2="120" y2="346" stroke="#FFB020" stroke-width="1.2" stroke-opacity="0.22"/>
+  </g>
+  <!-- Subtle technical editorial outer ring -->
+  <path d="M98 92 A152 152 0 0 1 322 104" stroke="#8C919E" stroke-width="1.2" stroke-opacity="0.22" stroke-linecap="round"/>
+  <path d="M348 242 A152 152 0 0 1 116 324" stroke="#8C919E" stroke-width="1.2" stroke-opacity="0.16" stroke-linecap="round"/>
 
-  <!-- Haz de luz delantero -->
-  <polygon points="236,128 288,118 288,154 234,139" fill="url(#headlightGlow)"/>
+  <!-- Subtle Aerodynamic Speed Lines -->
+  <path d="M22 149 L106 149 L98 152 L22 152 Z" fill="url(#speedRed)"/>
+  <path d="M40 165 L110 165 L105 167.5 L40 167.5 Z" fill="url(#speedAmber)"/>
+  <path d="M18 182 L88 182 L83 184 L18 184 Z" fill="url(#speedGray)"/>
+  <path d="M32 200 L76 200 L72 201.8 L32 201.8 Z" fill="url(#speedGray)" opacity="0.7"/>
+  <path d="M142 126 L218 126 L212 127.8 L142 127.8 Z" fill="url(#speedGray)" opacity="0.55"/>
 
-  <!-- Sombra en el asfalto -->
-  <ellipse cx="152" cy="222" rx="108" ry="12" fill="#15171C" opacity="0.14"/>
-  <line x1="34" y1="222" x2="270" y2="222" stroke="#15171C" stroke-width="2" stroke-linecap="round" opacity="0.18"/>
+  <!-- Ground Track Line & Layered Contact Shadows -->
+  <line x1="36" y1="294" x2="368" y2="294" stroke="url(#sportGroundLine)" stroke-width="1.8" stroke-linecap="round"/>
+  <ellipse cx="204" cy="296" rx="156" ry="14" fill="url(#sportShadowWide)"/>
+  <ellipse cx="204" cy="295" rx="124" ry="7" fill="url(#sportShadowCore)"/>
+  <ellipse cx="102" cy="294" rx="28" ry="4" fill="#15171C" opacity="0.50"/>
+  <ellipse cx="306" cy="294" rx="26" ry="4" fill="#15171C" opacity="0.50"/>
 
-  <!-- Rueda trasera -->
+  <!-- Headlight Beam Cone -->
+  <polygon points="324,167 392,156 392,208 320,179" fill="url(#sportHeadlight)"/>
+
+  <!-- 2. Far-Side Depth Elements (2.5D separation) -->
+  <!-- Far-side handlebar stub -->
+  <path d="M250 144 L260 139 L264 143 L254 148 Z" fill="#15171C"/>
+  <!-- Far-side front fork shadow leg -->
+  <path d="M264 152 L292 206 L309 246 L302 248 L284 209 L258 156 Z" fill="#15171C" opacity="0.65"/>
+  <!-- Rear Tire Hugger (Carbon Graphite) -->
+  <path d="M104 198 C126 196 146 210 152 232 L144 235 C138 216 122 205 103 205 Z" fill="#15171C"/>
+  <path d="M106 200 C125 199 142 211 148 230" stroke="#8C919E" stroke-width="1" stroke-opacity="0.35"/>
+
+  <!-- 3. Rear Wheel Assembly (cx=102, cy=248, R=46) -->
   <g>
-    <circle cx="74" cy="180" r="39" fill="#15171C"/>
-    <circle cx="74" cy="180" r="27" fill="#252932"/>
-    <circle cx="74" cy="180" r="26" stroke="#E63E1C" stroke-width="2.5"/>
-    <circle cx="74" cy="180" r="14" fill="#D5D9E2" stroke="#15171C" stroke-width="1.5"/>
-    <!-- Radios en Y -->
-    <path d="M74 180 L74 155 M74 180 L97 190 M74 180 L58 199 M74 180 L51 169 M74 180 L92 162" stroke="#15171C" stroke-width="3.2" stroke-linecap="round"/>
-    <circle cx="74" cy="180" r="6" fill="#15171C"/>
-    <circle cx="74" cy="180" r="2.8" fill="#FFB020"/>
-    <!-- Pinza freno trasera -->
-    <path d="M84 166 L92 172 L89 179 L80 174 Z" fill="#FFB020" stroke="#15171C" stroke-width="1.2"/>
+    <!-- Tire outer silhouette -->
+    <circle cx="102" cy="248" r="46" fill="url(#rearTireGrad)"/>
+    <!-- Dark-mode outer rim-light so black tire stays crisp on #1A1C21 -->
+    <circle cx="102" cy="248" r="45.4" stroke="#8C919E" stroke-width="0.9" stroke-opacity="0.24"/>
+    <!-- Tire shoulder highlight arc -->
+    <path d="M64 226 A42 42 0 0 1 124 210" stroke="#8C919E" stroke-width="2" stroke-opacity="0.16" stroke-linecap="round"/>
+    <!-- Sidewall profile ring -->
+    <circle cx="102" cy="248" r="37.5" stroke="#2A2D35" stroke-width="1.2" stroke-opacity="0.65"/>
+    <!-- Rim outer lip & Racing Red pinstripe -->
+    <circle cx="102" cy="248" r="33" fill="#15171C"/>
+    <circle cx="102" cy="248" r="31.3" stroke="#E63E1C" stroke-width="2.1"/>
+    <path d="M78 228 A31.3 31.3 0 0 1 116 220" stroke="#FFFFFF" stroke-width="1.2" stroke-opacity="0.45" stroke-linecap="round"/>
+    <!-- Inner wheel barrel -->
+    <circle cx="102" cy="248" r="29" fill="url(#rearBarrel)"/>
+
+    <!-- Rear Brake Disc (floating slotted rotor) -->
+    <circle cx="102" cy="248" r="18" fill="url(#rotorMetalRear)"/>
+    <circle cx="102" cy="248" r="15.2" stroke="#2A2D35" stroke-width="1.4" stroke-dasharray="2.5 3.5" stroke-opacity="0.65"/>
+    <circle cx="102" cy="248" r="12.5" fill="#15171C"/>
+    <circle cx="102" cy="248" r="12.5" stroke="#8C919E" stroke-width="0.9" stroke-opacity="0.45"/>
+    <!-- Rear rotor bobbins -->
+    <circle cx="102" cy="235.5" r="1.4" fill="#FFB020"/>
+    <circle cx="113.9" cy="244.1" r="1.4" fill="#FFB020"/>
+    <circle cx="109.3" cy="258.1" r="1.4" fill="#FFB020"/>
+    <circle cx="94.7" cy="258.1" r="1.4" fill="#FFB020"/>
+    <circle cx="90.1" cy="244.1" r="1.4" fill="#FFB020"/>
+
+    <!-- Rear 5-Spoke Sculpted Alloy Rim -->
+    <path d="M98.8 239.5 L100.2 219.5 L103.8 219.5 L105.2 239.5 Z" fill="#2A2D35"/>
+    <path d="M102 239.5 L102 219.5 L103.8 219.5 L105.2 239.5 Z" fill="#8C919E" opacity="0.55"/>
+
+    <path d="M109.1 242.4 L128.5 237.5 L129.7 240.9 L111.1 248.4 Z" fill="#2A2D35"/>
+    <path d="M109.1 242.4 L128.5 237.5 L129.1 239.2 L110.1 245.4 Z" fill="#8C919E" opacity="0.55"/>
+
+    <path d="M109.6 253.0 L120.3 270.0 L117.3 272.2 L104.4 256.8 Z" fill="#2A2D35"/>
+    <path d="M109.6 253.0 L120.3 270.0 L118.8 271.1 L107.0 254.9 Z" fill="#8C919E" opacity="0.45"/>
+
+    <path d="M99.6 256.8 L86.7 272.2 L83.7 270.0 L94.4 253.0 Z" fill="#2A2D35"/>
+    <path d="M94.4 253.0 L83.7 270.0 L85.2 271.1 L97.0 254.9 Z" fill="#8C919E" opacity="0.40"/>
+
+    <path d="M92.9 248.4 L74.3 240.9 L75.5 237.5 L94.9 242.4 Z" fill="#2A2D35"/>
+    <path d="M94.9 242.4 L75.5 237.5 L74.9 239.2 L93.9 245.4 Z" fill="#8C919E" opacity="0.55"/>
+
+    <!-- Rear brake caliper -->
+    <path d="M111 230 L121 235 L118 244 L108 239 Z" fill="#2A2D35"/>
+    <path d="M113 232 L119 235 L118 238 L112 235 Z" fill="#E63E1C"/>
+
+    <!-- Rear Hub & Anodized Axle Nut -->
+    <circle cx="102" cy="248" r="9.2" fill="#15171C"/>
+    <circle cx="102" cy="248" r="6.2" fill="#8C919E"/>
+    <circle cx="102" cy="248" r="3.4" fill="#FFB020"/>
+    <circle cx="102" cy="248" r="1.5" fill="#15171C"/>
   </g>
 
-  <!-- Rueda delantera -->
+  <!-- 4. Front Wheel Assembly (cx=306, cy=248, R=46 so both tires kiss y=294 cleanly) -->
   <g>
-    <circle cx="226" cy="180" r="39" fill="#15171C"/>
-    <circle cx="226" cy="180" r="27" fill="#252932"/>
-    <circle cx="226" cy="180" r="26" stroke="#E63E1C" stroke-width="2.5"/>
-    <!-- Disco ventilado -->
-    <circle cx="226" cy="180" r="17" fill="#E6E9EF" stroke="#15171C" stroke-width="1.5"/>
-    <circle cx="226" cy="180" r="13" fill="none" stroke="#8C93A3" stroke-width="1.5" stroke-dasharray="3 3"/>
-    <!-- Radios -->
-    <path d="M226 180 L226 155 M226 180 L248 191 M226 180 L209 199 M226 180 L203 169 M226 180 L244 162" stroke="#15171C" stroke-width="3.2" stroke-linecap="round"/>
-    <circle cx="226" cy="180" r="6" fill="#15171C"/>
-    <circle cx="226" cy="180" r="2.8" fill="#FFB020"/>
-    <!-- Pinza de freno radial ámbar -->
-    <path d="M208 175 L216 170 L218 182 L209 185 Z" fill="#FFB020" stroke="#15171C" stroke-width="1.3"/>
+    <!-- Tire outer silhouette -->
+    <circle cx="306" cy="248" r="46" fill="url(#frontTireGrad)"/>
+    <circle cx="306" cy="248" r="45.4" stroke="#8C919E" stroke-width="0.9" stroke-opacity="0.24"/>
+    <path d="M268 227 A42 42 0 0 1 328 210" stroke="#8C919E" stroke-width="2" stroke-opacity="0.16" stroke-linecap="round"/>
+    <circle cx="306" cy="248" r="38" stroke="#2A2D35" stroke-width="1.2" stroke-opacity="0.65"/>
+    <!-- Rim lip & Racing Red pinstripe (slightly larger rim ratio for slimmer front sidewall) -->
+    <circle cx="306" cy="248" r="33.5" fill="#15171C"/>
+    <circle cx="306" cy="248" r="31.8" stroke="#E63E1C" stroke-width="2.1"/>
+    <path d="M282 228 A31.8 31.8 0 0 1 320 220" stroke="#FFFFFF" stroke-width="1.2" stroke-opacity="0.45" stroke-linecap="round"/>
+    <!-- Inner wheel barrel -->
+    <circle cx="306" cy="248" r="29.2" fill="url(#frontBarrel)"/>
+
+    <!-- Front 5-Spoke Sculpted Alloy Rim (behind large floating disc) -->
+    <path d="M306.3 238.9 L315.1 221.0 L318.3 222.2 L312.1 241.3 Z" fill="#2A2D35"/>
+    <path d="M306.3 238.9 L315.1 221.0 L316.7 221.6 L309.2 240.1 Z" fill="#8C919E" opacity="0.55"/>
+
+    <path d="M314.7 245.5 L334.5 248.3 L334.3 251.7 L314.3 251.7 Z" fill="#2A2D35"/>
+    <path d="M314.7 245.5 L334.5 248.3 L334.4 250.0 L314.5 248.6 Z" fill="#8C919E" opacity="0.55"/>
+
+    <path d="M311.1 255.4 L314.5 275.2 L311.3 276.0 L305.1 257.0 Z" fill="#2A2D35"/>
+    <path d="M311.1 255.4 L314.5 275.2 L312.9 275.6 L308.1 256.2 Z" fill="#8C919E" opacity="0.45"/>
+
+    <path d="M300.4 255.1 L282.7 264.5 L280.9 261.7 L297.2 249.9 Z" fill="#2A2D35"/>
+    <path d="M297.2 249.9 L280.9 261.7 L281.8 263.1 L298.8 252.5 Z" fill="#8C919E" opacity="0.45"/>
+
+    <path d="M297.5 244.9 L283.1 231.0 L285.3 228.4 L301.5 240.1 Z" fill="#2A2D35"/>
+    <path d="M301.5 240.1 L285.3 228.4 L284.2 229.7 L299.5 242.5 Z" fill="#8C919E" opacity="0.55"/>
+
+    <!-- Large Floating Front Brake Disc (330mm superbike spec) -->
+    <circle cx="306" cy="248" r="23.2" fill="none" stroke="url(#rotorMetalFront)" stroke-width="6.4"/>
+    <circle cx="306" cy="248" r="26.2" stroke="#FFFFFF" stroke-width="0.7" stroke-opacity="0.45"/>
+    <!-- Drilled vent pattern on rotor -->
+    <circle cx="306" cy="248" r="23.2" stroke="#15171C" stroke-width="1.5" stroke-dasharray="1.8 4.2" stroke-opacity="0.55"/>
+    <circle cx="306" cy="248" r="20.2" stroke="#15171C" stroke-width="1.2" stroke-dasharray="1.5 4.8" stroke-opacity="0.45"/>
+    <!-- Inner carrier ring -->
+    <circle cx="306" cy="248" r="16.8" stroke="#2A2D35" stroke-width="2.6"/>
+    <!-- 6 Gold/Amber Floating Bobbins -->
+    <circle cx="322.5" cy="248.0" r="1.7" fill="#FFB020"/>
+    <circle cx="314.3" cy="262.3" r="1.7" fill="#FFB020"/>
+    <circle cx="297.8" cy="262.3" r="1.7" fill="#FFB020"/>
+    <circle cx="289.5" cy="248.0" r="1.7" fill="#FFB020"/>
+    <circle cx="297.8" cy="233.7" r="1.7" fill="#FFB020"/>
+    <circle cx="314.3" cy="233.7" r="1.7" fill="#FFB020"/>
+
+    <!-- Radial 4-Piston Monoblock Caliper -->
+    <path d="M286 245 C282 251 283 261 289 267 L298 263 C294 258 293 252 295 246 Z" fill="#2A2D35"/>
+    <path d="M287 248 C285 253 286 259 289 263 L293 261 C291 257 290 253 291 249 Z" fill="#8C919E" opacity="0.65"/>
+    <path d="M285.5 254 L291.5 253 L292 256.5 L286 257.5 Z" fill="#E63E1C"/>
+    <circle cx="289" cy="248" r="1.3" fill="#D9DCE3"/>
+    <circle cx="291.5" cy="262" r="1.3" fill="#D9DCE3"/>
+
+    <!-- Front Hub & Axle -->
+    <circle cx="306" cy="248" r="8.5" fill="#15171C"/>
+    <circle cx="306" cy="248" r="5.2" fill="#D9DCE3"/>
+    <circle cx="306" cy="248" r="2.6" fill="#FFB020"/>
   </g>
 
-  <!-- Basculante trasero y amortiguador -->
-  <path d="M74 180 L122 162 L126 172 L76 186 Z" fill="#323743" stroke="#15171C" stroke-width="2" stroke-linejoin="round"/>
-  <path d="M107 148 L116 168" stroke="#FFB020" stroke-width="5" stroke-linecap="round"/>
-  <path d="M107 148 L116 168" stroke="#15171C" stroke-width="2" stroke-dasharray="2 3"/>
+  <!-- 5. Chassis Core, Engine Block, Swingarm & Rear Shock -->
+  <!-- Engine core dark mass -->
+  <path d="M168 188 L236 184 L244 252 L176 260 L166 234 Z" fill="#15171C"/>
+  <!-- Engine cylinder / side crankcase bevel -->
+  <path d="M174 210 L218 206 L224 252 L182 256 Z" fill="#2A2D35"/>
+  <!-- Billet Clutch Cover -->
+  <circle cx="198" cy="240" r="14" fill="#15171C"/>
+  <circle cx="198" cy="240" r="11.5" fill="#2A2D35" stroke="#8C919E" stroke-width="1" stroke-opacity="0.45"/>
+  <circle cx="198" cy="240" r="6.5" fill="#15171C"/>
+  <circle cx="198" cy="240" r="2.5" fill="#FFB020"/>
+  <!-- Clutch cover bolt pattern -->
+  <circle cx="198" cy="229.5" r="0.9" fill="#D9DCE3"/>
+  <circle cx="207" cy="234.8" r="0.9" fill="#D9DCE3"/>
+  <circle cx="207" cy="245.2" r="0.9" fill="#D9DCE3"/>
+  <circle cx="198" cy="250.5" r="0.9" fill="#D9DCE3"/>
+  <circle cx="189" cy="245.2" r="0.9" fill="#D9DCE3"/>
+  <circle cx="189" cy="234.8" r="0.9" fill="#D9DCE3"/>
 
-  <!-- Escape deportivo bajo -->
-  <path d="M122 184 L74 171 L68 163 L126 174 Z" fill="#464C59" stroke="#15171C" stroke-width="2" stroke-linejoin="round"/>
-  <path d="M68 163 L76 160 L81 170 L74 171 Z" fill="#15171C"/>
+  <!-- Rear Monoshock with Amber-Gold Coil -->
+  <path d="M161 196 L172 228" stroke="#15171C" stroke-width="9" stroke-linecap="round"/>
+  <path d="M161 198 L171 226" stroke="#FFB020" stroke-width="6.5" stroke-linecap="round"/>
+  <path d="M158 202 L166 200 M160 207 L168 205 M162 212 L170 210 M164 217 L172 215 M166 222 L174 220" stroke="#15171C" stroke-width="1.8" stroke-linecap="round"/>
 
-  <!-- Motor y chasis grafito -->
-  <path d="M120 134 L176 130 L172 182 L126 182 Z" fill="#1E222B" stroke="#15171C" stroke-width="2"/>
-  <path d="M124 140 L152 136 L142 162 L122 160 Z" fill="#3A404D" stroke="#15171C" stroke-width="1.5"/>
-  <circle cx="145" cy="171" r="9" fill="#2D323E" stroke="#15171C" stroke-width="1.8"/>
-  <circle cx="145" cy="171" r="3.5" fill="#FFB020"/>
+  <!-- Sculpted Aluminum Gull-Wing Swingarm -->
+  <path d="M98 244 L170 222 L180 232 L175 244 L102 254 Z" fill="url(#swingarmGrad)"/>
+  <path d="M104 245 L168 225 L174 231 L106 250 Z" fill="#8C919E" opacity="0.28"/>
+  <!-- Recessed swingarm lightening pocket -->
+  <path d="M126 241 L160 231 L163 237 L128 245 Z" fill="#15171C" opacity="0.72"/>
+  <!-- Swingarm pivot bolt -->
+  <circle cx="174" cy="233" r="5" fill="#15171C"/>
+  <circle cx="174" cy="233" r="2.6" fill="#D9DCE3"/>
+  <!-- Rear axle block -->
+  <rect x="96" y="243" width="12" height="10" rx="2.5" fill="#2A2D35"/>
+  <circle cx="102" cy="248" r="3.4" fill="#FFB020"/>
 
-  <!-- Horquilla delantera invertida -->
-  <line x1="184" y1="106" x2="207" y2="146" stroke="#FFB020" stroke-width="6.5" stroke-linecap="round"/>
-  <line x1="205" y1="142" x2="226" y2="180" stroke="#D5D9E2" stroke-width="5" stroke-linecap="round"/>
-  <line x1="184" y1="106" x2="226" y2="180" stroke="#15171C" stroke-width="1.8" stroke-linecap="round"/>
+  <!-- Twin-Spar Die-Cast Frame Beam -->
+  <path d="M174 226 L222 174 L256 154 L260 165 L228 188 L184 234 Z" fill="url(#frameAlloy)"/>
+  <path d="M178 224 L224 176 L254 157" stroke="#D9DCE3" stroke-width="1.3" stroke-opacity="0.55" stroke-linecap="round"/>
 
-  <!-- Guardabarros delantero -->
-  <path d="M196 150 C208 137 229 135 243 145 L228 151 C218 147 206 149 199 156 Z" fill="#15171C"/>
+  <!-- Lightweight Rear Subframe -->
+  <path d="M172 204 L92 162 L97 158 L180 194 Z" fill="#2A2D35"/>
+  <path d="M168 214 L112 172 L118 170 L174 206 Z" fill="#15171C"/>
 
-  <!-- Subchasis y colín deportivo -->
-  <path d="M105 130 L56 108 L52 114 L92 138 Z" fill="#15171C"/>
-  <path d="M51 106 L96 116 L112 128 L76 131 Z" fill="url(#fairingRed)" stroke="#15171C" stroke-width="2" stroke-linejoin="round"/>
-  <!-- Luz trasera LED -->
-  <path d="M51 106 L61 108 L57 114 L49 111 Z" fill="#FFB020"/>
+  <!-- 6. Racing Exhaust System (Mid-Pipe + Angled Titanium-Graphite Canister) -->
+  <!-- Exhaust mid-pipe sweeping from belly pan -->
+  <path d="M204 266 C182 266 168 258 152 246 L157 238 C172 249 184 256 206 257 Z" fill="url(#exhaustPipe)"/>
+  <path d="M202 259 C184 258 171 251 157 241" stroke="#FFFFFF" stroke-width="1.2" stroke-opacity="0.55" stroke-linecap="round"/>
+  <!-- Sculpted Hexagonal Racing Muffler Canister -->
+  <path d="M156 246 L108 220 L114 207 L164 236 Z" fill="url(#exhaustCan)"/>
+  <!-- Metallic top specular facet -->
+  <path d="M159 240 L112 213 L115 208 L163 236 Z" fill="#FFFFFF" opacity="0.28"/>
+  <!-- Heat-tinted amber exhaust band & clamp -->
+  <path d="M148 242 L154 230 L158 232 L152 244 Z" fill="#FFB020" opacity="0.88"/>
+  <path d="M124 229 L130 216 L133 218 L127 230 Z" fill="#15171C"/>
+  <!-- Carbon Slash-Cut End Cap -->
+  <path d="M108 220 L100 214 L107 204 L115 208 Z" fill="#15171C"/>
+  <ellipse cx="104" cy="209" rx="2.6" ry="5" transform="rotate(28 104 209)" fill="#2A2D35"/>
+  <ellipse cx="103.5" cy="209" rx="1.4" ry="3.2" transform="rotate(28 103.5 209)" fill="#15171C"/>
 
-  <!-- Asiento deportivo -->
-  <path d="M90 121 C103 125 117 125 129 121 L124 130 L88 128 Z" fill="#15171C"/>
+  <!-- Rider Billet Rearset & Heel Guard -->
+  <path d="M168 244 L182 238 L184 247 L170 251 Z" fill="#8C919E"/>
+  <path d="M169 243 L179 235 L183 238 L174 246 Z" fill="#2A2D35"/>
+  <circle cx="174" cy="247" r="2.8" fill="#D9DCE3"/>
 
-  <!-- Depósito esculpido -->
-  <path d="M121 121 C129 104 152 99 175 107 L172 126 L124 128 Z" fill="url(#tankRed)" stroke="#15171C" stroke-width="2" stroke-linejoin="round"/>
-  <path d="M134 109 C147 104 161 106 168 111" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" opacity="0.65"/>
+  <!-- 7. Inverted USD Front Fork & Front Fender -->
+  <!-- Gold Anodized Upper Outer Fork Tube -->
+  <path d="M255.6 150.0 L264.4 146.0 L291.6 205.0 L282.8 209.0 Z" fill="url(#forkGold)"/>
+  <path d="M258.5 148.8 L285.5 207.5" stroke="#FFFFFF" stroke-width="1.6" stroke-opacity="0.52" stroke-linecap="round"/>
+  <!-- Lower Triple Clamp Ring -->
+  <path d="M261 164 L273 159 L275 164 L263 169 Z" fill="#15171C"/>
+  <!-- Chrome Inner Stanchion -->
+  <path d="M284.2 208.4 L290.2 205.6 L306.5 241.0 L300.5 243.8 Z" fill="url(#forkChrome)"/>
+  <path d="M286.2 207.5 L302.5 242.8" stroke="#FFFFFF" stroke-width="1.2" stroke-opacity="0.72" stroke-linecap="round"/>
+  <!-- Forged Radial Axle Foot -->
+  <path d="M298 241 L309 238 L312 249 L302 254 L294 252 Z" fill="#2A2D35"/>
+  <circle cx="306" cy="248" r="3" fill="#FFB020"/>
 
-  <!-- Cúpula y semimanillar -->
-  <path d="M178 103 C186 89 204 88 218 104 L198 113 Z" fill="url(#visorDark)" stroke="#15171C" stroke-width="2" stroke-linejoin="round"/>
-  <line x1="189" y1="95" x2="203" y2="97" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" opacity="0.55"/>
-  <path d="M172 106 L186 102" stroke="#15171C" stroke-width="4" stroke-linecap="round"/>
-  <circle cx="172" cy="106" r="3" fill="#FFB020"/>
+  <!-- Aerodynamic Front Fender -->
+  <path d="M272 212 C284 197 312 195 332 206 L326 213 C312 206 294 206 284 218 Z" fill="url(#fairingMain)"/>
+  <path d="M276 209 C288 199 310 198 328 206" stroke="#FFFFFF" stroke-width="1.3" stroke-opacity="0.45" stroke-linecap="round"/>
+  <!-- Carbon fork guard on fender -->
+  <path d="M279 214 L294 209 L300 222 L288 226 Z" fill="#15171C"/>
 
-  <!-- Carenado lateral aerodinámico -->
-  <path d="M167 110 C192 108 220 113 242 128 L232 142 C214 143 196 156 184 176 L151 178 C149 156 156 131 167 110 Z" fill="url(#fairingRed)" stroke="#15171C" stroke-width="2.2" stroke-linejoin="round"/>
+  <!-- 8. Tail Section (Colín), Seat & Sculpted Fuel Tank -->
+  <!-- Razor-Sharp Aerodynamic Tail -->
+  <path d="M52 146 C76 146 112 156 144 176 L132 184 C104 176 74 166 56 154 Z" fill="url(#tailRed)"/>
+  <!-- Tail lower shadow underside -->
+  <path d="M62 156 C86 164 112 174 134 182 L122 185 C96 177 74 168 58 158 Z" fill="#B82E12"/>
+  <!-- Hollow aero pass-through vent in tail -->
+  <path d="M78 154 L106 162 L98 168 L74 160 Z" fill="#15171C"/>
+  <!-- Tail top specular ridge -->
+  <path d="M58 148 C82 149 112 158 138 174" stroke="#FFFFFF" stroke-width="1.6" stroke-opacity="0.48" stroke-linecap="round"/>
+  <!-- Sleek LED Blade Taillight -->
+  <path d="M51 146 L62 147 L59 154 L50 151 Z" fill="#FFB020"/>
+  <path d="M52 147 L59 148 L57 152 L51 150 Z" fill="#FFFFFF" opacity="0.75"/>
 
-  <!-- Toma de aire / branquia en grafito y blanco -->
-  <path d="M172 135 L198 128 L192 142 L168 148 Z" fill="#15171C"/>
-  <path d="M178 121 L212 121 L206 126 L174 126 Z" fill="#FFFFFF"/>
-  <path d="M158 164 L182 152 L179 159 L157 170 Z" fill="#FFB020"/>
+  <!-- Sculpted Racing Alcantara Seat -->
+  <path d="M126 174 C140 182 162 184 182 175 L176 186 C158 192 138 189 124 182 Z" fill="#15171C"/>
+  <path d="M132 177 C146 183 162 184 177 177" stroke="#8C919E" stroke-width="1.1" stroke-opacity="0.40" stroke-linecap="round"/>
 
-  <!-- Faro LED agresivo -->
-  <path d="M225 123 L242 128 L236 138 L220 132 Z" fill="#FFFFFF" stroke="#15171C" stroke-width="1.5" stroke-linejoin="round"/>
-  <path d="M228 126 L239 129 L235 135 L225 131 Z" fill="#FFB020"/>
+  <!-- Muscular Sculpted Fuel Tank -->
+  <path d="M174 178 C180 156 202 141 232 143 C244 144 254 148 260 154 L244 180 C222 186 196 188 174 178 Z" fill="url(#tankRed)"/>
+  <!-- Tank sculpted knee indent shadow -->
+  <path d="M180 175 C196 164 218 162 246 168 L242 180 C218 186 196 186 176 179 Z" fill="#B82E12"/>
+  <!-- Tank specular highlight deck -->
+  <path d="M184 164 C194 148 214 143 238 146 C244 147 248 150 250 154 C228 152 204 156 184 164 Z" fill="url(#redSpecular)"/>
+  <!-- Dark graphite knee-grip pad & fuel cap -->
+  <path d="M184 174 C194 168 208 166 220 170 L214 179 C202 181 190 180 182 177 Z" fill="#15171C" opacity="0.82"/>
+  <path d="M214 142 L228 143 L226 146 L213 145 Z" fill="#2A2D35"/>
+
+  <!-- Smoked Aero Windscreen & Clip-On Cockpit -->
+  <path d="M248 146 C252 131 264 122 278 124 C288 126 298 136 306 150 L274 156 Z" fill="url(#windscreenGrad)"/>
+  <!-- Windscreen glass specular streak -->
+  <path d="M258 134 C266 127 278 127 288 134" stroke="#FFFFFF" stroke-width="2" stroke-opacity="0.58" stroke-linecap="round"/>
+  <!-- Stealth Aero Mirror Stalk -->
+  <path d="M276 140 L282 128 L294 125 L292 131 L282 134 L278 142 Z" fill="#15171C"/>
+  <path d="M283 128 L293 126" stroke="#8C919E" stroke-width="1" stroke-opacity="0.55" stroke-linecap="round"/>
+  <!-- Clip-on Handlebar & Anodized Bar-End -->
+  <path d="M244 152 L262 147" stroke="#15171C" stroke-width="5.5" stroke-linecap="round"/>
+  <path d="M246 151 L258 148" stroke="#8C919E" stroke-width="1.2" stroke-opacity="0.45" stroke-linecap="round"/>
+  <circle cx="243" cy="152.5" r="3" fill="#FFB020"/>
+
+  <!-- 9. Hero Multi-Layered Supersport Full Fairing & Aggressive LED Nose -->
+  <!-- Lower Belly Pan (Quilla - clears front wheel arch cleanly) -->
+  <path d="M174 268 L184 248 L254 244 L258 258 C246 268 220 274 178 272 Z" fill="url(#bellyPanGrad)"/>
+  <path d="M182 268 L254 256 L251 261 L180 272 Z" fill="#E63E1C"/>
+  <path d="M204 266 L238 260 L236 263 L203 269 Z" fill="#FFB020"/>
+
+  <!-- Main Aerodynamic Side Fairing & Predator Nose Cowl (authentic wheel-well undercut revealing USD fork) -->
+  <path d="M238 154 C264 146 300 148 334 168 C338 170 338 176 332 179 C310 184 292 186 276 189 C266 202 259 222 254 246 L216 250 C216 222 224 190 238 154 Z" fill="url(#fairingMain)"/>
+
+  <!-- Lower fairing sculptural shadow plane -->
+  <path d="M216 250 L254 246 C258 226 264 208 272 195 L234 212 C224 224 218 236 216 250 Z" fill="url(#fairingLower)" opacity="0.55"/>
+
+  <!-- Fairing Top Specular Reflection Plane -->
+  <path d="M242 156 C268 150 298 152 328 168 L314 172 C292 162 266 160 240 166 Z" fill="url(#fairingSheen)"/>
+
+  <!-- Deep Shark-Gill Heat-Extraction Air Duct -->
+  <path d="M224 198 L266 187 L256 212 L219 220 Z" fill="#15171C"/>
+  <path d="M231 200 L259 193 L256 199 L229 206 Z" fill="#2A2D35"/>
+  <path d="M227 209 L253 202 L250 207 L225 214 Z" fill="#2A2D35"/>
+  <path d="M225 198 L265 188" stroke="#8C919E" stroke-width="1.1" stroke-opacity="0.45" stroke-linecap="round"/>
+
+  <!-- Crisp Editorial Racing Livery Graphics (White + Amber) -->
+  <path d="M242 175 L298 166 L292 172 L238 181 Z" fill="#FFFFFF" opacity="0.92"/>
+  <path d="M220 232 L255 219 L252 226 L218 238 Z" fill="#FFB020"/>
+  <path d="M223 226 L252 215 L250 218 L222 229 Z" fill="#FFFFFF" opacity="0.72"/>
+
+  <!-- MotoGP-Style Carbon Aero Winglet -->
+  <path d="M284 178 L314 175 L307 183 L280 185 Z" fill="#15171C"/>
+  <path d="M286 179 L312 176.5" stroke="#8C919E" stroke-width="1" stroke-opacity="0.65" stroke-linecap="round"/>
+  <path d="M307 176 L314 175 L309 182 L305 182 Z" fill="#E63E1C"/>
+
+  <!-- Aggressive Recessed LED Headlight & Amber DRL Brow -->
+  <path d="M304 166 L333 171 L325 179 L298 173 Z" fill="#15171C"/>
+  <!-- Crisp White LED DRL signature -->
+  <path d="M306 168 L330 172 L326 175 L304 171 Z" fill="#FFFFFF"/>
+  <!-- Warm Amber LED Accent -->
+  <path d="M312 173 L327 175 L324 177.5 L310 175.5 Z" fill="#FFB020"/>
+
+  <!-- Precision Nose Ridge Specular Edge -->
+  <path d="M250 152 C276 148 306 153 331 167" stroke="#FFFFFF" stroke-width="1.4" stroke-opacity="0.52" stroke-linecap="round"/>
 </svg>

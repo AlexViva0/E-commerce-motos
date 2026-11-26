@@ -1,104 +1,394 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" fill="none">
   <defs>
-    <linearGradient id="skyGrad" x1="150" y1="35" x2="150" y2="165" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#F5F6F8"/>
-      <stop offset="100%" stop-color="#FFE7C2"/>
+    <!-- Portal Clip for Scenic Mountain Sunset -->
+    <clipPath id="touringPortalClip">
+      <circle cx="200" cy="186" r="144"/>
+    </clipPath>
+
+    <!-- Dual-Mode Outer Backdrop -->
+    <linearGradient id="touringOuterRing" x1="60" y1="48" x2="340" y2="332" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#8C919E" stop-opacity="0.16"/>
+      <stop offset="100%" stop-color="#8C919E" stop-opacity="0.06"/>
     </linearGradient>
-    <linearGradient id="roadGrad" x1="150" y1="148" x2="150" y2="262" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#2D323E"/>
+    <linearGradient id="touringBgRibbon" x1="320" y1="42" x2="88" y2="348" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFB020" stop-opacity="0.10"/>
+      <stop offset="55%" stop-color="#E63E1C" stop-opacity="0.07"/>
+      <stop offset="100%" stop-color="#E63E1C" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Amber Sunset Sky & Atmosphere -->
+    <linearGradient id="sunsetSky" x1="200" y1="42" x2="200" y2="204" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#8C919E" stop-opacity="0.18"/>
+      <stop offset="46%" stop-color="#FFB020" stop-opacity="0.34"/>
+      <stop offset="82%" stop-color="#FFB020" stop-opacity="0.58"/>
+      <stop offset="100%" stop-color="#E63E1C" stop-opacity="0.44"/>
+    </linearGradient>
+    <radialGradient id="sunGlow" cx="236" cy="134" r="76" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFB020" stop-opacity="0.72"/>
+      <stop offset="42%" stop-color="#FFB020" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#FFB020" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Stylized Mountain Gradients -->
+    <linearGradient id="mtnFar" x1="200" y1="112" x2="200" y2="196" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#8C919E" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#2A2D35" stop-opacity="0.45"/>
+    </linearGradient>
+    <linearGradient id="mtnMidShadow" x1="120" y1="126" x2="200" y2="206" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#2A2D35"/>
       <stop offset="100%" stop-color="#15171C"/>
     </linearGradient>
-    <linearGradient id="touringRed" x1="95" y1="130" x2="195" y2="195" gradientUnits="userSpaceOnUse">
+    <linearGradient id="mtnMidLit" x1="236" y1="126" x2="178" y2="196" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFB020" stop-opacity="0.62"/>
+      <stop offset="55%" stop-color="#E63E1C" stop-opacity="0.48"/>
+      <stop offset="100%" stop-color="#2A2D35" stop-opacity="0.75"/>
+    </linearGradient>
+    <linearGradient id="valleySlope" x1="200" y1="184" x2="200" y2="330" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#2A2D35"/>
+      <stop offset="100%" stop-color="#15171C"/>
+    </linearGradient>
+
+    <!-- Winding Highway Asphalt -->
+    <linearGradient id="roadAsphalt" x1="196" y1="176" x2="204" y2="330" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#8C919E"/>
+      <stop offset="22%" stop-color="#2A2D35"/>
+      <stop offset="100%" stop-color="#15171C"/>
+    </linearGradient>
+    <linearGradient id="roadSunsetSheen" x1="224" y1="180" x2="188" y2="274" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFB020" stop-opacity="0.34"/>
+      <stop offset="60%" stop-color="#FFB020" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#FFB020" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Contact Shadows (no filter; objectBoundingBox fades smoothly on rotated ellipse) -->
+    <radialGradient id="touringShadow" cx="0.5" cy="0.5" r="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#15171C" stop-opacity="0.54"/>
+      <stop offset="56%" stop-color="#15171C" stop-opacity="0.26"/>
+      <stop offset="100%" stop-color="#15171C" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="tireWall34" x1="224" y1="244" x2="274" y2="328" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#2A2D35"/>
+      <stop offset="55%" stop-color="#15171C"/>
+      <stop offset="100%" stop-color="#15171C"/>
+    </linearGradient>
+    <linearGradient id="rearTireWall34" x1="118" y1="224" x2="158" y2="296" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#2A2D35"/>
+      <stop offset="55%" stop-color="#15171C"/>
+      <stop offset="100%" stop-color="#15171C"/>
+    </linearGradient>
+
+    <!-- Touring Motorcycle Gradients -->
+    <linearGradient id="touringRedMain" x1="184" y1="168" x2="278" y2="228" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stop-color="#E63E1C"/>
+      <stop offset="62%" stop-color="#E63E1C"/>
       <stop offset="100%" stop-color="#B82E12"/>
+    </linearGradient>
+    <linearGradient id="touringBeakGrad" x1="238" y1="202" x2="294" y2="224" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#E63E1C"/>
+      <stop offset="70%" stop-color="#E63E1C"/>
+      <stop offset="100%" stop-color="#B82E12"/>
+    </linearGradient>
+    <linearGradient id="touringSpec" x1="190" y1="176" x2="246" y2="202" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.36"/>
+      <stop offset="65%" stop-color="#FFFFFF" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="windshieldGlass" x1="224" y1="136" x2="262" y2="192" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.66"/>
+      <stop offset="52%" stop-color="#D9DCE3" stop-opacity="0.34"/>
+      <stop offset="100%" stop-color="#8C919E" stop-opacity="0.22"/>
+    </linearGradient>
+    <linearGradient id="pannierSideGrad" x1="98" y1="206" x2="156" y2="266" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#2A2D35"/>
+      <stop offset="100%" stop-color="#15171C"/>
+    </linearGradient>
+    <linearGradient id="pannierFrontGrad" x1="152" y1="206" x2="170" y2="262" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#8C919E"/>
+      <stop offset="100%" stop-color="#2A2D35"/>
+    </linearGradient>
+    <linearGradient id="pannierLidGrad" x1="98" y1="196" x2="168" y2="216" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#D9DCE3"/>
+      <stop offset="55%" stop-color="#8C919E"/>
+      <stop offset="100%" stop-color="#2A2D35"/>
+    </linearGradient>
+    <linearGradient id="skidMetal" x1="192" y1="262" x2="234" y2="278" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="48%" stop-color="#D9DCE3"/>
+      <stop offset="100%" stop-color="#8C919E"/>
+    </linearGradient>
+    <linearGradient id="touringForkGold" x1="226" y1="190" x2="246" y2="248" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFB020"/>
+      <stop offset="68%" stop-color="#FFB020"/>
+      <stop offset="100%" stop-color="#B82E12"/>
+    </linearGradient>
+    <linearGradient id="touringHeadlightBeam" x1="274" y1="198" x2="354" y2="244" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFB020" stop-opacity="0.34"/>
+      <stop offset="55%" stop-color="#FFB020" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#FFB020" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="frontRotor34" x1="242" y1="264" x2="268" y2="308" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="45%" stop-color="#D9DCE3"/>
+      <stop offset="100%" stop-color="#8C919E"/>
     </linearGradient>
   </defs>
 
-  <!-- Escena circular de ruta touring -->
-  <circle cx="150" cy="150" r="118" fill="url(#skyGrad)"/>
+  <!-- 1. Editorial Dual-Mode Backdrop & Series Accent -->
+  <polygon points="248,38 352,38 228,358 124,358" fill="url(#touringBgRibbon)"/>
+  <circle cx="200" cy="186" r="152" fill="url(#touringOuterRing)"/>
+  <path d="M84 86 A156 156 0 0 1 324 94" stroke="#8C919E" stroke-width="1.2" stroke-opacity="0.22" stroke-linecap="round"/>
+  <path d="M350 228 A156 156 0 0 1 286 322" stroke="#FFB020" stroke-width="1.3" stroke-opacity="0.32" stroke-linecap="round"/>
 
-  <!-- Sol / horizonte ámbar -->
-  <circle cx="212" cy="96" r="24" fill="#FFB020" opacity="0.28"/>
-  <circle cx="212" cy="96" r="15" fill="#FFB020"/>
+  <!-- 2. Clipped Scenic Mountain Pass & Sunset Highway -->
+  <g clip-path="url(#touringPortalClip)">
+    <!-- Sunset Sky -->
+    <rect x="56" y="42" width="288" height="170" fill="url(#sunsetSky)"/>
 
-  <!-- Montañas estilizadas -->
-  <path d="M35 154 L88 102 L134 146 L178 96 L246 154 Z" fill="#15171C" opacity="0.16"/>
-  <path d="M52 154 L112 114 L162 154 L208 118 L266 154 Z" fill="#15171C" opacity="0.25"/>
+    <!-- Amber Sunset Sun & Atmospheric Halos -->
+    <circle cx="236" cy="134" r="76" fill="url(#sunGlow)"/>
+    <circle cx="236" cy="134" r="24" fill="#FFB020"/>
+    <circle cx="236" cy="134" r="14" fill="#FFFFFF" opacity="0.48"/>
 
-  <!-- Carretera sinuosa -->
-  <path d="M138 152 C146 164 114 176 92 192 C66 210 56 236 52 252 L248 252 C238 228 214 204 186 188 C164 175 154 162 156 152 Z" fill="url(#roadGrad)"/>
+    <!-- Stylized Cirrus Sunset Clouds -->
+    <path d="M84 106 L142 106 C145 106 145 110 142 110 L84 110 Z" fill="#FFFFFF" opacity="0.36"/>
+    <path d="M110 118 L156 118 C158 118 158 121 156 121 L110 121 Z" fill="#FFB020" opacity="0.28"/>
+    <path d="M266 98 L322 98 C325 98 325 102 322 102 L266 102 Z" fill="#FFFFFF" opacity="0.32"/>
 
-  <!-- Borde apex rojo/blanco -->
-  <path d="M52 250 C60 226 76 202 104 184" stroke="#E63E1C" stroke-width="5" stroke-linecap="round"/>
-  <path d="M245 250 C230 222 204 198 176 182" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.65"/>
+    <!-- Far Alpine Mountain Range -->
+    <path d="M54 186 L104 134 L138 158 L166 124 L208 164 L268 118 L314 152 L348 138 L348 196 L54 196 Z" fill="url(#mtnFar)"/>
+    <!-- Sunlit Warm Ridge Facets on Far Range -->
+    <path d="M166 124 L182 152 L208 164 L194 148 Z" fill="#FFB020" opacity="0.32"/>
+    <path d="M268 118 L244 158 L268 164 L286 138 Z" fill="#FFB020" opacity="0.36"/>
 
-  <!-- Línea central discontinua -->
-  <path d="M148 156 C148 166 136 176 132 186" stroke="#FFB020" stroke-width="3" stroke-linecap="round"/>
-  <path d="M130 198 C128 208 134 218 140 228" stroke="#FFB020" stroke-width="4" stroke-linecap="round"/>
-  <path d="M144 238 L152 250" stroke="#FFB020" stroke-width="5" stroke-linecap="round"/>
+    <!-- Mid-Ground Stylized Mountains Framing the Pass -->
+    <!-- Left Massif -->
+    <path d="M52 198 L114 130 L176 178 L176 206 L52 206 Z" fill="url(#mtnMidShadow)"/>
+    <path d="M114 130 L144 166 L176 178 L154 178 L118 152 Z" fill="url(#mtnMidLit)"/>
+    <path d="M114 130 L176 178" stroke="#FFB020" stroke-width="1.3" stroke-opacity="0.55"/>
 
-  <!-- Marcador de ruta arriba izquierda -->
-  <g>
-    <path d="M72 68 C72 58 80 50 90 50 C100 50 108 58 108 68 C108 81 90 96 90 96 C90 96 72 81 72 68 Z" fill="#E63E1C"/>
-    <circle cx="90" cy="68" r="7" fill="#FFFFFF"/>
-    <circle cx="90" cy="68" r="3.2" fill="#FFB020"/>
+    <!-- Right Massif -->
+    <path d="M176 178 L224 156 L288 124 L348 176 L348 206 L176 206 Z" fill="url(#mtnMidShadow)"/>
+    <path d="M288 124 L254 164 L224 156 L176 178 L234 182 L274 154 Z" fill="url(#mtnMidLit)"/>
+    <path d="M288 124 L224 156 L176 178" stroke="#FFB020" stroke-width="1.4" stroke-opacity="0.62"/>
+
+    <!-- Foreground Valley Foothills -->
+    <path d="M52 192 C104 194 146 186 176 178 L348 192 L348 334 L52 334 Z" fill="url(#valleySlope)"/>
+    <!-- Faceted Foothill Terrains -->
+    <path d="M52 206 L128 214 L144 236 L52 262 Z" fill="#2A2D35"/>
+    <path d="M348 206 L274 222 L292 252 L348 272 Z" fill="#2A2D35"/>
+    <path d="M52 206 L128 214" stroke="#E63E1C" stroke-width="1.2" stroke-opacity="0.32"/>
+    <path d="M348 206 L274 222" stroke="#FFB020" stroke-width="1.2" stroke-opacity="0.35"/>
+
+    <!-- Winding S-Curve Mountain Highway -->
+    <path d="M174 178 C164 185 138 192 140 202 C142 214 214 216 210 230 C205 248 96 258 54 282 L54 334 L346 334 L346 278 C312 256 266 244 260 228 C254 212 184 208 178 198 C174 190 180 184 178 178 Z" fill="url(#roadAsphalt)"/>
+    <!-- Warm Sunset Reflection Sheen on Asphalt -->
+    <path d="M175 179 C167 187 146 194 148 202 C152 212 224 216 226 232 C228 248 164 262 124 288 L268 288 C264 258 258 240 250 226 C240 212 178 208 176 196 Z" fill="url(#roadSunsetSheen)"/>
+
+    <!-- Crisp Road Edge Lines -->
+    <path d="M174 178 C164 185 138 192 140 202 C142 214 214 216 210 230 C205 248 96 258 54 282" stroke="#D9DCE3" stroke-width="1.6" stroke-opacity="0.58" stroke-linecap="round"/>
+    <path d="M178 178 C180 184 174 190 178 198 C184 208 254 212 260 228 C266 244 312 256 346 278" stroke="#D9DCE3" stroke-width="1.8" stroke-opacity="0.62" stroke-linecap="round"/>
+    <!-- Racing-Inspired Red Apex Accent on Outer Bend -->
+    <path d="M56 282 C92 262 152 252 190 241" stroke="#E63E1C" stroke-width="3.2" stroke-opacity="0.82" stroke-linecap="round"/>
+
+    <!-- Graduated Perspective Amber Centerline Dashes -->
+    <path d="M176 181 C174 184 169 187 166 190" stroke="#FFB020" stroke-width="1.4" stroke-linecap="round" stroke-opacity="0.72"/>
+    <path d="M161 196 C158 201 164 205 174 208" stroke="#FFB020" stroke-width="1.9" stroke-linecap="round" stroke-opacity="0.82"/>
+    <path d="M192 213 C206 216 222 220 230 226" stroke="#FFB020" stroke-width="2.5" stroke-linecap="round" stroke-opacity="0.88"/>
+    <path d="M232 238 C228 248 214 256 198 266" stroke="#FFB020" stroke-width="3.4" stroke-linecap="round"/>
+    <path d="M180 282 C166 294 156 308 150 326" stroke="#FFB020" stroke-width="4.4" stroke-linecap="round"/>
   </g>
 
-  <!-- Sombra moto touring -->
-  <ellipse cx="152" cy="228" rx="76" ry="9" fill="#0B0D10" opacity="0.45"/>
+  <!-- Subtle Portal Border Ring (sharp edge on both light & dark cards) -->
+  <circle cx="200" cy="186" r="144" stroke="#8C919E" stroke-width="1.2" stroke-opacity="0.28"/>
 
-  <!-- Moto Touring de perfil dinámico -->
+  <!-- 3. Ground Contact Shadow Under 3/4 Adventure Bike (breaks portal edge slightly for 2.5D pop) -->
+  <ellipse cx="200" cy="316" rx="108" ry="20" transform="rotate(14 200 316)" fill="url(#touringShadow)"/>
+  <ellipse cx="142" cy="299" rx="26" ry="7" transform="rotate(14 142 299)" fill="#15171C" opacity="0.62"/>
+  <ellipse cx="254" cy="331" rx="30" ry="8" transform="rotate(14 254 331)" fill="#15171C" opacity="0.68"/>
+
+  <!-- Headlight Warm Forward Glow -->
+  <polygon points="274,194 358,224 342,262 266,208" fill="url(#touringHeadlightBeam)"/>
+
+  <!-- 4. Hero Adventure/Touring Motorcycle in Dynamic Front-3/4 View -->
   <g>
-    <!-- Rueda trasera -->
-    <circle cx="98" cy="196" r="27" fill="#15171C" stroke="#FFFFFF" stroke-width="1.5" stroke-opacity="0.25"/>
-    <circle cx="98" cy="196" r="18" fill="#2A2F3A" stroke="#FFB020" stroke-width="2"/>
-    <circle cx="98" cy="196" r="8" fill="#D5D9E2"/>
-    <path d="M98 178 L98 214 M80 196 L116 196 M85 183 L111 209 M111 183 L85 209" stroke="#15171C" stroke-width="2.2"/>
-    <circle cx="98" cy="196" r="4" fill="#15171C"/>
+    <!-- Far-Side Side Pannier (Maleta Lateral Derecha - peeking behind passenger seat) -->
+    <path d="M150 198 L184 192 L188 232 L154 240 Z" fill="#15171C"/>
+    <path d="M150 198 L184 192 L182 187 L148 193 Z" fill="#2A2D35"/>
+    <path d="M181 200 L185 200 L187 224 L183 224 Z" fill="#FFB020" opacity="0.85"/>
 
-    <!-- Rueda delantera -->
-    <circle cx="204" cy="196" r="27" fill="#15171C" stroke="#FFFFFF" stroke-width="1.5" stroke-opacity="0.25"/>
-    <circle cx="204" cy="196" r="18" fill="#2A2F3A" stroke="#FFB020" stroke-width="2"/>
-    <circle cx="204" cy="196" r="8" fill="#D5D9E2"/>
-    <path d="M204 178 L204 214 M186 196 L222 196 M191 183 L217 209 M217 183 L191 209" stroke="#15171C" stroke-width="2.2"/>
-    <circle cx="204" cy="196" r="4" fill="#15171C"/>
+    <!-- Far-Side Handlebar, Handguard & Stalk Mirror -->
+    <path d="M254 176 L276 175" stroke="#15171C" stroke-width="4.2" stroke-linecap="round"/>
+    <!-- Far Mirror -->
+    <path d="M262 174 L268 156 L282 152 L280 160 L268 162 Z" fill="#15171C"/>
+    <path d="M269 156 L281 153" stroke="#8C919E" stroke-width="1" stroke-opacity="0.55" stroke-linecap="round"/>
+    <!-- Far Handguard -->
+    <path d="M272 169 C282 169 290 174 289 182 C284 185 275 184 270 180 Z" fill="#2A2D35"/>
+    <path d="M275 173 L286 175 L285 178 L274 176 Z" fill="#E63E1C"/>
 
-    <!-- Escape touring elevado -->
-    <path d="M134 196 L88 188 L85 180 L138 188 Z" fill="#464C59" stroke="#15171C" stroke-width="1.8"/>
+    <!-- Rear Wheel in true Front-Right 3/4 Perspective (near face cx=138, leading tread right cx=148) -->
+    <!-- 3D Tire Tread Thickness (far leading edge offset to right) -->
+    <ellipse cx="148" cy="258" rx="21" ry="38" transform="rotate(-6 148 258)" fill="#15171C"/>
+    <path d="M142.0 222.2 L152.0 220.2 L144.0 295.8 L134.0 297.8 Z" fill="#15171C"/>
+    <!-- Near Tire Wall -->
+    <ellipse cx="138" cy="260" rx="21" ry="38" transform="rotate(-6 138 260)" fill="url(#rearTireWall34)"/>
+    <ellipse cx="138" cy="260" rx="20.4" ry="37.4" transform="rotate(-6 138 260)" stroke="#8C919E" stroke-width="0.9" stroke-opacity="0.24"/>
+    <!-- Rear Rim & Spokes -->
+    <ellipse cx="137" cy="260" rx="14.5" ry="26" transform="rotate(-6 137 260)" fill="#15171C"/>
+    <ellipse cx="137" cy="260" rx="13.5" ry="24.5" transform="rotate(-6 137 260)" stroke="#FFB020" stroke-width="1.8"/>
+    <ellipse cx="137" cy="260" rx="12" ry="22" transform="rotate(-6 137 260)" fill="#2A2D35"/>
+    <!-- Rear Cross-Spokes -->
+    <path d="M137 238 L137 282 M125 260 L149 260 M128 245 L146 275 M146 245 L128 275" stroke="#8C919E" stroke-width="1.3" stroke-opacity="0.55"/>
+    <ellipse cx="137" cy="260" rx="5.2" ry="9" transform="rotate(-6 137 260)" fill="#15171C"/>
+    <ellipse cx="137" cy="260" rx="2.5" ry="4.2" transform="rotate(-6 137 260)" fill="#D9DCE3"/>
 
-    <!-- Motor y cubre-cárter -->
-    <path d="M128 164 L172 162 L168 198 L134 198 Z" fill="#222630" stroke="#15171C" stroke-width="1.8"/>
-    <path d="M142 198 L174 198 L180 189 L146 189 Z" fill="#D5D9E2" stroke="#15171C" stroke-width="1.5"/>
+    <!-- Rear Swingarm & Upswept Touring Exhaust -->
+    <path d="M137 256 L196 256 L194 266 L137 264 Z" fill="#2A2D35"/>
+    <path d="M139 257 L192 257" stroke="#8C919E" stroke-width="1.1" stroke-opacity="0.45"/>
+    <!-- Exhaust Canister peeking cleanly under pannier -->
+    <path d="M164 254 L126 244 L129 235 L168 247 Z" fill="#8C919E"/>
+    <path d="M126 244 L121 241 L124 234 L129 235 Z" fill="#15171C"/>
 
-    <!-- Horquilla delantera alta touring -->
-    <line x1="178" y1="132" x2="204" y2="196" stroke="#FFB020" stroke-width="4.5" stroke-linecap="round"/>
-    <line x1="178" y1="132" x2="204" y2="196" stroke="#15171C" stroke-width="1.5" stroke-linecap="round"/>
+    <!-- Engine Core, Radiator Shroud & Brushed Aluminum Skid Plate -->
+    <path d="M174 218 L234 222 L236 268 L184 264 Z" fill="#15171C"/>
+    <path d="M184 228 L224 232 L226 262 L188 258 Z" fill="#2A2D35"/>
+    <!-- Cylinder cooling detail & clutch cover -->
+    <ellipse cx="204" cy="252" rx="9" ry="11" fill="#15171C" stroke="#8C919E" stroke-width="1" stroke-opacity="0.42"/>
+    <circle cx="204" cy="252" r="3" fill="#FFB020"/>
+    <!-- Brushed Aluminum Adventure Skid Plate (Cubre-cárter) -->
+    <path d="M188 260 L236 264 L242 274 L222 278 L192 270 Z" fill="url(#skidMetal)"/>
+    <path d="M200 264 L228 267 L226 270 L199 267 Z" fill="#2A2D35" opacity="0.65"/>
+    <path d="M192 269 L224 275" stroke="#15171C" stroke-width="1.2" stroke-opacity="0.45"/>
 
-    <!-- Pico pato adventure y guardabarros -->
-    <path d="M180 153 L216 155 L206 163 L178 162 Z" fill="url(#touringRed)" stroke="#15171C" stroke-width="1.8" stroke-linejoin="round"/>
+    <!-- Tubular Steel Adventure Crash Bars (Defensas) -->
+    <path d="M194 224 C208 224 226 232 232 246 C234 254 224 260 212 258 L194 248" stroke="#D9DCE3" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M194 224 C208 224 226 232 232 246" stroke="#FFFFFF" stroke-width="1.1" stroke-opacity="0.68" stroke-linecap="round"/>
 
-    <!-- Carenado, depósito y parabrisas alto -->
-    <path d="M174 134 C178 112 188 102 196 102 L192 136 Z" fill="#FFFFFF" fill-opacity="0.65" stroke="#15171C" stroke-width="1.8" stroke-linejoin="round"/>
-    <path d="M128 144 C142 128 168 128 188 140 L184 166 L132 168 Z" fill="url(#touringRed)" stroke="#15171C" stroke-width="2" stroke-linejoin="round"/>
-    <path d="M145 140 L176 143 L172 149 L142 146 Z" fill="#FFFFFF" opacity="0.85"/>
+    <!-- Far-Side USD Front Fork Leg (tucked behind front wheel leading tread) -->
+    <path d="M246 186 L254 185 L265 242 L257 243 Z" fill="#B82E12"/>
+    <path d="M258 242 L264 241 L271 278 L265 279 Z" fill="#8C919E"/>
 
-    <!-- Manillar alto con cubrepuños -->
-    <path d="M172 132 L162 124" stroke="#15171C" stroke-width="3.5" stroke-linecap="round"/>
-    <rect x="155" y="119" width="12" height="7" rx="3" fill="#15171C"/>
+    <!-- Front Wheel in Hero Front-Right 3/4 Perspective (near face cx=248, leading 3D tread cx=259) -->
+    <!-- 3D Rounded Tire Tread Depth (leading front edge) -->
+    <ellipse cx="259" cy="284" rx="25" ry="44" transform="rotate(-6 259 284)" fill="#15171C"/>
+    <path d="M252.6 242.2 L263.6 240.2 L254.4 327.8 L243.4 329.8 Z" fill="#15171C"/>
+    <!-- Subtle adventure tire tread sipes on leading 3D tread face -->
+    <path d="M275 262 L282 264 M276 276 L283 278 M275 290 L282 292 M271 304 L278 306 M264 316 L271 317" stroke="#2A2D35" stroke-width="2" stroke-linecap="round"/>
+    <!-- Sunset warm rim-light along leading tread shoulder -->
+    <path d="M268 246 A25 44 -6 0 1 282 288" stroke="#FFB020" stroke-width="1.1" stroke-opacity="0.26" stroke-linecap="round"/>
+    <!-- Near Tire Wall -->
+    <ellipse cx="248" cy="286" rx="25" ry="44" transform="rotate(-6 248 286)" fill="url(#tireWall34)"/>
+    <ellipse cx="248" cy="286" rx="24.3" ry="43.3" transform="rotate(-6 248 286)" stroke="#8C919E" stroke-width="0.95" stroke-opacity="0.28"/>
+    <!-- Tire shoulder sheen -->
+    <path d="M230 254 A24 43 -6 0 1 258 246" stroke="#8C919E" stroke-width="1.6" stroke-opacity="0.24" stroke-linecap="round"/>
+    <!-- Front Rim & Racing Gold/Amber Pinstripe -->
+    <ellipse cx="247" cy="286" rx="17.8" ry="31.5" transform="rotate(-6 247 286)" fill="#15171C"/>
+    <ellipse cx="247" cy="286" rx="16.6" ry="29.6" transform="rotate(-6 247 286)" stroke="#FFB020" stroke-width="2"/>
+    <ellipse cx="247" cy="286" rx="14.8" ry="26.5" transform="rotate(-6 247 286)" fill="#2A2D35"/>
 
-    <!-- Asiento biplaza touring -->
-    <path d="M90 140 C104 146 122 148 134 142 L128 153 L88 148 Z" fill="#15171C"/>
+    <!-- Foreshortened Adventure Cross-Spokes -->
+    <path d="M247 260 L247 312 M232 286 L262 286 M236 268 L258 304 M258 268 L236 304 M233 276 L261 296 M233 296 L261 276" stroke="#8C919E" stroke-width="1.2" stroke-opacity="0.52"/>
 
-    <!-- Maleta lateral touring (pannier) -->
-    <rect x="74" y="150" width="38" height="27" rx="6" fill="#1E222B" stroke="#15171C" stroke-width="2"/>
-    <rect x="79" y="156" width="28" height="4" rx="2" fill="#E63E1C"/>
-    <rect x="79" y="168" width="10" height="4" rx="2" fill="#FFB020"/>
+    <!-- Foreshortened Perforated Front Brake Rotor -->
+    <ellipse cx="247" cy="286" rx="12.2" ry="21.5" transform="rotate(-6 247 286)" stroke="url(#frontRotor34)" stroke-width="4.2"/>
+    <ellipse cx="247" cy="286" rx="12.2" ry="21.5" transform="rotate(-6 247 286)" stroke="#15171C" stroke-width="1.2" stroke-dasharray="1.6 3.8" stroke-opacity="0.55"/>
+    <!-- Radial Brake Caliper on Front Rotor -->
+    <path d="M233 280 L239 278 L241 294 L234 296 C231 292 231 284 233 280 Z" fill="#2A2D35"/>
+    <path d="M234 285 L238 284 L239 288 L235 289 Z" fill="#E63E1C"/>
+    <!-- Front Hub -->
+    <ellipse cx="247" cy="286" rx="5.8" ry="10" transform="rotate(-6 247 286)" fill="#15171C"/>
+    <ellipse cx="247" cy="286" rx="3.2" ry="5.5" transform="rotate(-6 247 286)" fill="#D9DCE3"/>
+    <ellipse cx="247" cy="286" rx="1.6" ry="2.6" transform="rotate(-6 247 286)" fill="#FFB020"/>
 
-    <!-- Baúl trasero superior -->
-    <rect x="64" y="128" width="24" height="19" rx="5" fill="#2A2F3A" stroke="#15171C" stroke-width="1.8"/>
-    <rect x="66" y="134" width="6" height="6" rx="2" fill="#E63E1C"/>
+    <!-- Low Front Mudguard -->
+    <path d="M232 252 C242 239 266 237 280 247 L274 253 C262 246 246 247 238 258 Z" fill="#15171C"/>
+    <path d="M236 250 C246 241 264 240 276 247" stroke="#8C919E" stroke-width="1.1" stroke-opacity="0.42" stroke-linecap="round"/>
 
-    <!-- Faro delantero LED -->
-    <rect x="184" y="140" width="11" height="8" rx="3" fill="#FFB020" stroke="#15171C" stroke-width="1.4"/>
+    <!-- Near-Side USD Gold/Amber Front Fork Leg (bolted directly to near hub at 247,286) -->
+    <path d="M222 190 L232 188 L243 244 L234 246 Z" fill="url(#touringForkGold)"/>
+    <path d="M225 190 L236 245" stroke="#FFFFFF" stroke-width="1.5" stroke-opacity="0.55" stroke-linecap="round"/>
+    <!-- Chrome Stanchion -->
+    <path d="M235 245 L242 244 L250 283 L243 285 Z" fill="#D9DCE3"/>
+    <path d="M237 245 L245 284" stroke="#FFFFFF" stroke-width="1.1" stroke-opacity="0.72"/>
+    <!-- Fork Axle Clamp -->
+    <path d="M241 281 L251 279 L253 289 L243 291 Z" fill="#2A2D35"/>
+    <circle cx="247" cy="286" r="2.6" fill="#FFB020"/>
+
+    <!-- Stepped Two-Up Touring Seat & Rear Luggage Rack -->
+    <path d="M118 190 L146 184 L152 190 L122 196 Z" fill="#8C919E"/>
+    <path d="M126 194 C142 198 158 206 188 204 L184 216 C158 220 140 212 124 204 Z" fill="#15171C"/>
+    <path d="M132 196 C148 201 164 207 184 206" stroke="#8C919E" stroke-width="1.1" stroke-opacity="0.38" stroke-linecap="round"/>
+
+    <!-- Sculpted Adventure Fuel Tank & Upper Fairing Shrouds -->
+    <!-- Side Tank & Radiator Shroud -->
+    <path d="M174 204 C182 184 206 172 234 176 L264 188 L244 216 C220 222 194 220 174 204 Z" fill="url(#touringRedMain)"/>
+    <!-- Sculpted lower red bevel shadow -->
+    <path d="M178 204 C198 212 222 212 246 206 L242 218 C218 224 192 220 174 208 Z" fill="#B82E12"/>
+    <!-- Tank specular highlight -->
+    <path d="M184 192 C194 178 214 174 236 179 L232 188 C214 184 196 186 184 192 Z" fill="url(#touringSpec)"/>
+    <!-- Crisp Adventure Graphic Accent & Air Intake -->
+    <path d="M196 198 L236 194 L232 200 L194 204 Z" fill="#FFFFFF" opacity="0.90"/>
+    <path d="M202 206 L232 203 L229 207 L200 210 Z" fill="#FFB020"/>
+    <path d="M214 212 L240 208 L236 220 L210 222 Z" fill="#15171C"/>
+
+    <!-- Signature High Red Adventure Beak ("Pico de Pato") -->
+    <path d="M236 202 L294 218 L286 224 L234 214 Z" fill="url(#touringBeakGrad)"/>
+    <!-- Dark 3D underside of beak -->
+    <path d="M234 214 L286 224 L276 228 L232 220 Z" fill="#15171C"/>
+    <!-- Beak top ridge highlight -->
+    <path d="M240 204 L291 218" stroke="#FFFFFF" stroke-width="1.3" stroke-opacity="0.50" stroke-linecap="round"/>
+
+    <!-- Front Cowl & Twin Aggressive LED Adventure Headlights -->
+    <path d="M234 176 L278 186 L284 206 L244 204 L232 192 Z" fill="#15171C"/>
+    <!-- Upper Red Brow Cowl -->
+    <path d="M234 176 L280 186 L278 192 L236 183 Z" fill="#E63E1C"/>
+    <!-- Near LED Headlight + Amber DRL Halo -->
+    <path d="M246 188 L264 192 L262 200 L245 196 Z" fill="#FFFFFF"/>
+    <path d="M245 186 L266 191 L264 194 L244 189 Z" fill="#FFB020"/>
+    <!-- Far LED Headlight + Amber DRL Halo -->
+    <path d="M270 193 L282 196 L280 203 L269 200 Z" fill="#FFFFFF" opacity="0.92"/>
+    <path d="M269 191 L283 195 L282 198 L268 194 Z" fill="#FFB020"/>
+
+    <!-- Dashboard TFT Cluster (visible behind windscreen) -->
+    <path d="M234 166 L254 169 L252 179 L232 176 Z" fill="#15171C"/>
+    <path d="M236 168 L252 170.5 L250.5 176.5 L235 174 Z" fill="#2A2D35"/>
+    <path d="M238 171 L248 172.5" stroke="#FFB020" stroke-width="1.4" stroke-linecap="round"/>
+
+    <!-- Tall Translucent Touring Windscreen -->
+    <path d="M224 142 C234 134 252 136 260 144 L274 186 L240 180 Z" fill="url(#windshieldGlass)"/>
+    <path d="M224 142 C234 134 252 136 260 144 L274 186" stroke="#FFFFFF" stroke-width="1.6" stroke-opacity="0.72" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M232 146 L246 176" stroke="#FFFFFF" stroke-width="2.2" stroke-opacity="0.34" stroke-linecap="round"/>
+
+    <!-- Near-Side Wide Handlebar, Knuckle Handguard & Stalk Mirror -->
+    <!-- Mirror -->
+    <path d="M214 168 L206 150 L190 148 L192 156 L206 157 L211 170 Z" fill="#15171C"/>
+    <path d="M192 150 L205 151" stroke="#8C919E" stroke-width="1.1" stroke-opacity="0.60" stroke-linecap="round"/>
+    <!-- Handlebar tube -->
+    <path d="M222 176 L194 174" stroke="#8C919E" stroke-width="4.5" stroke-linecap="round"/>
+    <path d="M204 175 L188 174" stroke="#15171C" stroke-width="5.2" stroke-linecap="round"/>
+    <!-- Sculpted Knuckle Handguard -->
+    <path d="M180 166 C188 164 200 166 204 174 C202 182 190 184 182 180 C178 176 178 170 180 166 Z" fill="#2A2D35"/>
+    <path d="M182 171 L199 172 L198 176 L182 175 Z" fill="#E63E1C"/>
+    <path d="M183 167 C189 165.5 196 167 200 170" stroke="#FFFFFF" stroke-width="1.1" stroke-opacity="0.45" stroke-linecap="round"/>
+
+    <!-- Hero Hard Expedition Side Pannier (Maleta Lateral Izquierda - Full 3D 3/4 Box) -->
+    <!-- Top Hinged Lid Plane -->
+    <path d="M98 206 L152 214 L168 205 L116 198 Z" fill="url(#pannierLidGrad)"/>
+    <!-- Front Angled Face (3D depth thickness) -->
+    <path d="M152 214 L168 205 L168 256 L152 266 Z" fill="url(#pannierFrontGrad)"/>
+    <!-- Broad Side Aluminum Face -->
+    <path d="M98 206 L152 214 L152 266 L98 256 Z" fill="url(#pannierSideGrad)"/>
+    <!-- Stamped Structural Expedition Ribs on Side Face -->
+    <path d="M106 218 L144 224 M106 226 L144 232 M106 246 L144 252" stroke="#8C919E" stroke-width="1.4" stroke-opacity="0.34" stroke-linecap="round"/>
+    <!-- Racing Red & Amber Touring Reflector Band -->
+    <path d="M104 234 L146 241 L146 246 L104 239 Z" fill="#E63E1C"/>
+    <path d="M155 239 L165 233 L165 238 L155 244 Z" fill="#FFB020"/>
+    <!-- Reinforced Corner Bumpers & Metallic Latches -->
+    <path d="M98 206 L107 207 L107 215 L98 214 Z" fill="#15171C"/>
+    <path d="M143 213 L152 214 L152 222 L143 221 Z" fill="#15171C"/>
+    <path d="M98 248 L107 249 L107 257 L98 256 Z" fill="#15171C"/>
+    <path d="M143 257 L152 258 L152 266 L143 265 Z" fill="#15171C"/>
+    <!-- Top Lid Edge Specular Highlight & Clasp -->
+    <path d="M100 206 L152 214 L167 205" stroke="#FFFFFF" stroke-width="1.2" stroke-opacity="0.58" stroke-linecap="round"/>
+    <rect x="120" y="209" width="10" height="5" rx="1.5" transform="rotate(8 120 209)" fill="#D9DCE3"/>
   </g>
 </svg>
