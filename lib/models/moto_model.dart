@@ -281,8 +281,10 @@ const List<Moto> motos = [
     motor:
         "Bicilíndrico en paralelo, 4 tiempos, DOHC, 8 válvulas, refrigerado por líquido",
     transmision: "6 velocidades, transmisión final por cadena",
-    imagen:
-        "https://cdn.keeway.com/benelli-3-0/media/2143/conversions/2560x2180-hd.png?x-oss-process=image/resize,w_1920,limit_1/quality,q_80/format,webp",
+    imagen: "assets/banners/302s.jpg",
+    galeria: [
+      "https://cdn.keeway.com/benelli-3-0/media/2143/conversions/2560x2180-hd.png?x-oss-process=image/resize,w_1920,limit_1/quality,q_80/format,webp"
+    ],
     descripcion:
         "Naked bicilíndrica de entrada con chasis multitubular a la vista, horquilla delantera invertida y doble disco delantero con ABS. Su motor de giro alto y tanque de 16 litros la orientan tanto al tránsito diario como a recorridos en carretera.",
     colores: ["Rojo / Blanco", "Negro", "Verde / Negro"],
@@ -488,9 +490,9 @@ const List<Moto> motos = [
         "Monocilíndrico, 4 tiempos, SOHC, 2 válvulas, inyección electrónica PGM-FI, enfriado por aire natural",
     transmision:
         "Mecánica de 5 velocidades tipo retorno con embrague antirrebote",
-    imagen:
-        "https://www.honda.mx/web/img/motorcycles/models/naked/cb190r/slider/1.jpg",
+    imagen: "assets/banners/cb190r20.jpg",
     galeria: [
+      "https://www.honda.mx/web/img/motorcycles/models/naked/cb190r/slider/1.jpg",
       "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/12/Honda_CB_190R_Repsol.jpg/960px-Honda_CB_190R_Repsol.jpg",
     ],
     descripcion:
@@ -645,8 +647,10 @@ const List<Moto> motos = [
     motor:
         "4 tiempos, monocilíndrico, SOHC, enfriado por aire con radiador de aceite",
     transmision: "Manual de 6 velocidades",
-    imagen:
-        "https://www.frmmotos.com.mx/assets/img/pages/description/vento/nitrox-300-t3/image-00.webp",
+    imagen: "assets/banners/nitrox300t3.jpg",
+    galeria: [
+      "https://www.frmmotos.com.mx/assets/img/pages/description/vento/nitrox-300-t3/image-00.webp"
+    ],
     descripcion:
         "Naked urbana de corte deportivo con horquilla delantera invertida, monoshock trasero y refrigeración apoyada por radiador de aceite. Integra tablero digital, iluminación Full LED y conectividad VenTec para vincular el teléfono inteligente.",
     colores: ["Gris Mate con Rojo", "Negro"],
