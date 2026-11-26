@@ -525,8 +525,10 @@ const List<Moto> motos = [
     motor:
         "Monocilíndrico, 4 tiempos, OHC, 2 válvulas, inyección electrónica PGM-FI, enfriado por aire natural",
     transmision: "Mecánica de 5 velocidades tipo retorno",
-    imagen:
-        "https://www.honda.mx/web/img/motorcycles/models/doble-proposito/xr-190l/slider/1.jpg",
+    imagen: "assets/banners/xr190l.jpg",
+    galeria: [
+      "https://www.honda.mx/web/img/motorcycles/models/doble-proposito/xr-190l/slider/1.jpg"
+    ],
     descripcion:
         "Doble propósito versátil diseñada para alternar entre asfalto urbano y terracería ligera gracias a sus suspensiones de largo recorrido y rin delantero de 19 pulgadas. Su alimentación PGM-FI mejora la respuesta en altitud.",
     colores: ["Rojo", "Blanco"],
@@ -710,8 +712,10 @@ const List<Moto> motos = [
     precio: 47999.0,
     motor: "4 tiempos, monocilíndrico, enfriado por aceite (doble radiador)",
     transmision: "Manual de 6 velocidades",
-    imagen:
-        "https://www.vento.com/wp-content/uploads/banner_LANDING_mob_CROSSMAX-330-RALLY-TRX_2026_1500x1600.webp",
+    imagen: "assets/banners/crossmax330rally.jpg",
+    galeria: [
+      "https://www.vento.com/wp-content/uploads/banner_LANDING_mob_CROSSMAX-330-RALLY-TRX_2026_1500x1600.webp"
+    ],
     descripcion:
         "Motocicleta doble propósito de estilo rally equipada con rines de 21 y 18 pulgadas, suspensión delantera invertida y doble radiador de aceite. Suma parabrisas alto, cubrepuños con iluminación LED, parrilla trasera y conectividad VenTec.",
     colores: ["Negro", "Gris"],
@@ -736,7 +740,8 @@ const List<Moto> motos = [
     precio: 37999.0,
     motor: "4 tiempos, monocilíndrico, enfriado por aire",
     transmision: "Manual de 5 velocidades",
-    imagen: "https://www.vento.com/img/workman250/2022/workman250-mobi.jpg",
+    imagen: "assets/banners/workman250.jpg",
+    galeria: ["https://www.vento.com/img/workman250/2022/workman250-mobi.jpg"],
     descripcion:
         "Motocicleta utilitaria pensada para reparto y carga diaria, equipada con parrilla trasera reforzada para hasta 50 kg y doble amortiguador posterior. Combina arranque eléctrico y de pedal con freno de disco delantero, puerto USB y alarma antirrobo.",
     colores: ["Blanco"],
@@ -762,8 +767,10 @@ const List<Moto> motos = [
     precio: 29999.0,
     motor: "4 tiempos, monocilíndrico, enfriado por aire",
     transmision: "Automática CVT",
-    imagen:
-        "https://www.vento.com/wp-content/uploads/banner_mob_terra-200_2026_1500x1600.jpg",
+    imagen: "assets/banners/terra200s.jpg",
+    galeria: [
+      "https://www.vento.com/wp-content/uploads/banner_mob_terra-200_2026_1500x1600.jpg"
+    ],
     descripcion:
         "Motoneta automática de inspiración todoterreno diseñada para movilidad urbana ágil sobre asfalto y calles irregulares. Incluye llantas de dibujo mixto, defensa protectora frontal, cajuela trasera de 34 litros y conectividad VenTec.",
     colores: ["Gris con Verde Neón", "Plata"],
@@ -786,8 +793,9 @@ const List<Moto> motos = [
     motor:
         "Monocilíndrico 4 tiempos, SOHC, 2 válvulas, enfriado por aire forzado",
     transmision: "Manual de 5 velocidades por cadena",
-    imagen: "https://elektra.vteximg.com.br/arquivos/ids/37234303/34006888.jpg",
+    imagen: "assets/banners/dm150.jpg",
     galeria: [
+      "https://elektra.vteximg.com.br/arquivos/ids/37234303/34006888.jpg",
       "https://elektra.vteximg.com.br/arquivos/ids/37234295/34006888-d1.jpg",
       "https://elektra.vteximg.com.br/arquivos/ids/37234296/34006888-d2.jpg",
       "https://elektra.vteximg.com.br/arquivos/ids/37234297/34006888-d3.jpg",
@@ -817,7 +825,10 @@ const List<Moto> motos = [
     precio: 40999.0,
     motor: "Monocilíndrico 4 tiempos, enfriado por aire",
     transmision: "Manual de 5 velocidades por cadena",
-    imagen: "https://elektra.vtexassets.com/arquivos/ids/37234695/34007051.jpg",
+    imagen: "assets/banners/ft150gts.jpg",
+    galeria: [
+      "https://elektra.vtexassets.com/arquivos/ids/37234695/34007051.jpg"
+    ],
     descripcion:
         "Variante de trabajo y reparto de la familia FT150 con tanque de gran autonomía de 17 litros y sistema GPS de fábrica. Combina freno delantero de disco sencillo, rines de aleación y capacidad de carga de 150 kg.",
     colores: ["Gris con Amarillo"],
@@ -872,8 +883,10 @@ const List<Moto> motos = [
         "Monocilíndrico 4 tiempos, 4 válvulas, OHC, radiador de aceite y aire forzado",
     transmision:
         "Manual de 6 velocidades por cadena con embrague antirrebote (Slipper Clutch)",
-    imagen:
-        "https://www.italika.mx/medias/IM-250Z-4V-GRAFITO-GPS-2026-MX.webp?context=bWFzdGVyfDI1MFogNFYtR1JBRklUTy1HUFMtMjAyNi1NWHwxMTM1MzR8aW1hZ2Uvd2VicHxhREV4TDJnd05DOHhNREUwTWprME1UWTBNamM0TWk5SlRTMHlOVEJhSURSV0xVZFNRVVpKVkU4dFIxQlRMVEl3TWpZdFRWZ3VkMlZpY0F8NTgwMDk3ZTI1Mzg1NjVmZTNiZGI5MTVlOThkOWIzNzY1NTM3NWUxNDYzZWQ2NzA4Yzk4YTAxNmQwMmM3N2RmOQ",
+    imagen: "assets/banners/250z4v.jpg",
+    galeria: [
+      "https://www.italika.mx/medias/IM-250Z-4V-GRAFITO-GPS-2026-MX.webp?context=bWFzdGVyfDI1MFogNFYtR1JBRklUTy1HUFMtMjAyNi1NWHwxMTM1MzR8aW1hZ2Uvd2VicHxhREV4TDJnd05DOHhNREUwTWprME1UWTBNamM0TWk5SlRTMHlOVEJhSURSV0xVZFNRVVpKVkU4dFIxQlRMVEl3TWpZdFRWZ3VkMlZpY0F8NTgwMDk3ZTI1Mzg1NjVmZTNiZGI5MTVlOThkOWIzNzY1NTM3NWUxNDYzZWQ2NzA4Yzk4YTAxNmQwMmM3N2RmOQ"
+    ],
     descripcion:
         "Naked de nueva plataforma modular equipada con motor monocilíndrico de 4 válvulas, radiador de aceite y embrague antirrebote. Suma iluminación LED con función Autolamp, tablero digital a color, puertos USB y rastreador GPS.",
     colores: ["Grafito"],
@@ -898,8 +911,10 @@ const List<Moto> motos = [
     precio: 19999.0,
     motor: "Monocilíndrico 4 tiempos, enfriado por aire",
     transmision: "Automática",
-    imagen:
-        "https://www.italika.mx/medias/IM-D150-GRIS-LT-2026-MX.webp?context=bWFzdGVyfEQxNTAtR1JJUy0yMDI2LU1YfDIyOTAyNHxpbWFnZS93ZWJwfGFHTXdMMmd4WVM4eE1ERTBPRGd4TmpVMU1UazJOaTlKVFMxRU1UVXdMVWRTU1ZNdFRGUXRNakF5TmkxTldDNTNaV0p3fGNmZGYxNWQzODgwM2YzNmQxN2I4MzI4Nzc2MzEwMzRjYTQzOGUxYTRjMDEzMTFhYjdmNGU0ZDk5OGRkNTYyZmY",
+    imagen: "assets/banners/d150lt.jpg",
+    galeria: [
+      "https://www.italika.mx/medias/IM-D150-GRIS-LT-2026-MX.webp?context=bWFzdGVyfEQxNTAtR1JJUy0yMDI2LU1YfDIyOTAyNHxpbWFnZS93ZWJwfGFHTXdMMmd4WVM4eE1ERTBPRGd4TmpVMU1UazJOaTlKVFMxRU1UVXdMVWRTU1ZNdFRGUXRNakF5TmkxTldDNTNaV0p3fGNmZGYxNWQzODgwM2YzNmQxN2I4MzI4Nzc2MzEwMzRjYTQzOGUxYTRjMDEzMTFhYjdmNGU0ZDk5OGRkNTYyZmY"
+    ],
     descripcion:
         "Motoneta urbana de entrada pensada para traslados cotidianos económicos en ciudad, con transmisión automática y rendimiento de hasta 40 km/L. Incluye faro LED delantero, tablero digital y puertos de carga USB A y C.",
     colores: ["Gris con Naranja"],
@@ -925,8 +940,10 @@ const List<Moto> motos = [
     precio: 51999.0,
     motor: "Monocilíndrico 4 tiempos, enfriado por aire",
     transmision: "Manual de 5 velocidades por cadena",
-    imagen:
-        "https://www.italika.mx/medias/IM-DM250-VERDE-GPS-2026-MX.webp?context=bWFzdGVyfERNMjUwLVZFUkRFLTIwMjYtTVh8MjQxNzk4fGltYWdlL3dlYnB8YURnNUwyZ3hOQzh4TURFeE5qRXlNemM0TnpJNU5DOUpUUzFFVFRJMU1DMVdSVkpFUlMxSFVGTXRNakF5TmkxTldDNTNaV0p3fDBjYjBhYTAwMmM5Y2UwNmRiNDY5Y2QzNWZjMDJiYTQ4YTk2YjM1YjgzODlmNjNmNzYzY2M2YmNhNDhjZDkzZDg",
+    imagen: "assets/banners/dm250.jpg",
+    galeria: [
+      "https://www.italika.mx/medias/IM-DM250-VERDE-GPS-2026-MX.webp?context=bWFzdGVyfERNMjUwLVZFUkRFLTIwMjYtTVh8MjQxNzk4fGltYWdlL3dlYnB8YURnNUwyZ3hOQzh4TURFeE5qRXlNemM0TnpJNU5DOUpUUzFFVFRJMU1DMVdSVkpFUlMxSFVGTXRNakF5TmkxTldDNTNaV0p3fDBjYjBhYTAwMmM5Y2UwNmRiNDY5Y2QzNWZjMDJiYTQ4YTk2YjM1YjgzODlmNjNmNzYzY2M2YmNhNDhjZDkzZDg"
+    ],
     descripcion:
         "Motocicleta doble propósito de 250 cc con asiento elevado a 870 mm, frenos de disco en ambas ruedas y suspensión monoshock trasera. Está orientada al uso mixto urbano y de terracería moderada con GPS integrado de fábrica.",
     colores: ["Negra con Verde"],
