@@ -37,6 +37,7 @@ flutter:
     - assets/Illustration/
     - assets/Illustration/motos/
     - assets/marcas/
+    - assets/banners/
 
   fonts:
     - family: Plus Jakarta

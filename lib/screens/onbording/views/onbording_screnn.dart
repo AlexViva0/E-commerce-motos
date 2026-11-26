@@ -19,7 +19,7 @@ class _OnBordingScreenState extends State<OnBordingScreen> {
 
   final List<Onbord> _onbordData = [
     Onbord(
-      image: "assets/Illustration/motos/moto_sport.svg",
+      image: "assets/Illustration/motos/onb_deportiva.webp",
       tag: "EXPOSICIÓN MÓVIL",
       title: "Descubre las mejores motos",
       description:
@@ -27,7 +27,7 @@ class _OnBordingScreenState extends State<OnBordingScreen> {
       highlights: const ["+25 Modelos", "Catálogo 2026", "Alta gama"],
     ),
     Onbord(
-      image: "assets/Illustration/motos/casco_velocimetro.svg",
+      image: "assets/Illustration/motos/onb_casco.webp",
       tag: "DATOS PRECISOS",
       title: "Compara fichas técnicas",
       description:
@@ -35,7 +35,7 @@ class _OnBordingScreenState extends State<OnBordingScreen> {
       highlights: const ["998 cc", "210 CV", "198 kg"],
     ),
     Onbord(
-      image: "assets/Illustration/motos/ruta_touring.svg",
+      image: "assets/Illustration/motos/onb_aventura.webp",
       tag: "CUATRO CATEGORÍAS",
       title: "Encuentra tu estilo: deportiva, naked, touring, scooter",
       description:
