@@ -49,7 +49,7 @@ class _SearchScreenState extends State<SearchScreen> {
       case Orden.potencia:
         lista.sort((a, b) => b.potencia.compareTo(a.potencia));
       case Orden.ligera:
-        lista.sort((a, b) => a.peso.compareTo(b.peso));
+        lista.sort((a, b) => (a.peso ?? 9999).compareTo(b.peso ?? 9999));
     }
     return lista;
   }
