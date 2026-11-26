@@ -192,7 +192,9 @@ class _TarjetaBanner extends StatelessWidget {
                               borderRadius: BorderRadius.circular(20),
                             ),
                             child: Text(
-                              moto.categoria.toUpperCase(),
+                              moto.modelo == "NAVi"
+                                  ? "SUPER DEPORTIVA"
+                                  : moto.categoria.toUpperCase(),
                               style: const TextStyle(
                                 fontFamily: monoFont,
                                 fontSize: 11,
