@@ -52,41 +52,60 @@ class _OffersCarouselState extends State<OffersCarousel> {
     final alto =
         _TarjetaBanner.altoCabecera + width / 1.79 + _TarjetaBanner.altoPie;
 
-    return SizedBox(
-      height: alto,
-      child: PageView.builder(
-        controller: _pageController,
-        itemCount: _destacadas.length,
-        onPageChanged: (int index) {
-          setState(() => _selectedIndex = index);
-        },
-        itemBuilder: (context, index) {
-          final moto = _destacadas[index];
-          final heroTag = "moto-banner-${moto.id}";
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: defaultPadding),
-            child: _TarjetaBanner(
-              moto: moto,
-              heroTag: heroTag,
-              posicion: index + 1,
-              total: _destacadas.length,
-              press: () => abrirMoto(context, moto, heroTag: heroTag),
-            ),
-          );
-        },
-      ),
+    return Column(
+      children: [
+        SizedBox(
+          height: alto,
+          child: PageView.builder(
+            controller: _pageController,
+            itemCount: _destacadas.length,
+            onPageChanged: (int index) {
+              setState(() => _selectedIndex = index);
+            },
+            itemBuilder: (context, index) {
+              final moto = _destacadas[index];
+              final heroTag = "moto-banner-${moto.id}";
+              return Padding(
+                padding: const EdgeInsets.symmetric(horizontal: defaultPadding),
+                child: _TarjetaBanner(
+                  moto: moto,
+                  heroTag: heroTag,
+                  press: () => abrirMoto(context, moto, heroTag: heroTag),
+                ),
+              );
+            },
+          ),
+        ),
+        const SizedBox(height: defaultPadding * 0.75),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            for (var i = 0; i < _destacadas.length; i++)
+              AnimatedContainer(
+                duration: const Duration(milliseconds: 250),
+                width: i == _selectedIndex ? 22 : 8,
+                height: 8,
+                margin: const EdgeInsets.symmetric(horizontal: 3),
+                decoration: BoxDecoration(
+                  color: i == _selectedIndex
+                      ? primaryColor
+                      : Theme.of(context).dividerColor,
+                  borderRadius: BorderRadius.circular(4),
+                ),
+              ),
+          ],
+        ),
+      ],
     );
   }
 }
 
-/// Tarjeta del carrusel (estilo Astra): etiqueta y contador arriba, póster al
+/// Tarjeta del carrusel (estilo Astra): etiqueta arriba, póster al
 /// centro y pie oscuro con el precio y "Ver ficha".
 class _TarjetaBanner extends StatelessWidget {
   const _TarjetaBanner({
     required this.moto,
     required this.heroTag,
-    required this.posicion,
-    required this.total,
     required this.press,
   });
 
@@ -95,7 +114,6 @@ class _TarjetaBanner extends StatelessWidget {
 
   final Moto moto;
   final String heroTag;
-  final int posicion, total;
   final VoidCallback press;
 
   @override
@@ -116,39 +134,20 @@ class _TarjetaBanner extends StatelessWidget {
               height: altoCabecera,
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Text(
-                        "${moto.marca.nombre.toUpperCase()}   /   ${moto.categoria.toUpperCase()}",
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(
-                          fontFamily: monoFont,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 11,
-                          letterSpacing: 1,
-                          color: Color(0xFF4A4E58),
-                        ),
-                      ),
+                child: Align(
+                  alignment: AlignmentDirectional.centerStart,
+                  child: Text(
+                    "${moto.marca.nombre.toUpperCase()}   /   ${moto.categoria.toUpperCase()}",
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                      fontFamily: monoFont,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 11,
+                      letterSpacing: 1,
+                      color: Color(0xFF4A4E58),
                     ),
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 10, vertical: 4),
-                      decoration: BoxDecoration(
-                        color: grafito,
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: Text(
-                        "$posicion / $total",
-                        style: const TextStyle(
-                          fontFamily: monoFont,
-                          fontSize: 11,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
               ),
             ),

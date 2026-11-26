@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:catalogo_motos/models/moto_model.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../constants.dart';
 
@@ -226,49 +225,6 @@ class FichaTecnica extends StatelessWidget {
                 ),
               ),
               Divider(height: 1, color: cs.outlineVariant),
-            ],
-            const SizedBox(height: defaultPadding * 1.5),
-            Text(
-              "Descripción",
-              style: TextStyle(
-                fontFamily: grandisExtendedFont,
-                fontWeight: FontWeight.w700,
-                fontSize: 18,
-                color: cs.onSurface,
-              ),
-            ),
-            const SizedBox(height: 8),
-            Text(moto.descripcion,
-                style: TextStyle(height: 1.45, color: cs.onSurfaceVariant)),
-            const SizedBox(height: defaultPadding),
-            if (moto.fuentes.isNotEmpty) ...[
-              Text(
-                "FUENTES · NOVIEMBRE 2026",
-                style: TextStyle(
-                  fontFamily: monoFont,
-                  fontSize: 11,
-                  letterSpacing: 1,
-                  color: cs.onSurfaceVariant,
-                ),
-              ),
-              const SizedBox(height: 4),
-              for (final url in moto.fuentes)
-                InkWell(
-                  onTap: () => launchUrl(Uri.parse(url),
-                      mode: LaunchMode.externalApplication),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 4),
-                    child: Text(
-                      Uri.parse(url).host.replaceFirst("www.", ""),
-                      style: const TextStyle(
-                        fontSize: 12,
-                        color: primaryColor,
-                        decoration: TextDecoration.underline,
-                        decorationColor: primaryColor,
-                      ),
-                    ),
-                  ),
-                ),
             ],
           ],
         ),

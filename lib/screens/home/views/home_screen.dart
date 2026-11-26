@@ -28,39 +28,12 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SafeArea(
         child: CustomScrollView(
           slivers: [
-            SliverToBoxAdapter(
+            const SliverToBoxAdapter(
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(
-                    defaultPadding, defaultPadding * 1.25, defaultPadding, 14),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Expanded(
-                      child: Text(
-                        "Explorar",
-                        style: TextStyle(
-                          fontFamily: grandisExtendedFont,
-                          fontWeight: FontWeight.w800,
-                          fontSize: 34,
-                          height: 1,
-                          color: Theme.of(context).colorScheme.onSurface,
-                        ),
-                      ),
-                    ),
-                    Text(
-                      "${motos.length} MODELOS",
-                      style: TextStyle(
-                        fontFamily: monoFont,
-                        fontSize: 12,
-                        letterSpacing: 1,
-                        color: Theme.of(context).colorScheme.onSurfaceVariant,
-                      ),
-                    ),
-                  ],
-                ),
+                padding: EdgeInsets.only(top: defaultPadding),
+                child: OffersCarousel(),
               ),
             ),
-            const SliverToBoxAdapter(child: OffersCarousel()),
             SliverToBoxAdapter(
               child: _Titulo(
                 "Categorías",
