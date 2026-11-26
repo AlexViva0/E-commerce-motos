@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import '../constants.dart';
 
 CheckboxThemeData checkboxThemeData = CheckboxThemeData(
-  checkColor: MaterialStateProperty.all(Colors.white),
-  fillColor: MaterialStateProperty.resolveWith<Color?>((states) {
-    if (states.contains(MaterialState.selected)) {
+  checkColor: WidgetStateProperty.all(Colors.white),
+  fillColor: WidgetStateProperty.resolveWith<Color?>((states) {
+    if (states.contains(WidgetState.selected)) {
       return primaryColor;
     }
     return Colors.transparent;

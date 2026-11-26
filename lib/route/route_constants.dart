@@ -6,6 +6,9 @@ const String searchScreenRoute = "search";
 const String bookmarkScreenRoute = "bookmark";
 const String aboutScreenRoute = "about";
 
+/// Comparador de dos motos. Argumento opcional: id de la primera moto (int).
+const String compareScreenRoute = "compare";
+
 /// Ficha de una moto. Argumento: el id de la moto (int).
 const String productDetailsScreenRoute = "product_details";
 

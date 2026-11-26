@@ -66,11 +66,15 @@ class OnbordingContent extends StatelessWidget {
             if (isTextOnTop) ...[
               const SizedBox(height: defaultPadding / 2),
               textSection,
-              SizedBox(height: isCompact ? defaultPadding * 0.75 : defaultPadding),
+              SizedBox(
+                  height: isCompact ? defaultPadding * 0.75 : defaultPadding),
               Expanded(child: illustrationCard),
             ] else ...[
               Expanded(child: illustrationCard),
-              SizedBox(height: isCompact ? defaultPadding * 0.75 : defaultPadding * 1.25),
+              SizedBox(
+                  height: isCompact
+                      ? defaultPadding * 0.75
+                      : defaultPadding * 1.25),
               textSection,
             ],
             SizedBox(height: isCompact ? defaultPadding * 0.5 : defaultPadding),
@@ -148,7 +152,8 @@ class _IllustrationStage extends StatelessWidget {
               top: 0,
               left: 0,
               child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                 decoration: BoxDecoration(
                   color: blackColor,
                   borderRadius: BorderRadius.circular(12),

@@ -1,6 +1,7 @@
 export '/route/route_constants.dart';
 export '/screens/about/views/about_screen.dart';
 export '/screens/bookmark/views/bookmark_screen.dart';
+export '/screens/compare/views/compare_screen.dart';
 export '/screens/discover/views/discover_screen.dart';
 export '/screens/home/views/home_screen.dart';
 export '/screens/onbording/views/onbording_screnn.dart';

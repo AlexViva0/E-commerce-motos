@@ -23,6 +23,11 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       );
     case bookmarkScreenRoute:
       return MaterialPageRoute(builder: (context) => const BookmarkScreen());
+    case compareScreenRoute:
+      return MaterialPageRoute(
+        builder: (context) =>
+            CompareScreen(motoInicialId: settings.arguments as int?),
+      );
     case aboutScreenRoute:
       return MaterialPageRoute(builder: (context) => const AboutScreen());
     case entryPointScreenRoute:

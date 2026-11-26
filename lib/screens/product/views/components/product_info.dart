@@ -146,8 +146,10 @@ class FichaTecnica extends StatelessWidget {
             if (moto.fuentes.isNotEmpty) ...[
               Text(
                 "Fuentes (consultadas en noviembre de 2026)",
-                style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                    fontWeight: FontWeight.w600),
+                style: Theme.of(context)
+                    .textTheme
+                    .bodySmall!
+                    .copyWith(fontWeight: FontWeight.w600),
               ),
               for (final url in moto.fuentes)
                 InkWell(

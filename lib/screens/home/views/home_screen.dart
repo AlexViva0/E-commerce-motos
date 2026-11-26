@@ -78,8 +78,8 @@ class _Titulo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(
-          defaultPadding, defaultPadding * 1.5, defaultPadding / 2, defaultPadding),
+      padding: const EdgeInsets.fromLTRB(defaultPadding, defaultPadding * 1.5,
+          defaultPadding / 2, defaultPadding),
       child: Row(
         children: [
           Expanded(

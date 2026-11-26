@@ -175,11 +175,11 @@ class _OnBordingScreenState extends State<OnBordingScreen> {
                       return OnbordingContent(
                         title: item.title,
                         description: item.description,
-                        image: (Theme.of(context).brightness ==
-                                    Brightness.dark &&
-                                item.imageDarkTheme != null)
-                            ? item.imageDarkTheme!
-                            : item.image,
+                        image:
+                            (Theme.of(context).brightness == Brightness.dark &&
+                                    item.imageDarkTheme != null)
+                                ? item.imageDarkTheme!
+                                : item.image,
                         tag: item.tag,
                         highlights: item.highlights,
                       );
