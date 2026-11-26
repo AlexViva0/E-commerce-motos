@@ -429,8 +429,10 @@ const List<Moto> motos = [
     motor:
         "Monocilíndrico HET, 4 tiempos, SOHC, 2 válvulas, enfriado por aire forzado",
     transmision: "Automática V-Matic por banda",
-    imagen:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Honda_Navi_100.jpg/960px-Honda_Navi_100.jpg",
+    imagen: "assets/banners/navi.jpg",
+    galeria: [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Honda_Navi_100.jpg/960px-Honda_Navi_100.jpg",
+    ],
     descripcion:
         "Motocicleta urbana compacta con estética de moto y manejo automático de scooter, ideal para traslados ágiles en ciudad. Destaca por su ligereza, bajo consumo de combustible y ensamble en México.",
     colores: ["Rojo", "Negro", "Blanco", "Azul"],
@@ -928,6 +930,7 @@ const List<Moto> motos = [
 /// Banners tipo póster del carrusel de inicio, generados con IA (Nano Banana)
 /// a partir de la moto real. La llave es el modelo.
 const Map<String, String> bannerPorModelo = {
+  "NAVi": "assets/banners/navi.jpg",
   "MT-07": "assets/banners/mt07.jpg",
   "YZF-R3": "assets/banners/yzfr3.jpg",
   "V-Strom 800DE": "assets/banners/vstrom800de.jpg",

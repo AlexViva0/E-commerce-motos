@@ -19,7 +19,13 @@ class _OffersCarouselState extends State<OffersCarousel> {
   int _selectedIndex = 0;
   late PageController _pageController;
   late Timer _timer;
-  final List<Moto> _destacadas = motosDestacadas;
+  final List<Moto> _destacadas = [
+    for (final moto in motosDestacadas)
+      if (moto.modelo == "MT-07")
+        motos.firstWhere((m) => m.modelo == "NAVi")
+      else
+        moto,
+  ];
 
   @override
   void initState() {
@@ -48,9 +54,7 @@ class _OffersCarouselState extends State<OffersCarousel> {
   Widget build(BuildContext context) {
     if (_destacadas.isEmpty) return const SizedBox.shrink();
     final width = MediaQuery.sizeOf(context).width - defaultPadding * 2;
-    // Barra superior + póster (1376x768) + pie con precio.
-    final alto =
-        _TarjetaBanner.altoCabecera + width / 1.79 + _TarjetaBanner.altoPie;
+    final alto = width / 1.79 + _TarjetaBanner.altoPie;
 
     return Column(
       children: [
@@ -100,8 +104,7 @@ class _OffersCarouselState extends State<OffersCarousel> {
   }
 }
 
-/// Tarjeta del carrusel (estilo Astra): etiqueta arriba, póster al
-/// centro y pie oscuro con el precio y "Ver ficha".
+/// Póster con el precio y la categoría en el pie de la tarjeta.
 class _TarjetaBanner extends StatelessWidget {
   const _TarjetaBanner({
     required this.moto,
@@ -109,7 +112,6 @@ class _TarjetaBanner extends StatelessWidget {
     required this.press,
   });
 
-  static const double altoCabecera = 44;
   static const double altoPie = 64;
 
   final Moto moto;
@@ -130,27 +132,6 @@ class _TarjetaBanner extends StatelessWidget {
         ),
         child: Column(
           children: [
-            SizedBox(
-              height: altoCabecera,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Align(
-                  alignment: AlignmentDirectional.centerStart,
-                  child: Text(
-                    "${moto.marca.nombre.toUpperCase()}   /   ${moto.categoria.toUpperCase()}",
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                      fontFamily: monoFont,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 11,
-                      letterSpacing: 1,
-                      color: Color(0xFF4A4E58),
-                    ),
-                  ),
-                ),
-              ),
-            ),
             Expanded(
               child: Hero(
                 tag: heroTag,
@@ -173,28 +154,57 @@ class _TarjetaBanner extends StatelessWidget {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text(
-                    formatoPrecio(moto.precio),
-                    style: const TextStyle(
-                      fontFamily: grandisExtendedFont,
-                      fontWeight: FontWeight.w700,
-                      fontSize: 22,
-                      color: Colors.white,
-                    ),
-                  ),
-                  const SizedBox(width: 4),
-                  const Padding(
-                    padding: EdgeInsets.only(top: 6),
-                    child: Text(
-                      "MXN",
-                      style: TextStyle(
-                        fontFamily: monoFont,
-                        fontSize: 10,
-                        color: Colors.white60,
+                  Expanded(
+                    child: FittedBox(
+                      fit: BoxFit.scaleDown,
+                      alignment: Alignment.centerLeft,
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            formatoPrecio(moto.precio),
+                            style: const TextStyle(
+                              fontFamily: grandisExtendedFont,
+                              fontWeight: FontWeight.w700,
+                              fontSize: 22,
+                              color: Colors.white,
+                            ),
+                          ),
+                          const SizedBox(width: 4),
+                          const Padding(
+                            padding: EdgeInsets.only(top: 6),
+                            child: Text(
+                              "MXN",
+                              style: TextStyle(
+                                fontFamily: monoFont,
+                                fontSize: 10,
+                                color: Colors.white60,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(width: 8),
+                          Container(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 8, vertical: 3),
+                            decoration: BoxDecoration(
+                              color: const Color(0x1FFFFFFF),
+                              border: Border.all(color: const Color(0x33FFFFFF)),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child: Text(
+                              moto.categoria.toUpperCase(),
+                              style: const TextStyle(
+                                fontFamily: monoFont,
+                                fontSize: 11,
+                                color: Color(0xD9FFFFFF),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
-                  const Spacer(),
+                  const SizedBox(width: 8),
                   const Text(
                     "Ver ficha",
                     style: TextStyle(
