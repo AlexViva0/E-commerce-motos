@@ -1,3 +1,31 @@
+# Catálogo de Motos
+
+App de catálogo de motos hecha en Flutter para la exposición de Desarrollo Móvil. Es solo una demostración: no hay compras ni backend.
+
+## Qué incluye
+
+- 12 motos con ficha técnica: cilindrada, potencia, peso, relación peso/potencia, motor, transmisión, colores y precio de referencia en MXN.
+- Filtro por categoría (Deportiva, Naked, Aventura, Urbana, Trabajo), búsqueda por modelo, marca o cilindrada, y orden por precio, potencia o peso.
+- Explorar por marca, favoritos y pantalla de créditos.
+- Los datos están en `lib/models/moto_model.dart`.
+
+## Cómo correrla
+
+```bash
+flutter pub get
+flutter run
+```
+
+## Créditos
+
+- Basada en la plantilla gratuita **FlutterShop** de Abu Anwar ([The Flutter Way](https://github.com/abuanwar072/E-commerce-Complete-Flutter-UI)). Todo el diseño base es suyo; este fork lo adapta a motos.
+- Fotos: Wikimedia Commons. Cada foto conserva la licencia y la autoría indicadas en su página.
+- Las fichas técnicas y precios son aproximados y solo de referencia. Las marcas y logotipos pertenecen a sus dueños.
+
+---
+
+## README original de la plantilla
+
 # Flutter E-Commerce App Template
 
 <p align="center">

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_svg/svg.dart';
-
 import '../../../constants.dart';
+import '../banner_moto_decorations.dart' show MotoActionButton, MotoAmberBadge;
 import 'banner_s.dart';
 
 class BannerSStyle5 extends StatelessWidget {
@@ -23,11 +22,14 @@ class BannerSStyle5 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BannerS(
-      image: image!,
+      image: image ?? "https://i.imgur.com/wQ0sNHT.png",
       press: press,
       children: [
         Padding(
-          padding: const EdgeInsets.all(defaultPadding),
+          padding: const EdgeInsets.symmetric(
+            horizontal: defaultPadding + 4,
+            vertical: 12,
+          ),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -36,52 +38,62 @@ class BannerSStyle5 extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    if (subtitle != null)
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: defaultPadding / 2,
-                            vertical: defaultPadding / 8),
-                        color: Colors.white70,
-                        child: Text(
-                          subtitle!,
-                          style: const TextStyle(
-                            color: Colors.black54,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 12,
-                          ),
-                        ),
-                      ),
-                    const SizedBox(height: defaultPadding / 2),
+                    MotoAmberBadge(
+                      label: (subtitle ?? "2026").toUpperCase(),
+                      compact: true,
+                    ),
+                    const SizedBox(height: 5),
                     Text(
                       title.toUpperCase(),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
                         fontFamily: grandisExtendedFont,
-                        fontSize: 28,
+                        fontSize: 21,
                         fontWeight: FontWeight.w900,
-                        color: Colors.white,
-                        height: 1,
+                        color: whiteColor,
+                        height: 1.05,
                       ),
                     ),
-                    // const SizedBox(height: defaultPadding / 4),
-                    if (bottomText != null)
-                      Text(
-                        bottomText!,
-                        style: const TextStyle(
-                          fontFamily: grandisExtendedFont,
-                          color: Colors.white,
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      )
+                    if (bottomText != null) ...[
+                      const SizedBox(height: 4),
+                      Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Container(
+                            width: 12,
+                            height: 2.5,
+                            decoration: BoxDecoration(
+                              color: primaryColor,
+                              borderRadius: BorderRadius.circular(2),
+                            ),
+                          ),
+                          const SizedBox(width: 6),
+                          Flexible(
+                            child: Text(
+                              bottomText!.toUpperCase(),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                fontFamily: grandisExtendedFont,
+                                color: whiteColor.withOpacity(0.9),
+                                fontSize: 10.5,
+                                fontWeight: FontWeight.w700,
+                                letterSpacing: 0.8,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ],
                 ),
               ),
               const SizedBox(width: defaultPadding),
-              SvgPicture.asset(
-                "assets/icons/miniRight.svg",
-                height: 28,
-                colorFilter:
-                    const ColorFilter.mode(Colors.white, BlendMode.srcIn),
+              MotoActionButton(
+                press: press,
+                size: 42,
+                iconPath: "assets/icons/miniRight.svg",
               ),
             ],
           ),

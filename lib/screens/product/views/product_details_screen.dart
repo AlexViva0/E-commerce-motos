@@ -1,170 +1,116 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:shop/components/buy_full_ui_kit.dart';
 import 'package:shop/components/cart_button.dart';
-import 'package:shop/components/custom_modal_bottom_sheet.dart';
-import 'package:shop/components/product/product_card.dart';
+import 'package:shop/components/moto_card.dart';
 import 'package:shop/constants.dart';
-import 'package:shop/screens/product/views/product_returns_screen.dart';
+import 'package:shop/models/moto_model.dart';
+import 'package:shop/state/favoritos.dart';
 
-import 'package:shop/route/screen_export.dart';
-
-import 'components/notify_me_card.dart';
 import 'components/product_images.dart';
 import 'components/product_info.dart';
-import 'components/product_list_tile.dart';
-import '../../../components/review_card.dart';
-import 'product_buy_now_screen.dart';
 
+/// Ficha de una moto. Recibe el id de la moto como argumento de la ruta.
 class ProductDetailsScreen extends StatelessWidget {
-  const ProductDetailsScreen({super.key, this.isProductAvailable = true});
+  const ProductDetailsScreen({super.key, required this.motoId});
 
-  final bool isProductAvailable;
+  final int motoId;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      bottomNavigationBar: isProductAvailable
-          ? CartButton(
-              price: 140,
-              press: () {
-                customModalBottomSheet(
-                  context,
-                  height: MediaQuery.of(context).size.height * 0.92,
-                  child: const ProductBuyNowScreen(),
-                );
-              },
-            )
-          :
+    final moto = motoPorId(motoId);
+    final similares = motos
+        .where((m) => m.categoria == moto.categoria && m.id != moto.id)
+        .toList();
 
-          /// If profuct is not available then show [NotifyMeCard]
-          NotifyMeCard(
-              isNotify: false,
-              onChanged: (value) {},
-            ),
+    return Scaffold(
+      bottomNavigationBar: CartButton(
+        price: moto.precio,
+        press: () => _mostrarInteres(context, moto),
+      ),
       body: SafeArea(
         child: CustomScrollView(
           slivers: [
             SliverAppBar(
               backgroundColor: Theme.of(context).scaffoldBackgroundColor,
               floating: true,
-              actions: [
-                IconButton(
-                  onPressed: () {},
-                  icon: SvgPicture.asset("assets/icons/Bookmark.svg",
-                      color: Theme.of(context).textTheme.bodyLarge!.color),
-                ),
-              ],
+              actions: [_BotonFavorito(moto: moto)],
             ),
-            const ProductImages(
-              images: [productDemoImg1, productDemoImg2, productDemoImg3],
-            ),
-            ProductInfo(
-              brand: "LIPSY LONDON",
-              title: "Sleeveless Ruffle",
-              isAvailable: isProductAvailable,
-              description:
-                  "A cool gray cap in soft corduroy. Watch me.' By buying cotton products from Lindex, you’re supporting more responsibly...",
-              rating: 4.4,
-              numOfReviews: 126,
-            ),
-            ProductListTile(
-              svgSrc: "assets/icons/Product.svg",
-              title: "Product Details",
-              press: () {
-                customModalBottomSheet(
-                  context,
-                  height: MediaQuery.of(context).size.height * 0.92,
-                  child: const BuyFullKit(
-                      images: ["assets/screens/Product detail.png"]),
-                );
-              },
-            ),
-            ProductListTile(
-              svgSrc: "assets/icons/Delivery.svg",
-              title: "Shipping Information",
-              press: () {
-                customModalBottomSheet(
-                  context,
-                  height: MediaQuery.of(context).size.height * 0.92,
-                  child: const BuyFullKit(
-                    images: ["assets/screens/Shipping information.png"],
+            ProductImages(images: [moto.imagen]),
+            ProductInfo(moto: moto),
+            FichaTecnica(moto: moto),
+            if (similares.isNotEmpty) ...[
+              SliverPadding(
+                padding: const EdgeInsets.all(defaultPadding),
+                sliver: SliverToBoxAdapter(
+                  child: Text(
+                    "Más motos ${moto.categoria}",
+                    style: Theme.of(context).textTheme.titleSmall!,
                   ),
-                );
-              },
-            ),
-            ProductListTile(
-              svgSrc: "assets/icons/Return.svg",
-              title: "Returns",
-              isShowBottomBorder: true,
-              press: () {
-                customModalBottomSheet(
-                  context,
-                  height: MediaQuery.of(context).size.height * 0.92,
-                  child: const ProductReturnsScreen(),
-                );
-              },
-            ),
-            const SliverToBoxAdapter(
-              child: Padding(
-                padding: EdgeInsets.all(defaultPadding),
-                child: ReviewCard(
-                  rating: 4.3,
-                  numOfReviews: 128,
-                  numOfFiveStar: 80,
-                  numOfFourStar: 30,
-                  numOfThreeStar: 5,
-                  numOfTwoStar: 4,
-                  numOfOneStar: 1,
                 ),
               ),
-            ),
-            ProductListTile(
-              svgSrc: "assets/icons/Chat.svg",
-              title: "Reviews",
-              isShowBottomBorder: true,
-              press: () {
-                Navigator.pushNamed(context, productReviewsScreenRoute);
-              },
-            ),
-            SliverPadding(
-              padding: const EdgeInsets.all(defaultPadding),
-              sliver: SliverToBoxAdapter(
-                child: Text(
-                  "You may also like",
-                  style: Theme.of(context).textTheme.titleSmall!,
-                ),
-              ),
-            ),
-            SliverToBoxAdapter(
-              child: SizedBox(
-                height: 220,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: 5,
-                  itemBuilder: (context, index) => Padding(
-                    padding: EdgeInsets.only(
-                        left: defaultPadding,
-                        right: index == 4 ? defaultPadding : 0),
-                    child: ProductCard(
-                      image: productDemoImg2,
-                      title: "Sleeveless Tiered Dobby Swing Dress",
-                      brandName: "LIPSY LONDON",
-                      price: 24.65,
-                      priceAfetDiscount: index.isEven ? 20.99 : null,
-                      dicountpercent: index.isEven ? 25 : null,
-                      press: () {},
+              SliverToBoxAdapter(
+                child: SizedBox(
+                  height: 220,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: similares.length,
+                    itemBuilder: (context, index) => Padding(
+                      padding: EdgeInsets.only(
+                          left: defaultPadding,
+                          right: index == similares.length - 1
+                              ? defaultPadding
+                              : 0),
+                      child: MotoCard(moto: similares[index]),
                     ),
                   ),
                 ),
               ),
-            ),
-            const SliverToBoxAdapter(
-              child: SizedBox(height: defaultPadding),
-            )
+            ],
+            const SliverToBoxAdapter(child: SizedBox(height: defaultPadding)),
           ],
         ),
       ),
+    );
+  }
+
+  void _mostrarInteres(BuildContext context, Moto moto) {
+    ScaffoldMessenger.of(context)
+      ..hideCurrentSnackBar()
+      ..showSnackBar(
+        SnackBar(
+          behavior: SnackBarBehavior.floating,
+          content: Text(
+              "¡Listo! Te contactaríamos sobre la ${moto.nombreCompleto}. (Demo)"),
+        ),
+      );
+  }
+}
+
+class _BotonFavorito extends StatelessWidget {
+  const _BotonFavorito({required this.moto});
+
+  final Moto moto;
+
+  @override
+  Widget build(BuildContext context) {
+    return ValueListenableBuilder<Set<int>>(
+      valueListenable: Favoritos.instancia,
+      builder: (context, favoritos, _) {
+        final esFavorita = favoritos.contains(moto.id);
+        return IconButton(
+          tooltip: esFavorita ? "Quitar de favoritos" : "Guardar en favoritos",
+          onPressed: () => Favoritos.instancia.alternar(moto.id),
+          icon: SvgPicture.asset(
+            "assets/icons/Bookmark.svg",
+            colorFilter: ColorFilter.mode(
+              esFavorita
+                  ? primaryColor
+                  : Theme.of(context).textTheme.bodyLarge!.color!,
+              BlendMode.srcIn,
+            ),
+          ),
+        );
+      },
     );
   }
 }
