@@ -180,32 +180,13 @@ class _LogoCilindra extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Text(
-          "///",
-          style: TextStyle(
-            fontFamily: grandisExtendedFont,
-            fontWeight: FontWeight.w800,
-            fontStyle: FontStyle.italic,
-            fontSize: 24,
-            letterSpacing: -3,
-            color: primaryColor,
-          ),
-        ),
-        const SizedBox(width: 8),
-        Text(
-          "Cilindra",
-          style: TextStyle(
-            fontFamily: grandisExtendedFont,
-            fontWeight: FontWeight.w800,
-            fontSize: 24,
-            letterSpacing: -0.5,
-            color: Theme.of(context).colorScheme.onSurface,
-          ),
-        ),
-      ],
+    return Image.asset(
+      Theme.of(context).brightness == Brightness.dark
+          ? 'assets/branding/logo_texto_blanco.png'
+          : 'assets/branding/logo_texto.png',
+      height: 30,
+      fit: BoxFit.contain,
+      semanticLabel: 'Cilindra',
     );
   }
 }
