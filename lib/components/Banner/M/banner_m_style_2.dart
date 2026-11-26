@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import '../banner_discount_tag.dart';
-import 'banner_m.dart';
 
 import '../../../constants.dart';
+import '../banner_discount_tag.dart';
+import '../banner_moto_decorations.dart' show MotoActionButton, MotoAmberBadge;
+import 'banner_m.dart';
 
 class BannerMStyle2 extends StatelessWidget {
   const BannerMStyle2({
@@ -23,11 +23,14 @@ class BannerMStyle2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BannerM(
-      image: image!,
+      image: image ?? "https://i.imgur.com/J1Qjut7.png",
       press: press,
       children: [
         Padding(
-          padding: const EdgeInsets.all(defaultPadding),
+          padding: const EdgeInsets.symmetric(
+            horizontal: defaultPadding + 4,
+            vertical: defaultPadding,
+          ),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -36,53 +39,48 @@ class BannerMStyle2 extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    const MotoAmberBadge(label: "SERIE 2026"),
+                    const SizedBox(height: 8),
                     Text(
                       title.toUpperCase(),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
                         fontFamily: grandisExtendedFont,
-                        fontSize: 28,
+                        fontSize: 24,
                         fontWeight: FontWeight.w900,
-                        color: Colors.white,
-                        height: 1,
+                        color: whiteColor,
+                        height: 1.04,
                       ),
                     ),
-                    const SizedBox(height: defaultPadding / 4),
-                    if (subtitle != null)
+                    if (subtitle != null) ...[
+                      const SizedBox(height: 6),
                       Text(
                         subtitle!.toUpperCase(),
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 12,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          color: whiteColor.withOpacity(0.85),
+                          fontWeight: FontWeight.w600,
+                          fontSize: 11,
+                          letterSpacing: 1.1,
                         ),
                       ),
+                    ],
                   ],
                 ),
               ),
               const SizedBox(width: defaultPadding),
-              SizedBox(
-                height: 48,
-                width: 48,
-                child: ElevatedButton(
-                  onPressed: press,
-                  style: ElevatedButton.styleFrom(
-                    shape: const CircleBorder(),
-                    backgroundColor: Colors.white,
-                  ),
-                  child: SvgPicture.asset(
-                    "assets/icons/Arrow - Right.svg",
-                    colorFilter:
-                        const ColorFilter.mode(Colors.black, BlendMode.srcIn),
-                  ),
-                ),
-              ),
+              MotoActionButton(press: press),
             ],
           ),
         ),
-        Align(
-          alignment: Alignment.topCenter,
-          child: BannerDiscountTag(percentage: discountParcent),
-        ),
+        if (discountParcent > 0)
+          Positioned(
+            top: 0,
+            right: defaultPadding * 4.5,
+            child: BannerDiscountTag(percentage: discountParcent),
+          ),
       ],
     );
   }

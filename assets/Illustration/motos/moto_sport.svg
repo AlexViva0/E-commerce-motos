@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300" fill="none">
+  <defs>
+    <linearGradient id="bgDiagonal" x1="0" y1="0" x2="300" y2="300" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#E63E1C" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#FFB020" stop-opacity="0.06"/>
+    </linearGradient>
+    <linearGradient id="fairingRed" x1="95" y1="105" x2="235" y2="185" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#E63E1C"/>
+      <stop offset="65%" stop-color="#D43515"/>
+      <stop offset="100%" stop-color="#B82E12"/>
+    </linearGradient>
+    <linearGradient id="tankRed" x1="110" y1="102" x2="175" y2="140" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FF5733"/>
+      <stop offset="40%" stop-color="#E63E1C"/>
+      <stop offset="100%" stop-color="#B82E12"/>
+    </linearGradient>
+    <linearGradient id="visorDark" x1="175" y1="88" x2="215" y2="112" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#2B303C"/>
+      <stop offset="100%" stop-color="#15171C"/>
+    </linearGradient>
+    <linearGradient id="headlightGlow" x1="230" y1="126" x2="285" y2="145" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFB020" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#FFB020" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Fondo deportivo con franjas diagonales -->
+  <circle cx="155" cy="150" r="118" fill="#F5F6F8"/>
+  <polygon points="75,55 245,55 205,235 35,235" fill="url(#bgDiagonal)"/>
+  <path d="M40 95 L98 95" stroke="#E63E1C" stroke-width="4" stroke-linecap="round" opacity="0.35"/>
+  <path d="M25 112 L76 112" stroke="#15171C" stroke-width="3" stroke-linecap="round" opacity="0.2"/>
+  <path d="M35 129 L68 129" stroke="#FFB020" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+
+  <!-- Haz de luz delantero -->
+  <polygon points="236,128 288,118 288,154 234,139" fill="url(#headlightGlow)"/>
+
+  <!-- Sombra en el asfalto -->
+  <ellipse cx="152" cy="222" rx="108" ry="12" fill="#15171C" opacity="0.14"/>
+  <line x1="34" y1="222" x2="270" y2="222" stroke="#15171C" stroke-width="2" stroke-linecap="round" opacity="0.18"/>
+
+  <!-- Rueda trasera -->
+  <g>
+    <circle cx="74" cy="180" r="39" fill="#15171C"/>
+    <circle cx="74" cy="180" r="27" fill="#252932"/>
+    <circle cx="74" cy="180" r="26" stroke="#E63E1C" stroke-width="2.5"/>
+    <circle cx="74" cy="180" r="14" fill="#D5D9E2" stroke="#15171C" stroke-width="1.5"/>
+    <!-- Radios en Y -->
+    <path d="M74 180 L74 155 M74 180 L97 190 M74 180 L58 199 M74 180 L51 169 M74 180 L92 162" stroke="#15171C" stroke-width="3.2" stroke-linecap="round"/>
+    <circle cx="74" cy="180" r="6" fill="#15171C"/>
+    <circle cx="74" cy="180" r="2.8" fill="#FFB020"/>
+    <!-- Pinza freno trasera -->
+    <path d="M84 166 L92 172 L89 179 L80 174 Z" fill="#FFB020" stroke="#15171C" stroke-width="1.2"/>
+  </g>
+
+  <!-- Rueda delantera -->
+  <g>
+    <circle cx="226" cy="180" r="39" fill="#15171C"/>
+    <circle cx="226" cy="180" r="27" fill="#252932"/>
+    <circle cx="226" cy="180" r="26" stroke="#E63E1C" stroke-width="2.5"/>
+    <!-- Disco ventilado -->
+    <circle cx="226" cy="180" r="17" fill="#E6E9EF" stroke="#15171C" stroke-width="1.5"/>
+    <circle cx="226" cy="180" r="13" fill="none" stroke="#8C93A3" stroke-width="1.5" stroke-dasharray="3 3"/>
+    <!-- Radios -->
+    <path d="M226 180 L226 155 M226 180 L248 191 M226 180 L209 199 M226 180 L203 169 M226 180 L244 162" stroke="#15171C" stroke-width="3.2" stroke-linecap="round"/>
+    <circle cx="226" cy="180" r="6" fill="#15171C"/>
+    <circle cx="226" cy="180" r="2.8" fill="#FFB020"/>
+    <!-- Pinza de freno radial ámbar -->
+    <path d="M208 175 L216 170 L218 182 L209 185 Z" fill="#FFB020" stroke="#15171C" stroke-width="1.3"/>
+  </g>
+
+  <!-- Basculante trasero y amortiguador -->
+  <path d="M74 180 L122 162 L126 172 L76 186 Z" fill="#323743" stroke="#15171C" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M107 148 L116 168" stroke="#FFB020" stroke-width="5" stroke-linecap="round"/>
+  <path d="M107 148 L116 168" stroke="#15171C" stroke-width="2" stroke-dasharray="2 3"/>
+
+  <!-- Escape deportivo bajo -->
+  <path d="M122 184 L74 171 L68 163 L126 174 Z" fill="#464C59" stroke="#15171C" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M68 163 L76 160 L81 170 L74 171 Z" fill="#15171C"/>
+
+  <!-- Motor y chasis grafito -->
+  <path d="M120 134 L176 130 L172 182 L126 182 Z" fill="#1E222B" stroke="#15171C" stroke-width="2"/>
+  <path d="M124 140 L152 136 L142 162 L122 160 Z" fill="#3A404D" stroke="#15171C" stroke-width="1.5"/>
+  <circle cx="145" cy="171" r="9" fill="#2D323E" stroke="#15171C" stroke-width="1.8"/>
+  <circle cx="145" cy="171" r="3.5" fill="#FFB020"/>
+
+  <!-- Horquilla delantera invertida -->
+  <line x1="184" y1="106" x2="207" y2="146" stroke="#FFB020" stroke-width="6.5" stroke-linecap="round"/>
+  <line x1="205" y1="142" x2="226" y2="180" stroke="#D5D9E2" stroke-width="5" stroke-linecap="round"/>
+  <line x1="184" y1="106" x2="226" y2="180" stroke="#15171C" stroke-width="1.8" stroke-linecap="round"/>
+
+  <!-- Guardabarros delantero -->
+  <path d="M196 150 C208 137 229 135 243 145 L228 151 C218 147 206 149 199 156 Z" fill="#15171C"/>
+
+  <!-- Subchasis y colín deportivo -->
+  <path d="M105 130 L56 108 L52 114 L92 138 Z" fill="#15171C"/>
+  <path d="M51 106 L96 116 L112 128 L76 131 Z" fill="url(#fairingRed)" stroke="#15171C" stroke-width="2" stroke-linejoin="round"/>
+  <!-- Luz trasera LED -->
+  <path d="M51 106 L61 108 L57 114 L49 111 Z" fill="#FFB020"/>
+
+  <!-- Asiento deportivo -->
+  <path d="M90 121 C103 125 117 125 129 121 L124 130 L88 128 Z" fill="#15171C"/>
+
+  <!-- Depósito esculpido -->
+  <path d="M121 121 C129 104 152 99 175 107 L172 126 L124 128 Z" fill="url(#tankRed)" stroke="#15171C" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M134 109 C147 104 161 106 168 111" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" opacity="0.65"/>
+
+  <!-- Cúpula y semimanillar -->
+  <path d="M178 103 C186 89 204 88 218 104 L198 113 Z" fill="url(#visorDark)" stroke="#15171C" stroke-width="2" stroke-linejoin="round"/>
+  <line x1="189" y1="95" x2="203" y2="97" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" opacity="0.55"/>
+  <path d="M172 106 L186 102" stroke="#15171C" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="172" cy="106" r="3" fill="#FFB020"/>
+
+  <!-- Carenado lateral aerodinámico -->
+  <path d="M167 110 C192 108 220 113 242 128 L232 142 C214 143 196 156 184 176 L151 178 C149 156 156 131 167 110 Z" fill="url(#fairingRed)" stroke="#15171C" stroke-width="2.2" stroke-linejoin="round"/>
+
+  <!-- Toma de aire / branquia en grafito y blanco -->
+  <path d="M172 135 L198 128 L192 142 L168 148 Z" fill="#15171C"/>
+  <path d="M178 121 L212 121 L206 126 L174 126 Z" fill="#FFFFFF"/>
+  <path d="M158 164 L182 152 L179 159 L157 170 Z" fill="#FFB020"/>
+
+  <!-- Faro LED agresivo -->
+  <path d="M225 123 L242 128 L236 138 L220 132 Z" fill="#FFFFFF" stroke="#15171C" stroke-width="1.5" stroke-linejoin="round"/>
+  <path d="M228 126 L239 129 L235 135 L225 131 Z" fill="#FFB020"/>
+</svg>

@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
-import '../../network_image_with_loader.dart';
+import '../banner_moto_decorations.dart' show MotoBannerShell;
 
 class BannerM extends StatelessWidget {
-  const BannerM(
-      {super.key,
-      required this.image,
-      required this.press,
-      required this.children});
+  const BannerM({
+    super.key,
+    required this.image,
+    required this.press,
+    required this.children,
+  });
 
   final String image;
   final VoidCallback press;
@@ -15,18 +16,12 @@ class BannerM extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AspectRatio(
+    return MotoBannerShell(
       aspectRatio: 1.87,
-      child: GestureDetector(
-        onTap: press,
-        child: Stack(
-          children: [
-            NetworkImageWithLoader(image, radius: 0),
-            Container(color: Colors.black45),
-            ...children,
-          ],
-        ),
-      ),
+      image: image,
+      press: press,
+      showShadow: false,
+      children: children,
     );
   }
 }
