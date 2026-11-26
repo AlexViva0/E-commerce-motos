@@ -345,9 +345,9 @@ const List<Moto> motos = [
     motor:
         "Monocilíndrico, 4 tiempos, SOHC, 4 válvulas, refrigerado por aceite (SOCS)",
     transmision: "6 velocidades, transmisión final por cadena",
-    imagen:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/2021_Suzuki_Gixxer_SF_250_%2820211117%29.jpg/960px-2021_Suzuki_Gixxer_SF_250_%2820211117%29.jpg",
+    imagen: "assets/banners/gixxersf250.jpg",
     galeria: [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/2021_Suzuki_Gixxer_SF_250_%2820211117%29.jpg/960px-2021_Suzuki_Gixxer_SF_250_%2820211117%29.jpg",
       "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/db/Suzuki_Gixxer_Sf250_%E3%83%88%E3%83%AA%E3%83%88%E3%83%B3%E3%83%96%E3%83%AB%E3%83%BC.jpg/960px-Suzuki_Gixxer_Sf250_%E3%83%88%E3%83%AA%E3%83%88%E3%83%B3%E3%83%96%E3%83%AB%E3%83%BC.jpg",
       "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c3/2021_Suzuki_Gixxer_SF_250_100th_Anniversary_MotoGP_Edition_01.jpg/960px-2021_Suzuki_Gixxer_SF_250_100th_Anniversary_MotoGP_Edition_01.jpg",
       "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/78/2021_Suzuki_Gixxer_SF_250_100th_Anniversary_MotoGP_Edition_02.jpg/960px-2021_Suzuki_Gixxer_SF_250_100th_Anniversary_MotoGP_Edition_02.jpg",
@@ -404,8 +404,10 @@ const List<Moto> motos = [
         "Bicilíndrico en paralelo, 4 tiempos, DOHC, 8 válvulas, refrigerado por líquido",
     transmision:
         "6 velocidades, embrague asistido y antirrebote (Assist & Slipper Clutch)",
-    imagen:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Kawasaki_Z500_%28ER500%29_2024.jpg/960px-Kawasaki_Z500_%28ER500%29_2024.jpg",
+    imagen: "assets/banners/z500.jpg",
+    galeria: [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Kawasaki_Z500_%28ER500%29_2024.jpg/960px-Kawasaki_Z500_%28ER500%29_2024.jpg"
+    ],
     descripcion:
         "Supernaked ligera con estética agresiva Sugomi y un motor bicilíndrico de 451 cc ágil para ciudad y curvas. Incorpora frenos ABS de serie, embrague antirrebote y ergonomía adaptable ERGO-FIT.",
     colores: ["Gris / Negro", "Blanco"],
@@ -461,8 +463,10 @@ const List<Moto> motos = [
     motor:
         "Monocilíndrico, 4 tiempos, SOHC, 2 válvulas, enfriado por aire natural",
     transmision: "Mecánica de 5 velocidades tipo retorno",
-    imagen:
-        "https://www.honda.mx/web/img/motorcycles/models/trabajo/gl-150-cargo/slider/1.jpg",
+    imagen: "assets/banners/gl150cargo.jpg",
+    galeria: [
+      "https://www.honda.mx/web/img/motorcycles/models/trabajo/gl-150-cargo/slider/1.jpg"
+    ],
     descripcion:
         "Motocicleta utilitaria pensada para jornadas intensas de reparto y carga, con parrilla trasera reforzada y doble amortiguador posterior. Su motor carburado y frenos de tambor priorizan la durabilidad y el mantenimiento sencillo.",
     colores: ["Blanco", "Rojo"],
@@ -620,8 +624,10 @@ const List<Moto> motos = [
     precio: 41990.0,
     motor: "4 tiempos, monocilíndrico, enfriado por aceite",
     transmision: "Manual de 6 velocidades",
-    imagen:
-        "https://www.motobunker.mx/Images/Familia/REBELDES/ROCKETMAN_RACING_300/4fc577a1-8ec0-4bb5-ac36-2229efb46640.jpg",
+    imagen: "assets/banners/rocketmanracing300.jpg",
+    galeria: [
+      "https://www.motobunker.mx/Images/Familia/REBELDES/ROCKETMAN_RACING_300/4fc577a1-8ec0-4bb5-ac36-2229efb46640.jpg"
+    ],
     descripcion:
         "Motocicleta de estética café racer clásica equipada con un bloque de 300 cc, caja de seis marchas y tanque de 20 litros para recorridos largos. Incluye iluminación LED, frenos de disco en ambos ejes y sistema de conectividad VenTec.",
     colores: ["Gris"],
