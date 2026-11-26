@@ -47,7 +47,12 @@ class ProductCard extends StatelessWidget {
     final mutedTextColor = theme.textTheme.bodySmall?.color ??
         colorScheme.onSurface.withValues(alpha: 0.45);
 
-    Widget imageWidget = NetworkImageWithLoader(image, radius: 12);
+    // Los pósters (16:9) se muestran completos dentro de la tarjeta.
+    Widget imageWidget = NetworkImageWithLoader(image,
+        radius: 12,
+        fit: image.startsWith("assets/banners/")
+            ? BoxFit.contain
+            : BoxFit.cover);
     if (heroTag != null && heroTag!.isNotEmpty) {
       imageWidget = Hero(
         tag: heroTag!,
