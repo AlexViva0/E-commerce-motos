@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../constants.dart';
 import '../network_image_with_loader.dart';
 
 class SecondaryProductCard extends StatelessWidget {
@@ -14,6 +13,7 @@ class SecondaryProductCard extends StatelessWidget {
     this.dicountpercent,
     this.press,
     this.style,
+    this.heroTag,
   });
 
   final String image, brandName, title;
@@ -23,6 +23,7 @@ class SecondaryProductCard extends StatelessWidget {
   final VoidCallback? press;
 
   final ButtonStyle? style;
+  final String? heroTag;
 
   String _formatPrice(double value) {
     final digits = value.toStringAsFixed(0);
@@ -36,13 +37,36 @@ class SecondaryProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+    final isDark = theme.brightness == Brightness.dark;
+    final imageSurface = Color.alphaBlend(
+      colorScheme.onSurface.withValues(alpha: 0.05),
+      colorScheme.surface,
+    );
+    final secondaryTextColor = theme.textTheme.bodyMedium?.color ??
+        colorScheme.onSurface.withValues(alpha: 0.65);
+    final mutedTextColor = theme.textTheme.bodySmall?.color ??
+        colorScheme.onSurface.withValues(alpha: 0.45);
+
+    Widget imageWidget = NetworkImageWithLoader(image, radius: 12);
+    if (heroTag != null && heroTag!.isNotEmpty) {
+      imageWidget = Hero(
+        tag: heroTag!,
+        child: Material(
+          type: MaterialType.transparency,
+          child: imageWidget,
+        ),
+      );
+    }
+
     return DecoratedBox(
       decoration: BoxDecoration(
-        color: whiteColor,
+        color: colorScheme.surface,
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: blackColor.withOpacity(0.06),
+            color: colorScheme.shadow.withValues(alpha: isDark ? 0.28 : 0.06),
             blurRadius: 12,
             offset: const Offset(0, 4),
           ),
@@ -55,8 +79,8 @@ class SecondaryProductCard extends StatelessWidget {
               minimumSize: const Size(268, 114),
               maximumSize: const Size(268, 114),
               padding: const EdgeInsets.all(8),
-              backgroundColor: whiteColor,
-              side: const BorderSide(color: blackColor10, width: 1),
+              backgroundColor: colorScheme.surface,
+              side: BorderSide(color: colorScheme.outline, width: 1),
               shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(16)),
               ),
@@ -67,14 +91,14 @@ class SecondaryProductCard extends StatelessWidget {
               aspectRatio: 1.05,
               child: Container(
                 decoration: BoxDecoration(
-                  color: lightGreyColor,
+                  color: imageSurface,
                   borderRadius: BorderRadius.circular(12),
                 ),
                 clipBehavior: Clip.antiAlias,
                 child: Stack(
                   fit: StackFit.expand,
                   children: [
-                    NetworkImageWithLoader(image, radius: 12),
+                    imageWidget,
                     if (dicountpercent != null)
                       Positioned(
                         right: 6,
@@ -85,13 +109,13 @@ class SecondaryProductCard extends StatelessWidget {
                             vertical: 2,
                           ),
                           decoration: BoxDecoration(
-                            color: primaryColor,
+                            color: colorScheme.primary,
                             borderRadius: BorderRadius.circular(8),
                           ),
                           child: Text(
                             "-$dicountpercent%",
-                            style: const TextStyle(
-                              color: whiteColor,
+                            style: TextStyle(
+                              color: colorScheme.onPrimary,
                               fontSize: 9.5,
                               fontWeight: FontWeight.w700,
                             ),
@@ -116,11 +140,11 @@ class SecondaryProductCard extends StatelessWidget {
                             brandName.toUpperCase(),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontSize: 10,
                               fontWeight: FontWeight.w700,
                               letterSpacing: 0.7,
-                              color: blackColor60,
+                              color: secondaryTextColor,
                             ),
                           ),
                         ),
@@ -131,15 +155,16 @@ class SecondaryProductCard extends StatelessWidget {
                             vertical: 2,
                           ),
                           decoration: BoxDecoration(
-                            color: lightGreyColor,
+                            color: imageSurface,
                             borderRadius: BorderRadius.circular(6),
                           ),
-                          child: const Text(
+                          child: Text(
                             "MOTO",
                             style: TextStyle(
                               fontSize: 8.5,
                               fontWeight: FontWeight.w700,
-                              color: blackColor80,
+                              color:
+                                  colorScheme.onSurface.withValues(alpha: 0.8),
                             ),
                           ),
                         ),
@@ -150,11 +175,11 @@ class SecondaryProductCard extends StatelessWidget {
                       title,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 12.5,
                         fontWeight: FontWeight.w700,
                         height: 1.2,
-                        color: blackColor,
+                        color: colorScheme.onSurface,
                       ),
                     ),
                     const Spacer(),
@@ -167,8 +192,8 @@ class SecondaryProductCard extends StatelessWidget {
                               children: [
                                 Text(
                                   _formatPrice(priceAfetDiscount!),
-                                  style: const TextStyle(
-                                    color: primaryColor,
+                                  style: TextStyle(
+                                    color: colorScheme.primary,
                                     fontWeight: FontWeight.w700,
                                     fontSize: 13.5,
                                   ),
@@ -176,8 +201,8 @@ class SecondaryProductCard extends StatelessWidget {
                                 const SizedBox(width: 5),
                                 Text(
                                   _formatPrice(price),
-                                  style: const TextStyle(
-                                    color: blackColor40,
+                                  style: TextStyle(
+                                    color: mutedTextColor,
                                     fontSize: 10.5,
                                     decoration: TextDecoration.lineThrough,
                                   ),
@@ -186,8 +211,8 @@ class SecondaryProductCard extends StatelessWidget {
                             )
                           : Text(
                               _formatPrice(price),
-                              style: const TextStyle(
-                                color: primaryColor,
+                              style: TextStyle(
+                                color: colorScheme.primary,
                                 fontWeight: FontWeight.w700,
                                 fontSize: 13.5,
                               ),

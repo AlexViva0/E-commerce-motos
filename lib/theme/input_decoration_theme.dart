@@ -31,16 +31,17 @@ const InputDecorationTheme darkInputDecorationTheme = InputDecorationTheme(
     horizontal: defaultPadding,
     vertical: 14,
   ),
-  hintStyle: TextStyle(color: whileColor40, fontSize: 14),
-  labelStyle: TextStyle(color: whileColor60, fontWeight: FontWeight.w500),
+  hintStyle: TextStyle(color: Color(0xFF8C919E), fontSize: 14),
+  labelStyle: TextStyle(color: Color(0xFFB3B7C3), fontWeight: FontWeight.w500),
   floatingLabelStyle: TextStyle(
     color: primaryColor,
     fontWeight: FontWeight.w600,
   ),
-  prefixIconColor: whileColor60,
-  suffixIconColor: whileColor60,
-  border: outlineInputBorder,
-  enabledBorder: outlineInputBorder,
+  prefixIconColor: Color(0xFFB3B7C3),
+  suffixIconColor: Color(0xFFB3B7C3),
+  border: darkOutlineInputBorder,
+  enabledBorder: darkOutlineInputBorder,
+  disabledBorder: darkOutlineInputBorder,
   focusedBorder: focusedOutlineInputBorder,
   errorBorder: errorOutlineInputBorder,
   focusedErrorBorder: errorOutlineInputBorder,
@@ -50,6 +51,13 @@ const OutlineInputBorder outlineInputBorder = OutlineInputBorder(
   borderRadius: BorderRadius.all(Radius.circular(defaultBorderRadious)),
   borderSide: BorderSide(
     color: Colors.transparent,
+  ),
+);
+
+const OutlineInputBorder darkOutlineInputBorder = OutlineInputBorder(
+  borderRadius: BorderRadius.all(Radius.circular(defaultBorderRadious)),
+  borderSide: BorderSide(
+    color: Color(0xFF2B2E36),
   ),
 );
 
@@ -70,7 +78,8 @@ OutlineInputBorder secodaryOutlineInputBorder(BuildContext context) {
   return OutlineInputBorder(
     borderRadius: const BorderRadius.all(Radius.circular(defaultBorderRadious)),
     borderSide: BorderSide(
-      color: Theme.of(context).textTheme.bodyLarge!.color!.withOpacity(0.15),
+      color:
+          Theme.of(context).textTheme.bodyLarge!.color!.withValues(alpha: 0.15),
     ),
   );
 }

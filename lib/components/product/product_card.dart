@@ -13,6 +13,7 @@ class ProductCard extends StatelessWidget {
     this.priceAfetDiscount,
     this.dicountpercent,
     required this.press,
+    this.heroTag,
   });
 
   final String image, brandName, title;
@@ -20,6 +21,7 @@ class ProductCard extends StatelessWidget {
   final double? priceAfetDiscount;
   final int? dicountpercent;
   final VoidCallback press;
+  final String? heroTag;
 
   String _formatPrice(double value) {
     final digits = value.toStringAsFixed(0);
@@ -33,17 +35,40 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+    final isDark = theme.brightness == Brightness.dark;
+    final imageSurface = Color.alphaBlend(
+      colorScheme.onSurface.withValues(alpha: 0.05),
+      colorScheme.surface,
+    );
+    final secondaryTextColor = theme.textTheme.bodyMedium?.color ??
+        colorScheme.onSurface.withValues(alpha: 0.65);
+    final mutedTextColor = theme.textTheme.bodySmall?.color ??
+        colorScheme.onSurface.withValues(alpha: 0.45);
+
+    Widget imageWidget = NetworkImageWithLoader(image, radius: 12);
+    if (heroTag != null && heroTag!.isNotEmpty) {
+      imageWidget = Hero(
+        tag: heroTag!,
+        child: Material(
+          type: MaterialType.transparency,
+          child: imageWidget,
+        ),
+      );
+    }
+
     return SizedBox(
       width: 152,
       height: 220,
       child: DecoratedBox(
         decoration: BoxDecoration(
-          color: whiteColor,
+          color: colorScheme.surface,
           borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: blackColor10, width: 1),
+          border: Border.all(color: colorScheme.outline, width: 1),
           boxShadow: [
             BoxShadow(
-              color: blackColor.withOpacity(0.06),
+              color: colorScheme.shadow.withValues(alpha: isDark ? 0.28 : 0.06),
               blurRadius: 12,
               offset: const Offset(0, 4),
             ),
@@ -64,14 +89,14 @@ class ProductCard extends StatelessWidget {
                     aspectRatio: 1.25,
                     child: Container(
                       decoration: BoxDecoration(
-                        color: lightGreyColor,
+                        color: imageSurface,
                         borderRadius: BorderRadius.circular(12),
                       ),
                       clipBehavior: Clip.antiAlias,
                       child: Stack(
                         fit: StackFit.expand,
                         children: [
-                          NetworkImageWithLoader(image, radius: 12),
+                          imageWidget,
                           Positioned(
                             left: 6,
                             top: 6,
@@ -81,13 +106,13 @@ class ProductCard extends StatelessWidget {
                                 vertical: 3,
                               ),
                               decoration: BoxDecoration(
-                                color: blackColor.withOpacity(0.78),
+                                color: blackColor.withValues(alpha: 0.78),
                                 borderRadius: BorderRadius.circular(8),
                               ),
                               child: const Text(
                                 "MOTO",
                                 style: TextStyle(
-                                  color: whiteColor,
+                                  color: Colors.white,
                                   fontSize: 8.5,
                                   fontWeight: FontWeight.w700,
                                   letterSpacing: 0.6,
@@ -105,13 +130,13 @@ class ProductCard extends StatelessWidget {
                                   vertical: 3,
                                 ),
                                 decoration: BoxDecoration(
-                                  color: primaryColor,
+                                  color: colorScheme.primary,
                                   borderRadius: BorderRadius.circular(8),
                                 ),
                                 child: Text(
                                   "-$dicountpercent%",
-                                  style: const TextStyle(
-                                    color: whiteColor,
+                                  style: TextStyle(
+                                    color: colorScheme.onPrimary,
                                     fontSize: 9.5,
                                     fontWeight: FontWeight.w700,
                                   ),
@@ -132,11 +157,11 @@ class ProductCard extends StatelessWidget {
                             brandName.toUpperCase(),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontSize: 10,
                               fontWeight: FontWeight.w700,
                               letterSpacing: 0.7,
-                              color: blackColor60,
+                              color: secondaryTextColor,
                             ),
                           ),
                           const SizedBox(height: 3),
@@ -144,11 +169,11 @@ class ProductCard extends StatelessWidget {
                             title,
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontSize: 12.5,
                               fontWeight: FontWeight.w700,
                               height: 1.2,
-                              color: blackColor,
+                              color: colorScheme.onSurface,
                             ),
                           ),
                           const Spacer(),
@@ -167,8 +192,8 @@ class ProductCard extends StatelessWidget {
                                               Text(
                                                 _formatPrice(
                                                     priceAfetDiscount!),
-                                                style: const TextStyle(
-                                                  color: primaryColor,
+                                                style: TextStyle(
+                                                  color: colorScheme.primary,
                                                   fontWeight: FontWeight.w700,
                                                   fontSize: 13.5,
                                                 ),
@@ -176,8 +201,8 @@ class ProductCard extends StatelessWidget {
                                               const SizedBox(width: 4),
                                               Text(
                                                 _formatPrice(price),
-                                                style: const TextStyle(
-                                                  color: blackColor40,
+                                                style: TextStyle(
+                                                  color: mutedTextColor,
                                                   fontSize: 10.5,
                                                   decoration: TextDecoration
                                                       .lineThrough,
@@ -187,8 +212,8 @@ class ProductCard extends StatelessWidget {
                                           )
                                         : Text(
                                             _formatPrice(price),
-                                            style: const TextStyle(
-                                              color: primaryColor,
+                                            style: TextStyle(
+                                              color: colorScheme.primary,
                                               fontWeight: FontWeight.w700,
                                               fontSize: 13.5,
                                             ),
@@ -201,13 +226,13 @@ class ProductCard extends StatelessWidget {
                                 width: 22,
                                 height: 22,
                                 decoration: BoxDecoration(
-                                  color: lightGreyColor,
+                                  color: imageSurface,
                                   borderRadius: BorderRadius.circular(7),
                                 ),
-                                child: const Icon(
+                                child: Icon(
                                   Icons.arrow_forward_rounded,
                                   size: 13,
-                                  color: primaryColor,
+                                  color: colorScheme.primary,
                                 ),
                               ),
                             ],

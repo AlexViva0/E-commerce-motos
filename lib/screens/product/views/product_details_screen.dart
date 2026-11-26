@@ -1,3 +1,4 @@
+import 'package:shop/components/compare_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shop/components/cart_button.dart';
@@ -11,13 +12,19 @@ import 'components/product_info.dart';
 
 /// Ficha de una moto. Recibe el id de la moto como argumento de la ruta.
 class ProductDetailsScreen extends StatelessWidget {
-  const ProductDetailsScreen({super.key, required this.motoId});
+  const ProductDetailsScreen({
+    super.key,
+    required this.motoId,
+    this.heroTag,
+  });
 
   final int motoId;
+  final String? heroTag;
 
   @override
   Widget build(BuildContext context) {
     final moto = motoPorId(motoId);
+    final effectiveHeroTag = heroTag ?? "moto-foto-${moto.id}";
     final similares = motos
         .where((m) => m.categoria == moto.categoria && m.id != moto.id)
         .toList();
@@ -33,9 +40,17 @@ class ProductDetailsScreen extends StatelessWidget {
             SliverAppBar(
               backgroundColor: Theme.of(context).scaffoldBackgroundColor,
               floating: true,
-              actions: [_BotonFavorito(moto: moto)],
+              actions: [
+                CompareButton.icon(motoId: moto.id),
+                _BotonFavorito(moto: moto),
+              ],
             ),
-            ProductImages(images: [moto.imagen]),
+            ProductImages(
+              images: moto.fotos,
+              marca: moto.marca,
+              heroTag: effectiveHeroTag,
+              title: moto.nombreCompleto,
+            ),
             ProductInfo(moto: moto),
             FichaTecnica(moto: moto),
             if (similares.isNotEmpty) ...[
@@ -60,7 +75,10 @@ class ProductDetailsScreen extends StatelessWidget {
                           right: index == similares.length - 1
                               ? defaultPadding
                               : 0),
-                      child: MotoCard(moto: similares[index]),
+                      child: MotoCard(
+                        moto: similares[index],
+                        heroTag: "similares-${moto.id}-${similares[index].id}",
+                      ),
                     ),
                   ),
                 ),

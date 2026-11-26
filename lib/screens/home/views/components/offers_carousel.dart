@@ -3,8 +3,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:shop/components/Banner/M/banner_m_style_1.dart';
 import 'package:shop/components/dot_indicators.dart';
+import 'package:shop/components/moto_card.dart';
+import 'package:shop/components/network_image_with_loader.dart';
 import 'package:shop/models/moto_model.dart';
-import 'package:shop/route/route_constants.dart';
 
 import '../../../../constants.dart';
 
@@ -26,7 +27,7 @@ class _OffersCarouselState extends State<OffersCarousel> {
   void initState() {
     _pageController = PageController(initialPage: 0);
     _timer = Timer.periodic(const Duration(seconds: 4), (Timer timer) {
-      if (!_pageController.hasClients) return;
+      if (!_pageController.hasClients || _destacadas.length <= 1) return;
       _selectedIndex =
           _selectedIndex < _destacadas.length - 1 ? _selectedIndex + 1 : 0;
       _pageController.animateToPage(
@@ -47,6 +48,8 @@ class _OffersCarouselState extends State<OffersCarousel> {
 
   @override
   Widget build(BuildContext context) {
+    if (_destacadas.isEmpty) return const SizedBox.shrink();
+
     return AspectRatio(
       aspectRatio: 1.87,
       child: Stack(
@@ -60,13 +63,32 @@ class _OffersCarouselState extends State<OffersCarousel> {
             },
             itemBuilder: (context, index) {
               final moto = _destacadas[index];
-              return BannerMStyle1(
-                image: moto.imagen,
-                text: "${moto.marca.nombre}\n${moto.modelo}",
-                press: () => Navigator.pushNamed(
-                  context,
-                  productDetailsScreenRoute,
-                  arguments: moto.id,
+              final heroTag = "moto-banner-${moto.id}";
+              return Hero(
+                tag: heroTag,
+                flightShuttleBuilder: (
+                  flightContext,
+                  animation,
+                  flightDirection,
+                  fromHeroContext,
+                  toHeroContext,
+                ) {
+                  return ClipRRect(
+                    borderRadius: BorderRadius.circular(16),
+                    child: NetworkImageWithLoader(
+                      moto.imagen,
+                      fit: BoxFit.cover,
+                      radius: 0,
+                    ),
+                  );
+                },
+                child: Material(
+                  type: MaterialType.transparency,
+                  child: BannerMStyle1(
+                    image: moto.imagen,
+                    text: "${moto.marca.nombre}\n${moto.modelo}",
+                    press: () => abrirMoto(context, moto, heroTag: heroTag),
+                  ),
                 ),
               );
             },
