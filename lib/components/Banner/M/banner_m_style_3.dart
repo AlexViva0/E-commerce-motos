@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_svg/svg.dart';
-
-import 'banner_m.dart';
-
 import '../../../constants.dart';
+import '../banner_moto_decorations.dart'
+    show MotoActionButton, MotoAmberBadge, MotoDiscountPill;
+import 'banner_m.dart';
 
 class BannerMStyle3 extends StatelessWidget {
   const BannerMStyle3({
@@ -22,11 +21,14 @@ class BannerMStyle3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BannerM(
-      image: image!,
+      image: image ?? "https://i.imgur.com/8REExBV.png",
       press: press,
       children: [
         Padding(
-          padding: const EdgeInsets.all(defaultPadding),
+          padding: const EdgeInsets.symmetric(
+            horizontal: defaultPadding + 4,
+            vertical: defaultPadding,
+          ),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -35,51 +37,46 @@ class BannerMStyle3 extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: defaultPadding / 2,
-                          vertical: defaultPadding / 8),
-                      color: Colors.white70,
-                      child: Text(
-                        "$discountParcent% off",
-                        style: const TextStyle(
-                          color: Colors.black54,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 12,
-                        ),
-                      ),
+                    Wrap(
+                      spacing: 6,
+                      runSpacing: 4,
+                      crossAxisAlignment: WrapCrossAlignment.center,
+                      children: [
+                        const MotoAmberBadge(label: "2026"),
+                        if (discountParcent > 0)
+                          MotoDiscountPill(
+                            label: "-$discountParcent% DTO.",
+                          ),
+                      ],
                     ),
-                    const SizedBox(height: defaultPadding / 2),
+                    const SizedBox(height: 10),
                     Text(
                       title.toUpperCase(),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
                         fontFamily: grandisExtendedFont,
-                        fontSize: 28,
+                        fontSize: 24,
                         fontWeight: FontWeight.w900,
-                        color: Colors.white,
-                        height: 1,
+                        color: whiteColor,
+                        height: 1.05,
+                      ),
+                    ),
+                    const SizedBox(height: 6),
+                    Text(
+                      "VER ESPECIFICACIONES",
+                      style: TextStyle(
+                        color: whiteColor.withOpacity(0.82),
+                        fontSize: 10.5,
+                        fontWeight: FontWeight.w600,
+                        letterSpacing: 1.0,
                       ),
                     ),
                   ],
                 ),
               ),
               const SizedBox(width: defaultPadding),
-              SizedBox(
-                height: 48,
-                width: 48,
-                child: ElevatedButton(
-                  onPressed: press,
-                  style: ElevatedButton.styleFrom(
-                    shape: const CircleBorder(),
-                    backgroundColor: Colors.white,
-                  ),
-                  child: SvgPicture.asset(
-                    "assets/icons/Arrow - Right.svg",
-                    colorFilter:
-                        const ColorFilter.mode(Colors.black, BlendMode.srcIn),
-                  ),
-                ),
-              ),
+              MotoActionButton(press: press),
             ],
           ),
         ),

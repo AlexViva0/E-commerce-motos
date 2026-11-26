@@ -6,7 +6,7 @@ import '../../constants.dart';
 class BannerDiscountTag extends StatelessWidget {
   const BannerDiscountTag({
     super.key,
-    this.width = 36,
+    this.width = 40,
     this.height = 60,
     required this.percentage,
     this.percentageFontSize = 10,
@@ -26,17 +26,20 @@ class BannerDiscountTag extends StatelessWidget {
           SvgPicture.asset(
             "assets/icons/Discount_tag.svg",
             fit: BoxFit.fill,
-            colorFilter:
-                const ColorFilter.mode(Colors.white70, BlendMode.srcIn),
+            colorFilter: const ColorFilter.mode(primaryColor, BlendMode.srcIn),
           ),
-          Text(
-            "$percentage%\noff",
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontFamily: grandisExtendedFont,
-              color: Colors.black54,
-              fontSize: percentageFontSize,
-              fontWeight: FontWeight.bold,
+          Padding(
+            padding: const EdgeInsets.only(bottom: 6),
+            child: Text(
+              "-$percentage%\nDTO",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontFamily: grandisExtendedFont,
+                color: whiteColor,
+                fontSize: percentageFontSize,
+                fontWeight: FontWeight.w800,
+                height: 1.1,
+              ),
             ),
           )
         ],

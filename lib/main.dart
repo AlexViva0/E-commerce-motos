@@ -20,7 +20,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Catálogo de Motos',
       theme: AppTheme.lightTheme(context),
-      themeMode: ThemeMode.light,
+      darkTheme: AppTheme.darkTheme(context),
+      themeMode: ThemeMode.system,
       onGenerateRoute: router.generateRoute,
       initialRoute: onbordingScreenRoute,
     );

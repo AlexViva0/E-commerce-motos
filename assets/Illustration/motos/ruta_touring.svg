@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300" fill="none">
+  <defs>
+    <linearGradient id="skyGrad" x1="150" y1="35" x2="150" y2="165" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#F5F6F8"/>
+      <stop offset="100%" stop-color="#FFE7C2"/>
+    </linearGradient>
+    <linearGradient id="roadGrad" x1="150" y1="148" x2="150" y2="262" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#2D323E"/>
+      <stop offset="100%" stop-color="#15171C"/>
+    </linearGradient>
+    <linearGradient id="touringRed" x1="95" y1="130" x2="195" y2="195" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#E63E1C"/>
+      <stop offset="100%" stop-color="#B82E12"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Escena circular de ruta touring -->
+  <circle cx="150" cy="150" r="118" fill="url(#skyGrad)"/>
+
+  <!-- Sol / horizonte ámbar -->
+  <circle cx="212" cy="96" r="24" fill="#FFB020" opacity="0.28"/>
+  <circle cx="212" cy="96" r="15" fill="#FFB020"/>
+
+  <!-- Montañas estilizadas -->
+  <path d="M35 154 L88 102 L134 146 L178 96 L246 154 Z" fill="#15171C" opacity="0.16"/>
+  <path d="M52 154 L112 114 L162 154 L208 118 L266 154 Z" fill="#15171C" opacity="0.25"/>
+
+  <!-- Carretera sinuosa -->
+  <path d="M138 152 C146 164 114 176 92 192 C66 210 56 236 52 252 L248 252 C238 228 214 204 186 188 C164 175 154 162 156 152 Z" fill="url(#roadGrad)"/>
+
+  <!-- Borde apex rojo/blanco -->
+  <path d="M52 250 C60 226 76 202 104 184" stroke="#E63E1C" stroke-width="5" stroke-linecap="round"/>
+  <path d="M245 250 C230 222 204 198 176 182" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.65"/>
+
+  <!-- Línea central discontinua -->
+  <path d="M148 156 C148 166 136 176 132 186" stroke="#FFB020" stroke-width="3" stroke-linecap="round"/>
+  <path d="M130 198 C128 208 134 218 140 228" stroke="#FFB020" stroke-width="4" stroke-linecap="round"/>
+  <path d="M144 238 L152 250" stroke="#FFB020" stroke-width="5" stroke-linecap="round"/>
+
+  <!-- Marcador de ruta arriba izquierda -->
+  <g>
+    <path d="M72 68 C72 58 80 50 90 50 C100 50 108 58 108 68 C108 81 90 96 90 96 C90 96 72 81 72 68 Z" fill="#E63E1C"/>
+    <circle cx="90" cy="68" r="7" fill="#FFFFFF"/>
+    <circle cx="90" cy="68" r="3.2" fill="#FFB020"/>
+  </g>
+
+  <!-- Sombra moto touring -->
+  <ellipse cx="152" cy="228" rx="76" ry="9" fill="#0B0D10" opacity="0.45"/>
+
+  <!-- Moto Touring de perfil dinámico -->
+  <g>
+    <!-- Rueda trasera -->
+    <circle cx="98" cy="196" r="27" fill="#15171C" stroke="#FFFFFF" stroke-width="1.5" stroke-opacity="0.25"/>
+    <circle cx="98" cy="196" r="18" fill="#2A2F3A" stroke="#FFB020" stroke-width="2"/>
+    <circle cx="98" cy="196" r="8" fill="#D5D9E2"/>
+    <path d="M98 178 L98 214 M80 196 L116 196 M85 183 L111 209 M111 183 L85 209" stroke="#15171C" stroke-width="2.2"/>
+    <circle cx="98" cy="196" r="4" fill="#15171C"/>
+
+    <!-- Rueda delantera -->
+    <circle cx="204" cy="196" r="27" fill="#15171C" stroke="#FFFFFF" stroke-width="1.5" stroke-opacity="0.25"/>
+    <circle cx="204" cy="196" r="18" fill="#2A2F3A" stroke="#FFB020" stroke-width="2"/>
+    <circle cx="204" cy="196" r="8" fill="#D5D9E2"/>
+    <path d="M204 178 L204 214 M186 196 L222 196 M191 183 L217 209 M217 183 L191 209" stroke="#15171C" stroke-width="2.2"/>
+    <circle cx="204" cy="196" r="4" fill="#15171C"/>
+
+    <!-- Escape touring elevado -->
+    <path d="M134 196 L88 188 L85 180 L138 188 Z" fill="#464C59" stroke="#15171C" stroke-width="1.8"/>
+
+    <!-- Motor y cubre-cárter -->
+    <path d="M128 164 L172 162 L168 198 L134 198 Z" fill="#222630" stroke="#15171C" stroke-width="1.8"/>
+    <path d="M142 198 L174 198 L180 189 L146 189 Z" fill="#D5D9E2" stroke="#15171C" stroke-width="1.5"/>
+
+    <!-- Horquilla delantera alta touring -->
+    <line x1="178" y1="132" x2="204" y2="196" stroke="#FFB020" stroke-width="4.5" stroke-linecap="round"/>
+    <line x1="178" y1="132" x2="204" y2="196" stroke="#15171C" stroke-width="1.5" stroke-linecap="round"/>
+
+    <!-- Pico pato adventure y guardabarros -->
+    <path d="M180 153 L216 155 L206 163 L178 162 Z" fill="url(#touringRed)" stroke="#15171C" stroke-width="1.8" stroke-linejoin="round"/>
+
+    <!-- Carenado, depósito y parabrisas alto -->
+    <path d="M174 134 C178 112 188 102 196 102 L192 136 Z" fill="#FFFFFF" fill-opacity="0.65" stroke="#15171C" stroke-width="1.8" stroke-linejoin="round"/>
+    <path d="M128 144 C142 128 168 128 188 140 L184 166 L132 168 Z" fill="url(#touringRed)" stroke="#15171C" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M145 140 L176 143 L172 149 L142 146 Z" fill="#FFFFFF" opacity="0.85"/>
+
+    <!-- Manillar alto con cubrepuños -->
+    <path d="M172 132 L162 124" stroke="#15171C" stroke-width="3.5" stroke-linecap="round"/>
+    <rect x="155" y="119" width="12" height="7" rx="3" fill="#15171C"/>
+
+    <!-- Asiento biplaza touring -->
+    <path d="M90 140 C104 146 122 148 134 142 L128 153 L88 148 Z" fill="#15171C"/>
+
+    <!-- Maleta lateral touring (pannier) -->
+    <rect x="74" y="150" width="38" height="27" rx="6" fill="#1E222B" stroke="#15171C" stroke-width="2"/>
+    <rect x="79" y="156" width="28" height="4" rx="2" fill="#E63E1C"/>
+    <rect x="79" y="168" width="10" height="4" rx="2" fill="#FFB020"/>
+
+    <!-- Baúl trasero superior -->
+    <rect x="64" y="128" width="24" height="19" rx="5" fill="#2A2F3A" stroke="#15171C" stroke-width="1.8"/>
+    <rect x="66" y="134" width="6" height="6" rx="2" fill="#E63E1C"/>
+
+    <!-- Faro delantero LED -->
+    <rect x="184" y="140" width="11" height="8" rx="3" fill="#FFB020" stroke="#15171C" stroke-width="1.4"/>
+  </g>
+</svg>

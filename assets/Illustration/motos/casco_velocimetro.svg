@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300" fill="none">
+  <defs>
+    <linearGradient id="shellRed" x1="45" y1="115" x2="178" y2="232" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FF5733"/>
+      <stop offset="45%" stop-color="#E63E1C"/>
+      <stop offset="100%" stop-color="#B82E12"/>
+    </linearGradient>
+    <linearGradient id="dialBg" x1="120" y1="55" x2="255" y2="195" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#222630"/>
+      <stop offset="100%" stop-color="#15171C"/>
+    </linearGradient>
+    <linearGradient id="visorGloss" x1="92" y1="150" x2="176" y2="195" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#2C323F"/>
+      <stop offset="55%" stop-color="#15171C"/>
+      <stop offset="100%" stop-color="#0C0E12"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Fondo geométrico -->
+  <circle cx="152" cy="150" r="118" fill="#F5F6F8"/>
+  <path d="M56 226 L112 66 L248 66 L192 226 Z" fill="#E63E1C" opacity="0.08"/>
+  <ellipse cx="145" cy="242" rx="95" ry="11" fill="#15171C" opacity="0.14"/>
+
+  <!-- Velocímetro / Tacómetro deportivo (plano posterior derecho) -->
+  <g>
+    <!-- Aro exterior -->
+    <circle cx="190" cy="122" r="76" fill="#15171C"/>
+    <circle cx="190" cy="122" r="69" fill="url(#dialBg)" stroke="#383E4C" stroke-width="2"/>
+
+    <!-- Arco de RPM base -->
+    <path d="M137 154 A62 62 0 1 1 243 154" stroke="#2F3542" stroke-width="9" stroke-linecap="round" fill="none"/>
+    <!-- Arco activo blanco + ámbar + rojo -->
+    <path d="M137 154 A62 62 0 0 1 180 61" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" fill="none" opacity="0.85"/>
+    <path d="M186 60 A62 62 0 0 1 232 76" stroke="#FFB020" stroke-width="7.5" stroke-linecap="round" fill="none"/>
+    <path d="M235 80 A62 62 0 0 1 243 154" stroke="#E63E1C" stroke-width="8" stroke-linecap="round" fill="none"/>
+
+    <!-- Marcas radiales -->
+    <line x1="141" y1="146" x2="149" y2="142" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round"/>
+    <line x1="136" y1="122" x2="145" y2="122" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round"/>
+    <line x1="143" y1="96" x2="151" y2="100" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round"/>
+    <line x1="163" y1="75" x2="168" y2="83" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round"/>
+    <line x1="190" y1="68" x2="190" y2="77" stroke="#FFB020" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="218" y1="75" x2="213" y2="83" stroke="#FFB020" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="237" y1="96" x2="229" y2="100" stroke="#E63E1C" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="244" y1="122" x2="235" y2="122" stroke="#E63E1C" stroke-width="2.5" stroke-linecap="round"/>
+
+    <!-- Display digital interior -->
+    <rect x="163" y="138" width="54" height="24" rx="6" fill="#0E1015" stroke="#383E4C" stroke-width="1.5"/>
+    <rect x="171" y="146" width="22" height="5" rx="2.5" fill="#FFFFFF"/>
+    <rect x="197" y="146" width="12" height="5" rx="2.5" fill="#FFB020"/>
+    <rect x="176" y="154" width="28" height="3" rx="1.5" fill="#E63E1C"/>
+
+    <!-- Aguja roja -->
+    <polygon points="186,126 194,118 228,87 192,126" fill="#E63E1C"/>
+    <line x1="190" y1="122" x2="227" y2="88" stroke="#FF6B4A" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="190" cy="122" r="9" fill="#15171C" stroke="#FFB020" stroke-width="2.5"/>
+    <circle cx="190" cy="122" r="3" fill="#FFFFFF"/>
+  </g>
+
+  <!-- Casco integral de competición (primer plano izquierdo) -->
+  <g>
+    <!-- Spoiler trasero del casco -->
+    <path d="M40 165 L58 148 L70 168 L44 176 Z" fill="#15171C"/>
+    <path d="M42 169 L60 156 L64 163 L45 173 Z" fill="#FFB020"/>
+
+    <!-- Calota principal -->
+    <path d="M52 192 C48 146 76 114 118 114 C154 114 179 138 183 176 L186 198 C187 211 178 222 164 225 L108 232 C74 235 55 218 52 192 Z" fill="url(#shellRed)" stroke="#15171C" stroke-width="2.5" stroke-linejoin="round"/>
+
+    <!-- Franja racing blanca y grafito -->
+    <path d="M74 134 C93 121 118 117 142 123 L134 134 C113 129 93 132 76 143 Z" fill="#FFFFFF"/>
+    <path d="M62 184 L96 180 L94 216 L66 210 Z" fill="#15171C" opacity="0.9"/>
+
+    <!-- Visera ahumada -->
+    <path d="M104 152 C126 144 159 145 180 157 L184 185 C163 195 129 197 104 187 C98 176 98 162 104 152 Z" fill="url(#visorGloss)" stroke="#15171C" stroke-width="2.4" stroke-linejoin="round"/>
+
+    <!-- Reflejos en visera -->
+    <path d="M114 157 L135 153 L121 183 L108 181 Z" fill="#FFFFFF" opacity="0.22"/>
+    <path d="M141 153 L150 153 L137 184 L130 184 Z" fill="#FFB020" opacity="0.45"/>
+
+    <!-- Pivote de visera -->
+    <circle cx="101" cy="169" r="7" fill="#15171C" stroke="#FFFFFF" stroke-width="1.8"/>
+    <circle cx="101" cy="169" r="2.5" fill="#E63E1C"/>
+
+    <!-- Mentonera y entradas de aire -->
+    <path d="M126 206 L176 201 L172 214 L126 218 Z" fill="#15171C"/>
+    <rect x="136" y="207" width="8" height="4" rx="1.5" fill="#FFB020"/>
+    <rect x="148" y="206" width="8" height="4" rx="1.5" fill="#FFFFFF" opacity="0.7"/>
+    <rect x="160" y="205" width="8" height="4" rx="1.5" fill="#FFFFFF" opacity="0.7"/>
+
+    <!-- Cuello acolchado inferior -->
+    <path d="M68 221 C88 232 135 232 169 222 L162 232 C128 240 88 238 64 227 Z" fill="#15171C"/>
+  </g>
+</svg>
