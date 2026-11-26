@@ -40,6 +40,21 @@ flutter:
     - assets/banners/
 
   fonts:
+    - family: Rubik
+      fonts:
+        - asset: assets/fonts/rubik/Rubik-400.ttf
+        - asset: assets/fonts/rubik/Rubik-500.ttf
+          weight: 500
+        - asset: assets/fonts/rubik/Rubik-700.ttf
+          weight: 700
+        - asset: assets/fonts/rubik/Rubik-800.ttf
+          weight: 800
+    - family: JetBrains Mono
+      fonts:
+        - asset: assets/fonts/jetbrains_mono/JetBrainsMono-500.ttf
+          weight: 500
+        - asset: assets/fonts/jetbrains_mono/JetBrainsMono-700.ttf
+          weight: 700
     - family: Plus Jakarta
       fonts:
         - asset: assets/fonts/plus_jakarta/PlusJakartaDisplay-Regular.otf
@@ -64,13 +79,13 @@ flutter_launcher_icons:
   ios: true
   remove_alpha_ios: true
   image_path: "assets/branding/icono.png"
-  adaptive_icon_background: "#E63E1C"
+  adaptive_icon_background: "#15171C"
   adaptive_icon_foreground: "assets/branding/icono_foreground.png"
 
 flutter_native_splash:
-  color: "#E63E1C"
+  color: "#15171C"
   image: "assets/branding/splash_logo.png"
   android_12:
-    color: "#E63E1C"
+    color: "#15171C"
     image: "assets/branding/icono_foreground.png"
-    icon_background_color: "#E63E1C"
+    icon_background_color: "#15171C"

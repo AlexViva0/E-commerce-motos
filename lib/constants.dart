@@ -11,7 +11,11 @@ const productDemoImg6 = "https://i.imgur.com/JfyZlnO.png";
 
 // End For demo
 
-const grandisExtendedFont = "Grandis Extended";
+/// Tipografía de títulos (antes Grandis Extended). Rediseño Cilindra: Rubik.
+const grandisExtendedFont = "Rubik";
+
+/// Tipografía monoespaciada para etiquetas pequeñas (marca, contadores).
+const monoFont = "JetBrains Mono";
 
 // On color 80, 60.... those means opacity
 

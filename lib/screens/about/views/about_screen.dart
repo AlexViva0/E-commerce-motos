@@ -49,7 +49,7 @@ class AboutScreen extends StatelessWidget {
         const SizedBox(height: defaultPadding),
         Center(
           child: Text(
-            "Catálogo de Motos",
+            "Cilindra",
             style: theme.textTheme.titleLarge,
           ),
         ),
