@@ -54,12 +54,12 @@ const BottomNavigationBarThemeData bottomNavigationBarLightTheme =
   selectedItemColor: primaryColor,
   unselectedItemColor: blackColor40,
   selectedLabelStyle: TextStyle(
-    fontFamily: "Plus Jakarta",
+    fontFamily: "Rubik",
     fontSize: 12,
     fontWeight: FontWeight.w600,
   ),
   unselectedLabelStyle: TextStyle(
-    fontFamily: "Plus Jakarta",
+    fontFamily: "Rubik",
     fontSize: 12,
     fontWeight: FontWeight.w500,
   ),
@@ -73,12 +73,12 @@ const BottomNavigationBarThemeData bottomNavigationBarDarkTheme =
   selectedItemColor: primaryColor,
   unselectedItemColor: darkTextMuted,
   selectedLabelStyle: TextStyle(
-    fontFamily: "Plus Jakarta",
+    fontFamily: "Rubik",
     fontSize: 12,
     fontWeight: FontWeight.w600,
   ),
   unselectedLabelStyle: TextStyle(
-    fontFamily: "Plus Jakarta",
+    fontFamily: "Rubik",
     fontSize: 12,
     fontWeight: FontWeight.w500,
   ),
@@ -110,7 +110,7 @@ const ListTileThemeData listTileLightThemeData = ListTileThemeData(
   iconColor: blackColor80,
   textColor: blackColor,
   subtitleTextStyle: TextStyle(
-    fontFamily: "Plus Jakarta",
+    fontFamily: "Rubik",
     fontSize: 13,
     color: blackColor60,
   ),
@@ -120,7 +120,7 @@ const ListTileThemeData listTileDarkThemeData = ListTileThemeData(
   iconColor: darkTextSecondary,
   textColor: darkTextPrimary,
   subtitleTextStyle: TextStyle(
-    fontFamily: "Plus Jakarta",
+    fontFamily: "Rubik",
     fontSize: 13,
     color: darkTextSecondary,
   ),
@@ -191,7 +191,7 @@ final RadioThemeData radioDarkThemeData = RadioThemeData(
 const SnackBarThemeData snackBarLightThemeData = SnackBarThemeData(
   backgroundColor: blackColor,
   contentTextStyle: TextStyle(
-    fontFamily: "Plus Jakarta",
+    fontFamily: "Rubik",
     color: Colors.white,
     fontSize: 13.5,
   ),
@@ -200,7 +200,7 @@ const SnackBarThemeData snackBarLightThemeData = SnackBarThemeData(
 const SnackBarThemeData snackBarDarkThemeData = SnackBarThemeData(
   backgroundColor: Color(0xFF252830),
   contentTextStyle: TextStyle(
-    fontFamily: "Plus Jakarta",
+    fontFamily: "Rubik",
     color: darkTextPrimary,
     fontSize: 13.5,
   ),
@@ -228,13 +228,13 @@ ChipThemeData chipLightThemeData = const ChipThemeData(
   deleteIconColor: blackColor60,
   padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
   labelStyle: TextStyle(
-    fontFamily: "Plus Jakarta",
+    fontFamily: "Rubik",
     fontSize: 13,
     fontWeight: FontWeight.w600,
     color: blackColor,
   ),
   secondaryLabelStyle: TextStyle(
-    fontFamily: "Plus Jakarta",
+    fontFamily: "Rubik",
     fontSize: 13,
     fontWeight: FontWeight.w600,
     color: Colors.white,
@@ -256,13 +256,13 @@ ChipThemeData chipDarkThemeData = const ChipThemeData(
   deleteIconColor: darkTextSecondary,
   padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
   labelStyle: TextStyle(
-    fontFamily: "Plus Jakarta",
+    fontFamily: "Rubik",
     fontSize: 13,
     fontWeight: FontWeight.w600,
     color: darkTextPrimary,
   ),
   secondaryLabelStyle: TextStyle(
-    fontFamily: "Plus Jakarta",
+    fontFamily: "Rubik",
     fontSize: 13,
     fontWeight: FontWeight.w600,
     color: Colors.white,

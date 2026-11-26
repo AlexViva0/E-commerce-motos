@@ -113,7 +113,7 @@ class _OnBordingScreenState extends State<OnBordingScreen> {
                           ),
                           SizedBox(width: 6),
                           Text(
-                            "MOTO EXPO",
+                            "CILINDRA",
                             style: TextStyle(
                               fontSize: 11,
                               fontWeight: FontWeight.w800,

@@ -17,7 +17,7 @@ ElevatedButtonThemeData elevatedButtonTheme({
       shadowColor: const Color(0x33E63E1C),
       minimumSize: const Size(double.infinity, 48),
       textStyle: const TextStyle(
-        fontFamily: "Plus Jakarta",
+        fontFamily: "Rubik",
         fontSize: 15,
         fontWeight: FontWeight.w700,
         letterSpacing: 0.2,
@@ -44,7 +44,7 @@ FilledButtonThemeData filledButtonTheme({
       disabledForegroundColor: disabledForegroundColor,
       minimumSize: const Size(double.infinity, 48),
       textStyle: const TextStyle(
-        fontFamily: "Plus Jakarta",
+        fontFamily: "Rubik",
         fontSize: 15,
         fontWeight: FontWeight.w700,
         letterSpacing: 0.2,
@@ -69,7 +69,7 @@ OutlinedButtonThemeData outlinedButtonTheme({
       minimumSize: const Size(double.infinity, 48),
       side: BorderSide(width: 1.5, color: borderColor),
       textStyle: const TextStyle(
-        fontFamily: "Plus Jakarta",
+        fontFamily: "Rubik",
         fontSize: 15,
         fontWeight: FontWeight.w600,
       ),
@@ -84,7 +84,7 @@ final textButtonThemeData = TextButtonThemeData(
   style: TextButton.styleFrom(
     foregroundColor: primaryColor,
     textStyle: const TextStyle(
-      fontFamily: "Plus Jakarta",
+      fontFamily: "Rubik",
       fontWeight: FontWeight.w600,
     ),
   ),
@@ -113,7 +113,7 @@ SegmentedButtonThemeData segmentedButtonTheme({
       side: WidgetStateProperty.all(BorderSide(color: borderColor)),
       textStyle: WidgetStateProperty.all(
         const TextStyle(
-          fontFamily: "Plus Jakarta",
+          fontFamily: "Rubik",
           fontSize: 13,
           fontWeight: FontWeight.w600,
         ),

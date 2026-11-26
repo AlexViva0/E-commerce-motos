@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:catalogo_motos/components/network_image_with_loader.dart';
 import 'package:catalogo_motos/models/moto_model.dart';
@@ -12,8 +14,11 @@ class ProductImages extends StatefulWidget {
     this.marca,
     this.heroTag,
     this.title,
+    this.acciones = const [],
   });
 
+  /// Botones flotantes (estilo vidrio) en la esquina superior derecha.
+  final List<Widget> acciones;
   final List<String> images;
   final Marca? marca;
   final String? heroTag;
@@ -125,152 +130,157 @@ class _ProductImagesState extends State<ProductImages> {
       );
     }
 
-    final bool hasMultiple = widget.images.length > 1;
     final imageSurface = Color.alphaBlend(
       colorScheme.onSurface.withValues(alpha: 0.04),
       colorScheme.surface,
     );
 
+    const double radio = 22;
     return SliverToBoxAdapter(
-      child: AspectRatio(
-        aspectRatio: 1,
-        child: Stack(
-          alignment: Alignment.bottomCenter,
-          children: [
-            PageView.builder(
-              controller: _controller,
-              onPageChanged: (pageNum) {
-                setState(() => _currentPage = pageNum);
-              },
-              itemCount: widget.images.length,
-              itemBuilder: (context, index) {
-                Widget image = NetworkImageWithLoader(
-                  widget.images[index],
-                  fit: BoxFit.cover,
-                  radius: 0,
-                );
-
-                if (index == 0 &&
-                    widget.heroTag != null &&
-                    widget.heroTag!.isNotEmpty) {
-                  image = Hero(
-                    tag: widget.heroTag!,
-                    child: Material(
-                      type: MaterialType.transparency,
-                      child: image,
-                    ),
-                  );
-                }
-
-                return Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal:
-                        hasMultiple ? defaultPadding * 0.35 : defaultPadding,
-                  ),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: imageSurface,
-                      borderRadius: BorderRadius.circular(
-                        defaultBorderRadious * 2,
-                      ),
-                      border: Border.all(
-                        color: colorScheme.outline,
-                        width: 1,
-                      ),
-                    ),
-                    clipBehavior: Clip.antiAlias,
-                    child: GestureDetector(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: defaultPadding),
+        child: AspectRatio(
+          aspectRatio: 3 / 2,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(radio),
+            child: Stack(
+              fit: StackFit.expand,
+              children: [
+                Container(color: imageSurface),
+                PageView.builder(
+                  controller: _controller,
+                  onPageChanged: (pageNum) {
+                    setState(() => _currentPage = pageNum);
+                  },
+                  itemCount: widget.images.length,
+                  itemBuilder: (context, index) {
+                    Widget image = NetworkImageWithLoader(
+                      widget.images[index],
+                      fit: BoxFit.cover,
+                      radius: 0,
+                    );
+                    if (index == 0 &&
+                        widget.heroTag != null &&
+                        widget.heroTag!.isNotEmpty) {
+                      image = Hero(
+                        tag: widget.heroTag!,
+                        child: Material(
+                          type: MaterialType.transparency,
+                          child: image,
+                        ),
+                      );
+                    }
+                    return GestureDetector(
                       onTap: () => _openViewer(index),
-                      child: Stack(
-                        fit: StackFit.expand,
-                        children: [
-                          image,
-                          Positioned(
-                            top: 12,
-                            right: 12,
-                            child: Container(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 10,
-                                vertical: 6,
-                              ),
-                              decoration: BoxDecoration(
-                                color: Colors.black.withValues(alpha: 0.55),
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              child: const Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Icon(
-                                    Icons.zoom_in_rounded,
-                                    color: Colors.white,
-                                    size: 16,
-                                  ),
-                                  SizedBox(width: 4),
-                                  Text(
-                                    "Ampliar",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 11,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
+                      child: image,
+                    );
+                  },
+                ),
+                if (widget.acciones.isNotEmpty)
+                  Positioned(
+                    top: 12,
+                    right: 12,
+                    child: Row(
+                      children: [
+                        for (final (i, a) in widget.acciones.indexed) ...[
+                          if (i > 0) const SizedBox(width: 10),
+                          a,
                         ],
-                      ),
+                      ],
                     ),
                   ),
-                );
-              },
-            ),
-            if (hasMultiple)
-              Positioned(
-                bottom: defaultPadding,
-                child: Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: defaultPadding * 0.75,
-                    vertical: 6,
-                  ),
-                  decoration: BoxDecoration(
-                    color: colorScheme.surface.withValues(alpha: 0.92),
-                    borderRadius: BorderRadius.circular(50),
-                    border: Border.all(color: colorScheme.outline),
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      ...List.generate(
-                        widget.images.length,
-                        (index) => AnimatedContainer(
-                          duration: const Duration(milliseconds: 220),
-                          margin: EdgeInsets.only(
-                            right: index == widget.images.length - 1 ? 0 : 5,
-                          ),
-                          height: 6,
-                          width: index == _currentPage ? 16 : 6,
-                          decoration: BoxDecoration(
-                            color: index == _currentPage
-                                ? colorScheme.primary
-                                : colorScheme.onSurface.withValues(alpha: 0.22),
-                            borderRadius: BorderRadius.circular(6),
-                          ),
+                Positioned(
+                  left: 12,
+                  bottom: 12,
+                  child: _Vidrio(
+                    forma: BoxShape.rectangle,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 12, vertical: 6),
+                      child: Text(
+                        "${_currentPage + 1} / ${widget.images.length}",
+                        style: const TextStyle(
+                          fontFamily: monoFont,
+                          fontSize: 12,
+                          color: Colors.white,
                         ),
                       ),
-                      const SizedBox(width: 8),
-                      Text(
-                        "${_currentPage + 1}/${widget.images.length}",
-                        style: theme.textTheme.labelSmall?.copyWith(
-                          color: colorScheme.onSurface,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
                 ),
-              ),
-          ],
+                Positioned(
+                  right: 12,
+                  bottom: 12,
+                  child: BotonVidrio(
+                    icono: Icons.open_in_full_rounded,
+                    tooltip: "Ampliar foto",
+                    onTap: () => _openViewer(_currentPage),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// Botón redondo translúcido (estilo vidrio) para poner sobre fotos.
+class BotonVidrio extends StatelessWidget {
+  const BotonVidrio({
+    super.key,
+    required this.icono,
+    required this.onTap,
+    this.tooltip,
+    this.activo = false,
+  });
+
+  final IconData icono;
+  final VoidCallback onTap;
+  final String? tooltip;
+  final bool activo;
+
+  @override
+  Widget build(BuildContext context) {
+    return Tooltip(
+      message: tooltip ?? "",
+      child: GestureDetector(
+        onTap: onTap,
+        child: _Vidrio(
+          child: SizedBox(
+            width: 46,
+            height: 46,
+            child: Icon(icono,
+                size: 22, color: activo ? primaryColor : Colors.white),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _Vidrio extends StatelessWidget {
+  const _Vidrio({required this.child, this.forma = BoxShape.circle});
+
+  final Widget child;
+  final BoxShape forma;
+
+  @override
+  Widget build(BuildContext context) {
+    final radio = forma == BoxShape.circle ? 999.0 : 20.0;
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(radio),
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 12, sigmaY: 12),
+        child: Container(
+          decoration: BoxDecoration(
+            color: const Color(0xFF15171C).withValues(alpha: 0.42),
+            borderRadius: BorderRadius.circular(radio),
+            border: Border.all(
+                color: Colors.white.withValues(alpha: 0.22), width: 1),
+          ),
+          child: child,
         ),
       ),
     );

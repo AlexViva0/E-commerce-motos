@@ -44,44 +44,44 @@ class AppTheme {
         color: primaryTextColor,
       ),
       titleLarge: TextStyle(
-        fontFamily: "Plus Jakarta",
+        fontFamily: "Rubik",
         fontWeight: FontWeight.w700,
         color: primaryTextColor,
       ),
       titleMedium: TextStyle(
-        fontFamily: "Plus Jakarta",
+        fontFamily: "Rubik",
         fontWeight: FontWeight.w600,
         color: primaryTextColor,
       ),
       titleSmall: TextStyle(
-        fontFamily: "Plus Jakarta",
+        fontFamily: "Rubik",
         fontWeight: FontWeight.w600,
         color: primaryTextColor,
       ),
       bodyLarge: TextStyle(
-        fontFamily: "Plus Jakarta",
+        fontFamily: "Rubik",
         color: primaryTextColor,
       ),
       bodyMedium: TextStyle(
-        fontFamily: "Plus Jakarta",
+        fontFamily: "Rubik",
         color: secondaryTextColor,
       ),
       bodySmall: TextStyle(
-        fontFamily: "Plus Jakarta",
+        fontFamily: "Rubik",
         color: mutedTextColor,
       ),
       labelLarge: TextStyle(
-        fontFamily: "Plus Jakarta",
+        fontFamily: "Rubik",
         fontWeight: FontWeight.w600,
         color: primaryTextColor,
       ),
       labelMedium: TextStyle(
-        fontFamily: "Plus Jakarta",
+        fontFamily: "Rubik",
         fontWeight: FontWeight.w600,
         color: secondaryTextColor,
       ),
       labelSmall: TextStyle(
-        fontFamily: "Plus Jakarta",
+        fontFamily: "Rubik",
         fontWeight: FontWeight.w500,
         color: mutedTextColor,
       ),
@@ -91,7 +91,7 @@ class AppTheme {
   static ThemeData lightTheme(BuildContext context) {
     return ThemeData(
       brightness: Brightness.light,
-      fontFamily: "Plus Jakarta",
+      fontFamily: "Rubik",
       primarySwatch: primaryMaterialColor,
       primaryColor: primaryColor,
       scaffoldBackgroundColor: Colors.white,
@@ -161,7 +161,7 @@ class AppTheme {
   static ThemeData darkTheme(BuildContext context) {
     return ThemeData(
       brightness: Brightness.dark,
-      fontFamily: "Plus Jakarta",
+      fontFamily: "Rubik",
       primarySwatch: primaryMaterialColor,
       primaryColor: primaryColor,
       scaffoldBackgroundColor: darkBackgroundColor,

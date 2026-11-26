@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       builder: (context, themeMode, _) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'Catálogo de Motos',
+          title: 'Cilindra',
           theme: AppTheme.lightTheme(context),
           darkTheme: AppTheme.darkTheme(context),
           themeMode: themeMode,

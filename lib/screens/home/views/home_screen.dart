@@ -28,7 +28,12 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SafeArea(
         child: CustomScrollView(
           slivers: [
-            const SliverToBoxAdapter(child: OffersCarousel()),
+            const SliverToBoxAdapter(
+              child: Padding(
+                padding: EdgeInsets.only(top: defaultPadding),
+                child: OffersCarousel(),
+              ),
+            ),
             SliverToBoxAdapter(
               child: _Titulo(
                 "Categorías",

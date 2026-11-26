@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:catalogo_motos/constants.dart';
 import 'package:catalogo_motos/route/screen_export.dart';
+import 'package:catalogo_motos/state/favoritos.dart';
 import 'package:catalogo_motos/state/tema.dart';
 
 class EntryPoint extends StatefulWidget {
@@ -17,7 +18,6 @@ class _EntryPointState extends State<EntryPoint> {
     HomeScreen(),
     DiscoverScreen(),
     BookmarkScreen(),
-    AboutScreen(),
   ];
   int _currentIndex = 0;
 
@@ -56,53 +56,26 @@ class _EntryPointState extends State<EntryPoint> {
             color: theme.dividerColor.withValues(alpha: 0.6),
           ),
         ),
-        title: Row(
-          children: [
-            Container(
-              width: 30,
-              height: 30,
-              decoration: BoxDecoration(
-                color: colorScheme.primary,
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: Icon(
-                Icons.two_wheeler_rounded,
-                size: 18,
-                color: colorScheme.onPrimary,
-              ),
-            ),
-            const SizedBox(width: defaultPadding / 2),
-            Flexible(
-              child: Text(
-                "MOTO CATÁLOGO",
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: TextStyle(
-                  fontFamily: grandisExtendedFont,
-                  fontWeight: FontWeight.w700,
-                  fontSize: 15,
-                  color: colorScheme.onSurface,
-                ),
-              ),
-            ),
-          ],
-        ),
+        titleSpacing: defaultPadding,
+        toolbarHeight: 64,
+        title: const _LogoCilindra(),
         actions: [
-          const _InterruptorTema(),
-          const SizedBox(width: 4),
-          IconButton(
-            tooltip: "Buscar",
-            onPressed: () => Navigator.pushNamed(context, searchScreenRoute),
-            icon: SvgPicture.asset(
-              "assets/icons/Search.svg",
-              height: 22,
-              colorFilter: ColorFilter.mode(
-                colorScheme.onSurface,
-                BlendMode.srcIn,
-              ),
-            ),
+          _BotonCircular(
+            tooltip: "Cambiar tema",
+            relleno: false,
+            child: const _IconoTema(),
+            onTap: () => Tema.instancia
+                .alternar(MediaQuery.platformBrightnessOf(context)),
           ),
-          const SizedBox(width: 4),
+          const SizedBox(width: 10),
+          _BotonCircular(
+            tooltip: "Buscar",
+            relleno: true,
+            onTap: () => Navigator.pushNamed(context, searchScreenRoute),
+            child: Icon(Icons.search_rounded,
+                size: 22, color: colorScheme.surface),
+          ),
+          const SizedBox(width: defaultPadding),
         ],
       ),
       body: PageTransitionSwitcher(
@@ -151,16 +124,12 @@ class _EntryPointState extends State<EntryPoint> {
               label: "Explorar",
             ),
             BottomNavigationBarItem(
-              icon: svgIcon("assets/icons/Bookmark.svg"),
-              activeIcon: svgIcon("assets/icons/Bookmark.svg",
-                  color: colorScheme.primary),
+              icon: _ConBurbuja(child: svgIcon("assets/icons/Bookmark.svg")),
+              activeIcon: _ConBurbuja(
+                child: svgIcon("assets/icons/Bookmark.svg",
+                    color: colorScheme.primary),
+              ),
               label: "Favoritos",
-            ),
-            BottomNavigationBarItem(
-              icon: svgIcon("assets/icons/info.svg"),
-              activeIcon:
-                  svgIcon("assets/icons/info.svg", color: colorScheme.primary),
-              label: "Créditos",
             ),
           ],
         ),
@@ -169,136 +138,136 @@ class _EntryPointState extends State<EntryPoint> {
   }
 }
 
-/// Interruptor animado sol/luna para alternar entre tema claro y oscuro.
-class _InterruptorTema extends StatelessWidget {
-  const _InterruptorTema();
+/// Pone sobre el ícono una burbuja con el número de motos en favoritos.
+/// No se muestra cuando no hay ninguna guardada.
+class _ConBurbuja extends StatelessWidget {
+  const _ConBurbuja({required this.child});
+
+  final Widget child;
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
-    final brilloPlataforma = MediaQuery.platformBrightnessOf(context);
+    final colorScheme = Theme.of(context).colorScheme;
+    return ValueListenableBuilder<Set<int>>(
+      valueListenable: Favoritos.instancia,
+      builder: (context, favoritos, _) {
+        final total = favoritos.length;
+        return Badge(
+          isLabelVisible: total > 0,
+          backgroundColor: colorScheme.primary,
+          textColor: colorScheme.onPrimary,
+          offset: const Offset(8, -6),
+          label: AnimatedSwitcher(
+            duration: defaultDuration,
+            transitionBuilder: (child, animation) =>
+                ScaleTransition(scale: animation, child: child),
+            child: Text(
+              total > 99 ? "99+" : "$total",
+              key: ValueKey(total),
+              style: const TextStyle(fontWeight: FontWeight.w700),
+            ),
+          ),
+          child: child,
+        );
+      },
+    );
+  }
+}
 
+/// Logotipo de texto: tres diagonales rojas y "Cilindra".
+class _LogoCilindra extends StatelessWidget {
+  const _LogoCilindra();
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Text(
+          "///",
+          style: TextStyle(
+            fontFamily: grandisExtendedFont,
+            fontWeight: FontWeight.w800,
+            fontStyle: FontStyle.italic,
+            fontSize: 24,
+            letterSpacing: -3,
+            color: primaryColor,
+          ),
+        ),
+        const SizedBox(width: 8),
+        Text(
+          "Cilindra",
+          style: TextStyle(
+            fontFamily: grandisExtendedFont,
+            fontWeight: FontWeight.w800,
+            fontSize: 24,
+            letterSpacing: -0.5,
+            color: Theme.of(context).colorScheme.onSurface,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+/// Botón redondo de la barra superior: contorno (relleno = false) o sólido.
+class _BotonCircular extends StatelessWidget {
+  const _BotonCircular({
+    required this.tooltip,
+    required this.relleno,
+    required this.child,
+    required this.onTap,
+  });
+
+  final String tooltip;
+  final bool relleno;
+  final Widget child;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
+    return Tooltip(
+      message: tooltip,
+      child: Material(
+        color: relleno ? cs.onSurface : Colors.transparent,
+        shape: CircleBorder(
+          side: relleno
+              ? BorderSide.none
+              : BorderSide(color: cs.outlineVariant, width: 1.2),
+        ),
+        child: InkWell(
+          customBorder: const CircleBorder(),
+          onTap: onTap,
+          child: SizedBox(width: 44, height: 44, child: Center(child: child)),
+        ),
+      ),
+    );
+  }
+}
+
+/// Ícono sol/luna animado según el tema actual.
+class _IconoTema extends StatelessWidget {
+  const _IconoTema();
+
+  @override
+  Widget build(BuildContext context) {
+    final brillo = MediaQuery.platformBrightnessOf(context);
     return ValueListenableBuilder<ThemeMode>(
       valueListenable: Tema.instancia,
       builder: (context, _, __) {
-        final esOscuro = Tema.instancia.estaOscuro(brilloPlataforma);
-
-        return Semantics(
-          button: true,
-          toggled: esOscuro,
-          label: esOscuro ? "Cambiar a modo claro" : "Cambiar a modo oscuro",
-          child: Tooltip(
-            message:
-                esOscuro ? "Cambiar a modo claro" : "Cambiar a modo oscuro",
-            child: InkWell(
-              onTap: () => Tema.instancia.alternar(brilloPlataforma),
-              borderRadius: BorderRadius.circular(20),
-              child: AnimatedContainer(
-                duration: defaultDuration,
-                curve: Curves.easeOutCubic,
-                width: 58,
-                height: 32,
-                padding: const EdgeInsets.all(3),
-                decoration: BoxDecoration(
-                  color: esOscuro
-                      ? colorScheme.surfaceContainerHigh
-                      : colorScheme.surfaceContainer,
-                  borderRadius: BorderRadius.circular(20),
-                  border: Border.all(
-                    color: esOscuro
-                        ? colorScheme.secondary.withValues(alpha: 0.45)
-                        : colorScheme.outline,
-                    width: 1.2,
-                  ),
-                ),
-                child: Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 4),
-                          child: Icon(
-                            Icons.light_mode_rounded,
-                            size: 13,
-                            color: colorScheme.onSurfaceVariant
-                                .withValues(alpha: esOscuro ? 0.45 : 0.2),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 4),
-                          child: Icon(
-                            Icons.dark_mode_rounded,
-                            size: 13,
-                            color: colorScheme.onSurfaceVariant
-                                .withValues(alpha: esOscuro ? 0.2 : 0.45),
-                          ),
-                        ),
-                      ],
-                    ),
-                    AnimatedAlign(
-                      duration: defaultDuration,
-                      curve: Curves.easeOutCubic,
-                      alignment: esOscuro
-                          ? Alignment.centerRight
-                          : Alignment.centerLeft,
-                      child: AnimatedContainer(
-                        duration: defaultDuration,
-                        width: 24,
-                        height: 24,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: esOscuro
-                              ? colorScheme.surface
-                              : colorScheme.primary,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black
-                                  .withValues(alpha: esOscuro ? 0.35 : 0.16),
-                              blurRadius: 6,
-                              offset: const Offset(0, 2),
-                            ),
-                          ],
-                        ),
-                        child: AnimatedSwitcher(
-                          duration: defaultDuration,
-                          switchInCurve: Curves.easeOutBack,
-                          switchOutCurve: Curves.easeIn,
-                          transitionBuilder: (child, animation) {
-                            return RotationTransition(
-                              turns: Tween<double>(begin: 0.65, end: 1.0)
-                                  .animate(animation),
-                              child: ScaleTransition(
-                                scale: animation,
-                                child: FadeTransition(
-                                  opacity: animation,
-                                  child: child,
-                                ),
-                              ),
-                            );
-                          },
-                          child: esOscuro
-                              ? Icon(
-                                  Icons.dark_mode_rounded,
-                                  key: const ValueKey('luna'),
-                                  size: 14,
-                                  color: colorScheme.secondary,
-                                )
-                              : Icon(
-                                  Icons.light_mode_rounded,
-                                  key: const ValueKey('sol'),
-                                  size: 14,
-                                  color: colorScheme.onPrimary,
-                                ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
+        final oscuro = Tema.instancia.estaOscuro(brillo);
+        return AnimatedSwitcher(
+          duration: defaultDuration,
+          transitionBuilder: (child, a) => RotationTransition(
+            turns: Tween<double>(begin: 0.6, end: 1).animate(a),
+            child: ScaleTransition(scale: a, child: child),
+          ),
+          child: Icon(
+            oscuro ? Icons.dark_mode_outlined : Icons.light_mode_outlined,
+            key: ValueKey(oscuro),
+            size: 22,
+            color: Theme.of(context).colorScheme.onSurface,
           ),
         );
       },
