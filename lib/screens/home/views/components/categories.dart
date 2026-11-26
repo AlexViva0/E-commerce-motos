@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:shop/models/moto_model.dart';
+import 'package:catalogo_motos/models/moto_model.dart';
 
 import '../../../../constants.dart';
 

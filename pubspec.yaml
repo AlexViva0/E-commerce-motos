@@ -1,5 +1,5 @@
-name: shop
-description: FlutterShop is a premium E-commerce UI kit that you can use to build various e-commerce apps using Flutter that works on both Android & iOS. This kit contains 100+ nicely crafted minimal screens that cover everything you need for your shop app.
+name: catalogo_motos
+description: Catálogo de motos en Flutter con fichas técnicas, comparador, filtros y modo oscuro. Proyecto académico de Desarrollo Móvil.
 
 publish_to: "none"
 
@@ -33,13 +33,9 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/images/
     - assets/icons/
     - assets/Illustration/
     - assets/Illustration/motos/
-    - assets/flags/
-    - assets/logo/
-    - assets/screens/
     - assets/marcas/
 
   fonts:

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:shop/components/network_image_with_loader.dart';
-import 'package:shop/models/moto_model.dart';
+import 'package:catalogo_motos/components/network_image_with_loader.dart';
+import 'package:catalogo_motos/models/moto_model.dart';
 
 import '../../../../constants.dart';
 import 'gallery_viewer.dart';

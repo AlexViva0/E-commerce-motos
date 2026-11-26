@@ -1,11 +1,11 @@
-import 'package:shop/components/compare_button.dart';
+import 'package:catalogo_motos/components/compare_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:shop/components/cart_button.dart';
-import 'package:shop/components/moto_card.dart';
-import 'package:shop/constants.dart';
-import 'package:shop/models/moto_model.dart';
-import 'package:shop/state/favoritos.dart';
+import 'package:catalogo_motos/components/cart_button.dart';
+import 'package:catalogo_motos/components/moto_card.dart';
+import 'package:catalogo_motos/constants.dart';
+import 'package:catalogo_motos/models/moto_model.dart';
+import 'package:catalogo_motos/state/favoritos.dart';
 
 import 'components/product_images.dart';
 import 'components/product_info.dart';

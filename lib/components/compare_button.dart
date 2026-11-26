@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:shop/constants.dart';
-import 'package:shop/route/route_constants.dart';
+import 'package:catalogo_motos/constants.dart';
+import 'package:catalogo_motos/route/route_constants.dart';
 
 /// Botón o acción reutilizable para abrir el comparador de motos.
 ///

@@ -2,8 +2,8 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:shop/constants.dart';
-import 'package:shop/models/moto_model.dart';
+import 'package:catalogo_motos/constants.dart';
+import 'package:catalogo_motos/models/moto_model.dart';
 
 /// Estado inmutable de los filtros avanzados del catálogo de motos.
 class FiltrosMotos {

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:shop/constants.dart';
-import 'package:shop/models/moto_model.dart';
-import 'package:shop/route/route_constants.dart';
-import 'package:shop/screens/search/views/components/search_form.dart';
-import 'package:shop/screens/search/views/search_screen.dart';
+import 'package:catalogo_motos/constants.dart';
+import 'package:catalogo_motos/models/moto_model.dart';
+import 'package:catalogo_motos/route/route_constants.dart';
+import 'package:catalogo_motos/screens/search/views/components/search_form.dart';
+import 'package:catalogo_motos/screens/search/views/search_screen.dart';
 
 /// Explorar: acceso al catálogo por categoría y por marca.
 class DiscoverScreen extends StatelessWidget {

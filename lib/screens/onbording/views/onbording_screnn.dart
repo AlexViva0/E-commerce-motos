@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:shop/constants.dart';
-import 'package:shop/route/route_constants.dart';
+import 'package:catalogo_motos/constants.dart';
+import 'package:catalogo_motos/route/route_constants.dart';
 
 import 'components/onboarding_background.dart';
 import 'components/onbording_content.dart';

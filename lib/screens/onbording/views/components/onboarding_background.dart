@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shop/constants.dart';
+import 'package:catalogo_motos/constants.dart';
 
 /// Fondo deportivo con degradado sutil y formas diagonales dinámicas
 /// para la experiencia de onboarding del catálogo de motocicletas.
