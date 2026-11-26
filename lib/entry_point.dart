@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:catalogo_motos/constants.dart';
 import 'package:catalogo_motos/route/screen_export.dart';
+import 'package:catalogo_motos/state/favoritos.dart';
 import 'package:catalogo_motos/state/tema.dart';
 
 class EntryPoint extends StatefulWidget {
@@ -17,7 +18,6 @@ class _EntryPointState extends State<EntryPoint> {
     HomeScreen(),
     DiscoverScreen(),
     BookmarkScreen(),
-    AboutScreen(),
   ];
   int _currentIndex = 0;
 
@@ -151,20 +151,52 @@ class _EntryPointState extends State<EntryPoint> {
               label: "Explorar",
             ),
             BottomNavigationBarItem(
-              icon: svgIcon("assets/icons/Bookmark.svg"),
-              activeIcon: svgIcon("assets/icons/Bookmark.svg",
-                  color: colorScheme.primary),
+              icon: _ConBurbuja(child: svgIcon("assets/icons/Bookmark.svg")),
+              activeIcon: _ConBurbuja(
+                child: svgIcon("assets/icons/Bookmark.svg",
+                    color: colorScheme.primary),
+              ),
               label: "Favoritos",
-            ),
-            BottomNavigationBarItem(
-              icon: svgIcon("assets/icons/info.svg"),
-              activeIcon:
-                  svgIcon("assets/icons/info.svg", color: colorScheme.primary),
-              label: "Créditos",
             ),
           ],
         ),
       ),
+    );
+  }
+}
+
+/// Pone sobre el ícono una burbuja con el número de motos en favoritos.
+/// No se muestra cuando no hay ninguna guardada.
+class _ConBurbuja extends StatelessWidget {
+  const _ConBurbuja({required this.child});
+
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    return ValueListenableBuilder<Set<int>>(
+      valueListenable: Favoritos.instancia,
+      builder: (context, favoritos, _) {
+        final total = favoritos.length;
+        return Badge(
+          isLabelVisible: total > 0,
+          backgroundColor: colorScheme.primary,
+          textColor: colorScheme.onPrimary,
+          offset: const Offset(8, -6),
+          label: AnimatedSwitcher(
+            duration: defaultDuration,
+            transitionBuilder: (child, animation) =>
+                ScaleTransition(scale: animation, child: child),
+            child: Text(
+              total > 99 ? "99+" : "$total",
+              key: ValueKey(total),
+              style: const TextStyle(fontWeight: FontWeight.w700),
+            ),
+          ),
+          child: child,
+        );
+      },
     );
   }
 }
