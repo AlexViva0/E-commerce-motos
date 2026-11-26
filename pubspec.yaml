@@ -82,6 +82,7 @@ flutter_launcher_icons:
   image_path: "assets/branding/icono.png"
   adaptive_icon_background: "#15171C"
   adaptive_icon_foreground: "assets/branding/icono_foreground.png"
+  adaptive_icon_foreground_inset: 0
 
 flutter_native_splash:
   color: "#FFFFFF"
