@@ -58,7 +58,7 @@ class AboutScreen extends StatelessWidget {
             leading: const Icon(Icons.photo_library_outlined),
             title: const Text("Fotografías"),
             subtitle: const Text(
-                "Wikimedia Commons. Cada foto conserva la licencia y autoría indicadas en su página."),
+                "Wikimedia Commons (con la licencia y autoría de cada página) y sitios oficiales de las marcas en México."),
             isThreeLine: true,
             onTap: () => _abrir("https://commons.wikimedia.org"),
           ),
@@ -68,7 +68,7 @@ class AboutScreen extends StatelessWidget {
             leading: Icon(Icons.info_outline),
             title: Text("Datos técnicos y precios"),
             subtitle: Text(
-                "Aproximados y solo de referencia. Las marcas y logotipos pertenecen a sus dueños."),
+                "Tomados de los sitios oficiales y distribuidores en México (noviembre de 2026). Cada ficha enlaza sus fuentes. Las marcas y logotipos pertenecen a sus dueños."),
             isThreeLine: true,
           ),
         ),

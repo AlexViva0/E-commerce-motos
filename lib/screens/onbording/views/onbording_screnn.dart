@@ -24,7 +24,7 @@ class _OnBordingScreenState extends State<OnBordingScreen> {
       title: "Descubre las mejores motos",
       description:
           "Explora un catálogo deportivo con los modelos más destacados, fotografías nítidas y detalles de ingeniería.",
-      highlights: const ["+40 Modelos", "Catálogo 2026", "Alta gama"],
+      highlights: const ["+25 Modelos", "Catálogo 2026", "Alta gama"],
     ),
     Onbord(
       image: "assets/Illustration/motos/casco_velocimetro.svg",

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shop/models/moto_model.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../constants.dart';
 
@@ -92,12 +93,23 @@ class FichaTecnica extends StatelessWidget {
     final datos = <(IconData, String, String)>[
       (Icons.speed_rounded, "Cilindrada", "${moto.cilindrada} cc"),
       (Icons.bolt_rounded, "Potencia", "${_num(moto.potencia)} hp"),
-      (Icons.fitness_center_rounded, "Peso", "${moto.peso} kg"),
+      if (moto.torque != null)
+        (Icons.rotate_right_rounded, "Torque", "${_num(moto.torque!)} Nm"),
       (
-        Icons.balance_rounded,
-        "Peso / potencia",
-        "${moto.pesoPorHp.toStringAsFixed(1)} kg/hp"
+        Icons.fitness_center_rounded,
+        moto.tipoPeso == "seco" ? "Peso en seco" : "Peso",
+        moto.peso == null ? "N/D" : "${moto.peso} kg"
       ),
+      if (moto.pesoPorHp != null)
+        (
+          Icons.balance_rounded,
+          "Peso / potencia",
+          "${moto.pesoPorHp!.toStringAsFixed(1)} kg/hp"
+        ),
+      if (moto.tanque != null)
+        (Icons.local_gas_station_rounded, "Tanque", "${_num(moto.tanque!)} L"),
+      if (moto.alturaAsiento != null)
+        (Icons.event_seat_rounded, "Asiento", "${moto.alturaAsiento} mm"),
     ];
 
     return SliverPadding(
@@ -131,10 +143,31 @@ class FichaTecnica extends StatelessWidget {
             _Fila("Transmisión", moto.transmision),
             _Fila("Colores", moto.colores.join(", ")),
             const SizedBox(height: defaultPadding / 2),
-            Text(
-              "Datos aproximados de referencia.",
-              style: Theme.of(context).textTheme.bodySmall,
-            ),
+            if (moto.fuentes.isNotEmpty) ...[
+              Text(
+                "Fuentes (consultadas en noviembre de 2026)",
+                style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                    fontWeight: FontWeight.w600),
+              ),
+              for (final url in moto.fuentes)
+                InkWell(
+                  onTap: () => launchUrl(Uri.parse(url),
+                      mode: LaunchMode.externalApplication),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 4),
+                    child: Text(
+                      Uri.parse(url).host.replaceFirst("www.", ""),
+                      style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                          color: primaryColor,
+                          decoration: TextDecoration.underline),
+                    ),
+                  ),
+                ),
+            ] else
+              Text(
+                "Datos de referencia.",
+                style: Theme.of(context).textTheme.bodySmall,
+              ),
           ],
         ),
       ),

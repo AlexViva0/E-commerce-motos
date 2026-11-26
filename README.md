@@ -20,7 +20,7 @@ flutter run
 
 - Basada en la plantilla gratuita **FlutterShop** de Abu Anwar ([The Flutter Way](https://github.com/abuanwar072/E-commerce-Complete-Flutter-UI)). Todo el diseño base es suyo; este fork lo adapta a motos.
 - Fotos: Wikimedia Commons. Cada foto conserva la licencia y la autoría indicadas en su página.
-- Las fichas técnicas y precios son aproximados y solo de referencia. Las marcas y logotipos pertenecen a sus dueños.
+- Las fichas técnicas y precios de lista vienen de los sitios oficiales y distribuidores en México (noviembre de 2026); ver [docs/FUENTES_DATOS.md](docs/FUENTES_DATOS.md). Las marcas y logotipos pertenecen a sus dueños.
 
 ---
 
