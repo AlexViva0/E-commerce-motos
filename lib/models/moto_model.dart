@@ -935,6 +935,7 @@ const Map<String, String> bannerPorModelo = {
   "Ninja 500": "assets/banners/ninja500.jpg",
   "Hyper 2.0 310": "assets/banners/hyper310.jpg",
   "Vort-X 250": "assets/banners/vortx250.jpg",
+  "NX500": "assets/banners/nx500.jpg",
 };
 
 Moto motoPorId(int id) => motos.firstWhere((m) => m.id == id);
