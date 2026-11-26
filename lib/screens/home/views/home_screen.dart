@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:shop/components/moto_card.dart';
-import 'package:shop/constants.dart';
-import 'package:shop/models/moto_model.dart';
-import 'package:shop/route/route_constants.dart';
+import 'package:catalogo_motos/components/moto_card.dart';
+import 'package:catalogo_motos/constants.dart';
+import 'package:catalogo_motos/models/moto_model.dart';
+import 'package:catalogo_motos/route/route_constants.dart';
 
 import 'components/categories.dart';
 import 'components/offers_carousel.dart';

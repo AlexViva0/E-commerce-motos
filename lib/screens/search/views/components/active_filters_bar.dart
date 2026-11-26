@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:shop/components/filtros/filtros_sheet.dart';
-import 'package:shop/constants.dart';
-import 'package:shop/models/moto_model.dart';
+import 'package:catalogo_motos/components/filtros/filtros_sheet.dart';
+import 'package:catalogo_motos/constants.dart';
+import 'package:catalogo_motos/models/moto_model.dart';
 
 /// Botón cuadrado redondeado de filtros con contador de filtros activos.
 class FilterIconButton extends StatelessWidget {

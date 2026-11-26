@@ -1,30 +1,42 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility that Flutter provides. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:shop/main.dart';
+import 'package:catalogo_motos/models/moto_model.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  test('el catálogo tiene motos con datos completos', () {
+    expect(motos, isNotEmpty);
+    for (final moto in motos) {
+      expect(moto.cilindrada, greaterThan(0), reason: moto.modelo);
+      expect(moto.potencia, greaterThan(0), reason: moto.modelo);
+      // Algunas fichas oficiales no publican el peso.
+      if (moto.peso != null) {
+        expect(moto.peso, greaterThan(0), reason: moto.modelo);
+      }
+      expect(moto.precio, greaterThan(0), reason: moto.modelo);
+      expect(categorias, contains(moto.categoria), reason: moto.modelo);
+      expect(marcas.map((m) => m.id), contains(moto.marcaId),
+          reason: moto.modelo);
+    }
+  });
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+  test('los ids de las motos no se repiten', () {
+    final ids = motos.map((m) => m.id).toSet();
+    expect(ids.length, motos.length);
+  });
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+  test('el filtro por categoría solo devuelve esa categoría', () {
+    for (final categoria in categorias) {
+      expect(
+        motosPorCategoria(categoria).every((m) => m.categoria == categoria),
+        isTrue,
+      );
+    }
+    expect(motosPorCategoria(todasLasCategorias).length, motos.length);
+  });
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+  test('formato de precio en pesos', () {
+    expect(formatoPrecio(179900), r'$179,900');
+    expect(formatoPrecio(1234567), r'$1,234,567');
+    expect(formatoPrecio(999), r'$999');
   });
 }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:shop/components/moto_card.dart';
-import 'package:shop/components/network_image_with_loader.dart';
-import 'package:shop/constants.dart';
-import 'package:shop/models/moto_model.dart';
+import 'package:catalogo_motos/components/moto_card.dart';
+import 'package:catalogo_motos/components/network_image_with_loader.dart';
+import 'package:catalogo_motos/constants.dart';
+import 'package:catalogo_motos/models/moto_model.dart';
 
 /// Tarjetas superiores lado a lado con foto, nombre, precio y botón central
 /// para intercambiar las dos motos seleccionadas.

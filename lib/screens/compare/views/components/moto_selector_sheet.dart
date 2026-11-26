@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:shop/components/network_image_with_loader.dart';
-import 'package:shop/constants.dart';
-import 'package:shop/models/moto_model.dart';
-import 'package:shop/screens/home/views/components/categories.dart';
+import 'package:catalogo_motos/components/network_image_with_loader.dart';
+import 'package:catalogo_motos/constants.dart';
+import 'package:catalogo_motos/models/moto_model.dart';
+import 'package:catalogo_motos/screens/home/views/components/categories.dart';
 
 /// Abre un bottom sheet con buscador, filtro de categorías y miniaturas para
 /// seleccionar una moto de la lista [motos].

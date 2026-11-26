@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:shop/components/filtros/filtros_sheet.dart';
-import 'package:shop/components/moto_card.dart';
-import 'package:shop/constants.dart';
-import 'package:shop/models/moto_model.dart';
-import 'package:shop/screens/home/views/components/categories.dart';
+import 'package:catalogo_motos/components/filtros/filtros_sheet.dart';
+import 'package:catalogo_motos/components/moto_card.dart';
+import 'package:catalogo_motos/constants.dart';
+import 'package:catalogo_motos/models/moto_model.dart';
+import 'package:catalogo_motos/screens/home/views/components/categories.dart';
 
 import 'components/active_filters_bar.dart';
 import 'components/search_form.dart';

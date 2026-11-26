@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shop/models/moto_model.dart';
+import 'package:catalogo_motos/models/moto_model.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../constants.dart';

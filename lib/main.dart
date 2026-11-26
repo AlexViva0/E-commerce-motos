@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:shop/constants.dart';
-import 'package:shop/route/route_constants.dart';
-import 'package:shop/route/router.dart' as router;
-import 'package:shop/state/tema.dart';
-import 'package:shop/theme/app_theme.dart';
+import 'package:catalogo_motos/constants.dart';
+import 'package:catalogo_motos/route/route_constants.dart';
+import 'package:catalogo_motos/route/router.dart' as router;
+import 'package:catalogo_motos/state/tema.dart';
+import 'package:catalogo_motos/theme/app_theme.dart';
 
-// Catálogo de motos basado en la plantilla gratuita FlutterShop de
+// Catálogo de Motos. Créditos del diseño base: plantilla FlutterShop de
 // Abu Anwar (The Flutter Way):
 // https://github.com/abuanwar072/E-commerce-Complete-Flutter-UI
 

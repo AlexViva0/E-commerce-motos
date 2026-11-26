@@ -1,11 +1,11 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:shop/components/Banner/M/banner_m_style_1.dart';
-import 'package:shop/components/dot_indicators.dart';
-import 'package:shop/components/moto_card.dart';
-import 'package:shop/components/network_image_with_loader.dart';
-import 'package:shop/models/moto_model.dart';
+import 'package:catalogo_motos/components/Banner/M/banner_m_style_1.dart';
+import 'package:catalogo_motos/components/dot_indicators.dart';
+import 'package:catalogo_motos/components/moto_card.dart';
+import 'package:catalogo_motos/components/network_image_with_loader.dart';
+import 'package:catalogo_motos/models/moto_model.dart';
 
 import '../../../../constants.dart';
 

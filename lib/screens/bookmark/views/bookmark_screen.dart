@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:shop/components/moto_card.dart';
-import 'package:shop/models/moto_model.dart';
-import 'package:shop/state/favoritos.dart';
+import 'package:catalogo_motos/components/moto_card.dart';
+import 'package:catalogo_motos/models/moto_model.dart';
+import 'package:catalogo_motos/state/favoritos.dart';
 
 import '../../../constants.dart';
 

@@ -1,244 +1,68 @@
 # Catálogo de Motos
 
-App de catálogo de motos hecha en Flutter para la exposición de Desarrollo Móvil. Es solo una demostración: no hay compras ni backend.
+App móvil en Flutter para explorar, filtrar y comparar motocicletas del mercado mexicano. Cada moto tiene su ficha técnica con datos reales, galería de fotos y precio de lista en pesos.
 
-## Qué incluye
+Proyecto académico de la materia de **Desarrollo Móvil**. Es una demostración: no hay compras, cuentas ni backend.
 
-- 12 motos con ficha técnica: cilindrada, potencia, peso, relación peso/potencia, motor, transmisión, colores y precio de referencia en MXN.
-- Filtro por categoría (Deportiva, Naked, Aventura, Urbana, Trabajo), búsqueda por modelo, marca o cilindrada, y orden por precio, potencia o peso.
-- Explorar por marca, favoritos y pantalla de créditos.
-- Los datos están en `lib/models/moto_model.dart`.
+<p align="center">
+  <img src="docs/capturas/bienvenida.jpg" alt="Pantalla de bienvenida" width="200">
+  <img src="docs/capturas/inicio.jpg" alt="Inicio con motos destacadas" width="200">
+  <img src="docs/capturas/explorar-oscuro.jpg" alt="Explorar por categoría y marca en modo oscuro" width="200">
+  <img src="docs/capturas/ficha-oscuro.jpg" alt="Ficha técnica en modo oscuro" width="200">
+</p>
+
+## Funciones
+
+- **25 motos de 7 marcas** (Yamaha, Kawasaki, Suzuki, Honda, Benelli, Vento e Italika) con datos técnicos reales: cilindrada, potencia, torque, peso, asiento, motor, transmisión y tipo de licencia.
+- **Ficha técnica** con relación peso/potencia, colores disponibles y enlaces a las fuentes consultadas.
+- **Galería de fotos** a pantalla completa con zoom.
+- **Comparador** de dos motos lado a lado, con comparativas populares listas para mostrar.
+- **Búsqueda y filtros** por categoría, marca y licencia, con orden por precio, potencia o peso.
+- **Explorar** por categoría (Deportiva, Naked, Aventura, Urbana, Trabajo) y por marca.
+- **Favoritos** para guardar las motos que te interesan.
+- **Modo oscuro** automático o manual.
 
 ## Cómo correrla
 
+Necesitas [Flutter](https://docs.flutter.dev/get-started/install) 3.x y un celular o emulador Android/iOS. Las fotos se cargan de internet.
+
 ```bash
+git clone https://github.com/AlexViva0/E-commerce-motos.git
+cd E-commerce-motos
 flutter pub get
 flutter run
 ```
 
-## Créditos
+Pruebas y análisis:
 
-- Basada en la plantilla gratuita **FlutterShop** de Abu Anwar ([The Flutter Way](https://github.com/abuanwar072/E-commerce-Complete-Flutter-UI)). Todo el diseño base es suyo; este fork lo adapta a motos.
-- Fotos: Wikimedia Commons. Cada foto conserva la licencia y la autoría indicadas en su página.
-- Las fichas técnicas y precios de lista vienen de los sitios oficiales y distribuidores en México (noviembre de 2026); ver [docs/FUENTES_DATOS.md](docs/FUENTES_DATOS.md). Las marcas y logotipos pertenecen a sus dueños.
+```bash
+flutter test
+flutter analyze
+```
+
+## Estructura
+
+```
+lib/
+├── models/moto_model.dart   # Motos, marcas, categorías y filtros
+├── state/                   # Favoritos y tema (en memoria)
+├── screens/                 # Inicio, explorar, búsqueda, ficha, comparador, favoritos, créditos
+├── components/              # Tarjetas, banners, filtros y widgets compartidos
+└── theme/                   # Paleta, tema claro y oscuro
+docs/FUENTES_DATOS.md        # Fuentes de cada ficha técnica
+```
+
+Para agregar una moto, añade una entrada a la lista `motos` en `lib/models/moto_model.dart`.
+
+## Datos
+
+Las fichas y los precios se tomaron de los sitios oficiales y distribuidores de cada marca en México en noviembre de 2026. Son de referencia y pueden cambiar. El detalle por moto está en [docs/FUENTES_DATOS.md](docs/FUENTES_DATOS.md).
 
 ---
 
-## README original de la plantilla
+## Créditos
 
-# Flutter E-Commerce App Template
-
-<p align="center">
-  <img src="readme%20image/Build%20you%20shop%20app%20in%20days.png" alt="Build you shop app in days" style="width: 500px; height: auto;">
-</p>
-
-<p align="center">
-  The FlutterShop template makes it easier to develop an e-commerce app using Flutter. It includes all the necessary pages to build a shopping app for both Android and iOS using flutter.
-</p>
-
-<!-- Buttons -->
-<p align="center">
-  <a href="https://cutt.ly/fefxdqE9" style="text-decoration: none;" target="_blank">
-    <img src="readme image/buy_now_btn.png" alt="Full template" style="margin-right: 32px; width: 170px; height: 50px;">
-  </a>
-  &nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="https://cutt.ly/1efxdynN" style="text-decoration: none;" target="_blank">
-    <img src="readme image/preview_btn.png" alt="Preview" style="width: 136px; height: 50px;">
-  </a>
-</p>
-
-<!-- Device image -->
-</br >
-</br >
-<p align="center">
-  <img src="readme image/Device_frame.png" alt="Ecommerce app Home, product details page" style="width: 1100px; height: auto;">
-</p>
-</br >
-</br >
-
-This shop app template comes with 100+ screens. Some of these pages are Splash, Login, Signup, Home, Product, Search, Cart, Profile, Payment, Wallet, Order Tracking, and Order History. Additionally, all pages support both light and dark themes.You just need to connect the UI to your preferred backend, such as Firebase, WordPress, or your custom API. You can do anything you want with it.
-
-<!-- Gif preview -->
-</br >
-</br >
-<p align="center">
-  <img src="readme image/FlutterShop_Intro.gif" alt="Build you shop app in days" style="width: 643px; height: auto;">
-</p>
-</br >
-</br >
-
-### Well organized project very easy to customize
-
-![FlutterShop E-commerce Template Project Structure](https://public-files.gumroad.com/v1kbfvdugf3urvw03qrqgmc5pl1c)
-
-<!-- Full preview -->
-</br >
-</br >
-<p align="center">
-  <img src="https://public-files.gumroad.com/m3v3lyyipbzczcws5gcuhpbkmczk" alt="Build you shop app in days" style="width: 100%; height: auto;">
-</p>
-
-### Loading is no longer boring [New update V1.1] [Doc](https://abu-anwar.gitbook.io/fluttershop-doc/custom-loading)
-
-The progress indicator that comes with Flutter, by default is okay in most places, but not in every place. Especially when you build an ecommerce app. This is why we have created a custom loading effect that boosts your user engagement even during the loading process. This kind of loading is common in popular apps like YouTube and LinkedIn. It's a small detail, but it makes a big difference.
-![FlutterShop Custom loading](https://public-files.gumroad.com/qqnmt9nu5677thkq1961tlwj405u)
-
-## Screens on the FlutterShop E-commerce Template
-
-As mentioned, this kit contains 100+ nicely crafted minimal screens that cover everything you need!👇
-
-### Onboarding
-
-- Onboarding Choose item
-- Onboarding Add to cart
-- Onboarding Pay online
-- Onboarding Track order
-- Onboarding Find store
-- Notification permission
-- Select language
-
-### Authentication
-
-- Log in
-- Forgot password
-  - Choose verification method
-  - Verification code
-- Set new password
-- Done reset password
-- Sign up
-  - Setup profile
-  - Verification code
-- Successfully sign up
-- Terms and conditions
-- Enable fingerprint
-- Enable face ID
-
-### Product
-
-- Product page
-  - Notify when available (Out of stock)
-  - Buy Now
-  - Product details
-  - Product reviews
-  - Add review
-  - Shipping methods
-  - Product return policy
-  - Product size guide
-  - Store Pickup Availability
-  - Added to cart message
-  - Product gallery (Will be added soon)
-
-### Main Page
-
-- Home page
-- On sales page
-- Kids product page
-- Brand page
-- Discover Page (Categories)
-  - Style 1
-  - Style 2 (Will be added soon)
-  - Style 3 (Will be added soon)
-- Bookmark products page
-
-### Search
-
-- Recent search (Search history)
-- Search suggestions
-- Search filters
-  - Size filter
-  - Color filter
-  - Brand filter
-  - Price filter
-  - Sort by
-- Search results
-  - Product not found
-
-### Cart
-
-- Products on Cart
-- Empty cart
-- Choose address
-- Review & payment
-- Checkout / Payment method
-  - Select card
-  - Pay with cash
-  - Use credit
-- Thanks for order
-- Add new card
-- Scan card (Will be added soon)
-
-### Profile
-
-- Account
-  - Normal version
-  - Pro version
-  - Profile
-    - Edit profile
-  - Notifications
-    - Empty notification
-    - Enable notification
-    - Notification options
-  - Select Language
-  - Addresses
-    - Empty address
-    - Add new address
-  - Add number
-    - Verification code
-  - Selected location
-  - Payment
-    - Cards
-    - Empty payment
-  - Wallet
-    - Empty Wallet
-    - Wallet history
-  - Help & Chat (Support)
-    - Chat
-  - Preferences
-
-### Order
-
-- Account Orders
-  - Processing orders
-    - Cancel order
-  - Canceled orders
-  - Delivered orders
-  - Return orders (Will be added soon)
-  - More screens added in that sector soon
-
-### Return & Request (Will be added soon)
-
-- Return order list
-- Empty return order
-- Return order
-- Return detail
-
-### Error & Permission
-
-- Notification permission
-- No notification
-- Select language
-- No internet
-- Server error
-- Location permissions
-- No search result
-- Empty order list
-- No Address found
-- Empty payment
-- Empty wallet
-
-and MORE!!!! 🤩
-
-If you want to learn how to build ecommerce template on Flutter [watch the playlist on YouTube](https://youtube.com/playlist?list=PLxUBb2A_UUy8OlaNZpS2mfL8xpHcnd_Af), In the first video, we start by making a neat onboarding screen for our shopping app. This works on both Android and iOS because it's made with Flutter. In the next video, we tackle the 'Sign In' and 'Forgot Password' screens, adding some unique error messages. The third video covers the 'Sign Up' and OTP processes. The fourth one is fun – we create the main homepage. In the fifth, we dive into the product page, and in the sixth, we craft an order page with cool features like 'swipe to delete.' Finally, in the seventh video, we design the user profile page.
-
-Visit FlutterLibrary.com to Download the [Flutter e-commerce app template](https://www.flutterlibrary.com/templates/e-commerce-app) & other templates, and components.
-
-
-
-</br >
-</br >
-<!-- Buttons -->
-<p align="center">
-  <a href="https://app.gumroad.com/checkout?product=uxznc&option=B3wWhE6QH46cfm31C7jEmQ%3D%3D&quantity=1&referrer=https://github.com" style="text-decoration: none;" target="_blank">
-    <img src="readme image/buy_now_btn.png" alt="Full template" style="margin-right: 32px; width: 170px; height: 50px;">
-  </a>
-</p>
+- **Diseño base**: esta app es un fork de [FlutterShop (E-commerce Complete Flutter UI)](https://github.com/abuanwar072/E-commerce-Complete-Flutter-UI) de **Abu Anwar** ([The Flutter Way](https://www.youtube.com/@TheFlutterWay)). Su plantilla gratuita es la base de la interfaz. Aquí la adaptamos a un catálogo de motos.
+- **Fotografías**: Wikimedia Commons, con la licencia y autoría de cada archivo, y sitios oficiales de las marcas.
+- **Marcas y logotipos**: pertenecen a sus respectivos dueños y se usan solo con fines académicos.
+- **Tipografías**: Plus Jakarta Display y Grandis Extended, incluidas en la plantilla original.
