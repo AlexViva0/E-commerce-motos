@@ -29,18 +29,14 @@ class ProductImages extends StatefulWidget {
 }
 
 class _ProductImagesState extends State<ProductImages> {
-  late PageController _controller;
+  late final PageController _controller;
   int _currentPage = 0;
 
   @override
   void initState() {
     super.initState();
-    _controller = _createController();
-  }
-
-  PageController _createController() {
-    return PageController(
-      viewportFraction: widget.images.length > 1 ? 0.88 : 1.0,
+    _controller = PageController(
+      viewportFraction: 1.0,
       initialPage: _currentPage,
     );
   }
@@ -48,17 +44,15 @@ class _ProductImagesState extends State<ProductImages> {
   @override
   void didUpdateWidget(covariant ProductImages oldWidget) {
     super.didUpdateWidget(oldWidget);
-    final oldMultiple = oldWidget.images.length > 1;
-    final newMultiple = widget.images.length > 1;
-    if (oldMultiple != newMultiple) {
-      if (_currentPage >= widget.images.length) {
-        _currentPage = 0;
-      }
-      _controller.dispose();
-      _controller = _createController();
-    } else if (_currentPage >= widget.images.length &&
-        widget.images.isNotEmpty) {
+    if (widget.images.isEmpty) {
       _currentPage = 0;
+    } else if (_currentPage >= widget.images.length) {
+      _currentPage = 0;
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted && _controller.hasClients) {
+          _controller.jumpToPage(0);
+        }
+      });
     }
   }
 
@@ -140,7 +134,7 @@ class _ProductImagesState extends State<ProductImages> {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: defaultPadding),
         child: AspectRatio(
-          aspectRatio: 3 / 2,
+          aspectRatio: 16 / 9,
           child: ClipRRect(
             borderRadius: BorderRadius.circular(radio),
             child: Stack(
@@ -154,10 +148,12 @@ class _ProductImagesState extends State<ProductImages> {
                   },
                   itemCount: widget.images.length,
                   itemBuilder: (context, index) {
-                    Widget image = NetworkImageWithLoader(
-                      widget.images[index],
-                      fit: BoxFit.cover,
-                      radius: 0,
+                    Widget image = SizedBox.expand(
+                      child: NetworkImageWithLoader(
+                        widget.images[index],
+                        fit: BoxFit.cover,
+                        radius: 0,
+                      ),
                     );
                     if (index == 0 &&
                         widget.heroTag != null &&
