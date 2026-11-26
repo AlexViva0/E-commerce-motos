@@ -216,7 +216,7 @@ class _Fila extends StatelessWidget {
             child: Text(valor,
                 style: Theme.of(context)
                     .textTheme
-                    .bodyLarge!
+                    .bodyMedium!
                     .copyWith(fontWeight: FontWeight.w500)),
           ),
         ],
