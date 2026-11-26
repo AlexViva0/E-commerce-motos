@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
 import '../constants.dart';
+import '../models/moto_model.dart';
 
 class CartButton extends StatelessWidget {
   const CartButton({
     super.key,
     required this.price,
-    this.title = "Buy Now",
-    this.subTitle = "Unit price",
+    this.title = "Me interesa",
+    this.subTitle = "Precio de referencia",
     required this.press,
   });
 
@@ -45,7 +46,7 @@ class CartButton extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "\$${price.toStringAsFixed(2)}",
+                            "${formatoPrecio(price)} MXN",
                             style: Theme.of(context)
                                 .textTheme
                                 .titleSmall!

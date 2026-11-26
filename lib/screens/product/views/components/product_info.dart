@@ -1,24 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shop/models/moto_model.dart';
 
 import '../../../../constants.dart';
-import 'product_availability_tag.dart';
 
+/// Encabezado de la ficha: marca, modelo, etiquetas y descripción.
 class ProductInfo extends StatelessWidget {
-  const ProductInfo({
-    super.key,
-    required this.title,
-    required this.brand,
-    required this.description,
-    required this.rating,
-    required this.numOfReviews,
-    required this.isAvailable,
-  });
+  const ProductInfo({super.key, required this.moto});
 
-  final String title, brand, description;
-  final double rating;
-  final int numOfReviews;
-  final bool isAvailable;
+  final Moto moto;
 
   @override
   Widget build(BuildContext context) {
@@ -29,45 +18,208 @@ class ProductInfo extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              brand.toUpperCase(),
+              moto.marca.nombre.toUpperCase(),
               style: const TextStyle(fontWeight: FontWeight.w500),
             ),
             const SizedBox(height: defaultPadding / 2),
             Text(
-              title,
+              moto.modelo,
               maxLines: 2,
               style: Theme.of(context).textTheme.titleLarge,
             ),
             const SizedBox(height: defaultPadding),
-            Row(
+            Wrap(
+              spacing: defaultPadding / 2,
+              runSpacing: defaultPadding / 2,
               children: [
-                ProductAvailabilityTag(isAvailable: isAvailable),
-                const Spacer(),
-                SvgPicture.asset("assets/icons/Star_filled.svg"),
-                const SizedBox(width: defaultPadding / 4),
-                Text(
-                  "$rating ",
-                  style: Theme.of(context).textTheme.bodyLarge,
-                ),
-                Text("($numOfReviews Reviews)")
+                _Etiqueta(moto.categoria, color: primaryColor),
+                _Etiqueta("Modelo ${moto.anio}", color: successColor),
+                _Etiqueta(moto.marca.pais, color: blackColor60),
               ],
             ),
             const SizedBox(height: defaultPadding),
             Text(
-              "Product info",
+              "Descripción",
               style: Theme.of(context)
                   .textTheme
                   .titleMedium!
                   .copyWith(fontWeight: FontWeight.w500),
             ),
             const SizedBox(height: defaultPadding / 2),
-            Text(
-              description,
-              style: const TextStyle(height: 1.4),
-            ),
-            const SizedBox(height: defaultPadding / 2),
+            Text(moto.descripcion, style: const TextStyle(height: 1.4)),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class _Etiqueta extends StatelessWidget {
+  const _Etiqueta(this.texto, {required this.color});
+
+  final String texto;
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(
+          horizontal: defaultPadding * 0.75, vertical: defaultPadding / 3),
+      decoration: BoxDecoration(
+        color: color,
+        borderRadius:
+            const BorderRadius.all(Radius.circular(defaultBorderRadious / 2)),
+      ),
+      child: Text(
+        texto,
+        style: Theme.of(context)
+            .textTheme
+            .labelSmall!
+            .copyWith(color: Colors.white, fontWeight: FontWeight.w500),
+      ),
+    );
+  }
+}
+
+/// Cuadrícula con la ficha técnica: cilindrada, potencia, peso, etc.
+class FichaTecnica extends StatelessWidget {
+  const FichaTecnica({super.key, required this.moto});
+
+  final Moto moto;
+
+  @override
+  Widget build(BuildContext context) {
+    final datos = <(IconData, String, String)>[
+      (Icons.speed_rounded, "Cilindrada", "${moto.cilindrada} cc"),
+      (Icons.bolt_rounded, "Potencia", "${_num(moto.potencia)} hp"),
+      (Icons.fitness_center_rounded, "Peso", "${moto.peso} kg"),
+      (
+        Icons.balance_rounded,
+        "Peso / potencia",
+        "${moto.pesoPorHp.toStringAsFixed(1)} kg/hp"
+      ),
+    ];
+
+    return SliverPadding(
+      padding: const EdgeInsets.symmetric(horizontal: defaultPadding),
+      sliver: SliverToBoxAdapter(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "Ficha técnica",
+              style: Theme.of(context)
+                  .textTheme
+                  .titleMedium!
+                  .copyWith(fontWeight: FontWeight.w500),
+            ),
+            const SizedBox(height: defaultPadding),
+            GridView.count(
+              crossAxisCount: 2,
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              mainAxisSpacing: defaultPadding / 2,
+              crossAxisSpacing: defaultPadding / 2,
+              childAspectRatio: 2.2,
+              children: [
+                for (final (icono, nombre, valor) in datos)
+                  _Dato(icono: icono, nombre: nombre, valor: valor),
+              ],
+            ),
+            const SizedBox(height: defaultPadding),
+            _Fila("Motor", moto.motor),
+            _Fila("Transmisión", moto.transmision),
+            _Fila("Colores", moto.colores.join(", ")),
+            const SizedBox(height: defaultPadding / 2),
+            Text(
+              "Datos aproximados de referencia.",
+              style: Theme.of(context).textTheme.bodySmall,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  static String _num(double v) =>
+      v == v.roundToDouble() ? v.toStringAsFixed(0) : v.toStringAsFixed(1);
+}
+
+class _Dato extends StatelessWidget {
+  const _Dato({required this.icono, required this.nombre, required this.valor});
+
+  final IconData icono;
+  final String nombre, valor;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(defaultPadding * 0.75),
+      decoration: BoxDecoration(
+        border: Border.all(color: Theme.of(context).dividerColor),
+        borderRadius:
+            const BorderRadius.all(Radius.circular(defaultBorderRadious)),
+      ),
+      child: Row(
+        children: [
+          Container(
+            padding: const EdgeInsets.all(defaultPadding / 2),
+            decoration: BoxDecoration(
+              color: primaryColor.withValues(alpha: 0.12),
+              shape: BoxShape.circle,
+            ),
+            child: Icon(icono, color: primaryColor, size: 20),
+          ),
+          const SizedBox(width: defaultPadding / 2),
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(nombre,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: Theme.of(context).textTheme.bodySmall),
+                const SizedBox(height: 2),
+                FittedBox(
+                  fit: BoxFit.scaleDown,
+                  alignment: Alignment.centerLeft,
+                  child: Text(valor,
+                      style: Theme.of(context).textTheme.titleSmall),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _Fila extends StatelessWidget {
+  const _Fila(this.nombre, this.valor);
+
+  final String nombre, valor;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: defaultPadding / 2),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            width: 110,
+            child: Text(nombre, style: Theme.of(context).textTheme.bodyMedium),
+          ),
+          Expanded(
+            child: Text(valor,
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyLarge!
+                    .copyWith(fontWeight: FontWeight.w500)),
+          ),
+        ],
       ),
     );
   }

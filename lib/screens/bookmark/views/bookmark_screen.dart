@@ -1,50 +1,60 @@
 import 'package:flutter/material.dart';
-import 'package:shop/components/product/product_card.dart';
-import 'package:shop/models/product_model.dart';
-import 'package:shop/route/route_constants.dart';
+import 'package:shop/components/moto_card.dart';
+import 'package:shop/models/moto_model.dart';
+import 'package:shop/state/favoritos.dart';
 
 import '../../../constants.dart';
 
+/// Motos guardadas en favoritos.
 class BookmarkScreen extends StatelessWidget {
   const BookmarkScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          // While loading use 👇
-          //  BookMarksSlelton(),
-          SliverPadding(
-            padding: const EdgeInsets.symmetric(
-                horizontal: defaultPadding, vertical: defaultPadding),
-            sliver: SliverGrid(
-              gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                maxCrossAxisExtent: 200.0,
-                mainAxisSpacing: defaultPadding,
-                crossAxisSpacing: defaultPadding,
-                childAspectRatio: 0.66,
-              ),
-              delegate: SliverChildBuilderDelegate(
-                (BuildContext context, int index) {
-                  return ProductCard(
-                    image: demoPopularProducts[index].image,
-                    brandName: demoPopularProducts[index].brandName,
-                    title: demoPopularProducts[index].title,
-                    price: demoPopularProducts[index].price,
-                    priceAfetDiscount:
-                        demoPopularProducts[index].priceAfetDiscount,
-                    dicountpercent: demoPopularProducts[index].dicountpercent,
-                    press: () {
-                      Navigator.pushNamed(context, productDetailsScreenRoute);
-                    },
-                  );
-                },
-                childCount: demoPopularProducts.length,
-              ),
-            ),
+    return ValueListenableBuilder<Set<int>>(
+      valueListenable: Favoritos.instancia,
+      builder: (context, ids, _) {
+        final guardadas = motos.where((m) => ids.contains(m.id)).toList();
+        if (guardadas.isEmpty) return const _SinFavoritos();
+        return GridView.builder(
+          padding: const EdgeInsets.all(defaultPadding),
+          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+            maxCrossAxisExtent: 200.0,
+            mainAxisSpacing: defaultPadding,
+            crossAxisSpacing: defaultPadding,
+            childAspectRatio: 0.66,
           ),
-        ],
+          itemCount: guardadas.length,
+          itemBuilder: (context, i) => MotoCard(moto: guardadas[i]),
+        );
+      },
+    );
+  }
+}
+
+class _SinFavoritos extends StatelessWidget {
+  const _SinFavoritos();
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(defaultPadding * 2),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(Icons.bookmark_border_rounded,
+                size: 64, color: primaryColor.withValues(alpha: 0.5)),
+            const SizedBox(height: defaultPadding),
+            Text("Aún no tienes favoritas",
+                style: Theme.of(context).textTheme.titleSmall),
+            const SizedBox(height: defaultPadding / 2),
+            const Text(
+              "Toca el marcador en la ficha de una moto para guardarla aquí.",
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
       ),
     );
   }

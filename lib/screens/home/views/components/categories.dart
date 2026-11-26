@@ -1,65 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:shop/route/screen_export.dart';
+import 'package:shop/models/moto_model.dart';
 
 import '../../../../constants.dart';
 
-// For preview
-class CategoryModel {
-  final String name;
-  final String? svgSrc, route;
-
-  CategoryModel({
-    required this.name,
-    this.svgSrc,
-    this.route,
-  });
-}
-
-List<CategoryModel> demoCategories = [
-  CategoryModel(name: "All Categories"),
-  CategoryModel(
-      name: "On Sale",
-      svgSrc: "assets/icons/Sale.svg",
-      route: onSaleScreenRoute),
-  CategoryModel(name: "Man's", svgSrc: "assets/icons/Man.svg"),
-  CategoryModel(name: "Woman’s", svgSrc: "assets/icons/Woman.svg"),
-  CategoryModel(
-      name: "Kids", svgSrc: "assets/icons/Child.svg", route: kidsScreenRoute),
-];
-// End For Preview
-
+/// Fila horizontal de categorías de motos. Marca la [seleccionada] y avisa
+/// con [alSeleccionar] cuando el usuario toca otra.
 class Categories extends StatelessWidget {
   const Categories({
     super.key,
+    required this.seleccionada,
+    required this.alSeleccionar,
   });
+
+  final String seleccionada;
+  final ValueChanged<String> alSeleccionar;
 
   @override
   Widget build(BuildContext context) {
+    final opciones = [todasLasCategorias, ...categorias];
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
-        children: [
-          ...List.generate(
-            demoCategories.length,
-            (index) => Padding(
-              padding: EdgeInsets.only(
-                  left: index == 0 ? defaultPadding : defaultPadding / 2,
-                  right:
-                      index == demoCategories.length - 1 ? defaultPadding : 0),
-              child: CategoryBtn(
-                category: demoCategories[index].name,
-                svgSrc: demoCategories[index].svgSrc,
-                isActive: index == 0,
-                press: () {
-                  if (demoCategories[index].route != null) {
-                    Navigator.pushNamed(context, demoCategories[index].route!);
-                  }
-                },
-              ),
+        children: List.generate(
+          opciones.length,
+          (index) => Padding(
+            padding: EdgeInsets.only(
+                left: index == 0 ? defaultPadding : defaultPadding / 2,
+                right: index == opciones.length - 1 ? defaultPadding : 0),
+            child: CategoryBtn(
+              category: opciones[index],
+              svgSrc: iconoCategoria[opciones[index]],
+              isActive: opciones[index] == seleccionada,
+              press: () => alSeleccionar(opciones[index]),
             ),
           ),
-        ],
+        ),
       ),
     );
   }
@@ -84,7 +60,8 @@ class CategoryBtn extends StatelessWidget {
     return InkWell(
       onTap: press,
       borderRadius: const BorderRadius.all(Radius.circular(30)),
-      child: Container(
+      child: AnimatedContainer(
+        duration: defaultDuration,
         height: 36,
         padding: const EdgeInsets.symmetric(horizontal: defaultPadding),
         decoration: BoxDecoration(
