@@ -925,6 +925,18 @@ const List<Moto> motos = [
   ),
 ];
 
+/// Banners tipo póster del carrusel de inicio, generados con IA (Nano Banana)
+/// a partir de la moto real. La llave es el modelo.
+const Map<String, String> bannerPorModelo = {
+  "MT-07": "assets/banners/mt07.jpg",
+  "YZF-R3": "assets/banners/yzfr3.jpg",
+  "V-Strom 800DE": "assets/banners/vstrom800de.jpg",
+  "CBR500R": "assets/banners/cbr500r.jpg",
+  "Ninja 500": "assets/banners/ninja500.jpg",
+  "Hyper 2.0 310": "assets/banners/hyper310.jpg",
+  "Vort-X 250": "assets/banners/vortx250.jpg",
+};
+
 Moto motoPorId(int id) => motos.firstWhere((m) => m.id == id);
 
 List<Moto> motosPorCategoria(String categoria) =>

@@ -84,11 +84,18 @@ class _OffersCarouselState extends State<OffersCarousel> {
                 },
                 child: Material(
                   type: MaterialType.transparency,
-                  child: BannerMStyle1(
-                    image: moto.imagen,
-                    text: "${moto.marca.nombre}\n${moto.modelo}",
-                    press: () => abrirMoto(context, moto, heroTag: heroTag),
-                  ),
+                  child: bannerPorModelo[moto.modelo] != null
+                      ? _BannerPoster(
+                          asset: bannerPorModelo[moto.modelo]!,
+                          press: () =>
+                              abrirMoto(context, moto, heroTag: heroTag),
+                        )
+                      : BannerMStyle1(
+                          image: moto.imagen,
+                          text: "${moto.marca.nombre}\n${moto.modelo}",
+                          press: () =>
+                              abrirMoto(context, moto, heroTag: heroTag),
+                        ),
                 ),
               );
             },
@@ -115,6 +122,32 @@ class _OffersCarouselState extends State<OffersCarousel> {
             ),
           )
         ],
+      ),
+    );
+  }
+}
+
+
+/// Banner tipo póster: la imagen ya trae la marca y el modelo.
+class _BannerPoster extends StatelessWidget {
+  const _BannerPoster({required this.asset, required this.press});
+
+  final String asset;
+  final VoidCallback press;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: press,
+      child: Container(
+        color: const Color(0xFFF5F5F5),
+        child: Image.asset(
+          asset,
+          fit: BoxFit.cover,
+          alignment: Alignment.center,
+          width: double.infinity,
+          height: double.infinity,
+        ),
       ),
     );
   }
